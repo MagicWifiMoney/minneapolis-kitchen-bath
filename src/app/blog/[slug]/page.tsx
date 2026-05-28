@@ -63,6 +63,7 @@ export default async function BlogPostPage({
       "@type": "Organization",
       name: "Minneapolis Kitchen & Bath",
       url: "https://minneapoliskitchenandbath.com",
+      sameAs: ["https://minneapoliskitchenandbath.com/about"],
     },
     publisher: {
       "@type": "Organization",
@@ -75,6 +76,26 @@ export default async function BlogPostPage({
     mainEntityOfPage: `https://minneapoliskitchenandbath.com/blog/${post.slug}`,
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://minneapoliskitchenandbath.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://minneapoliskitchenandbath.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://minneapoliskitchenandbath.com/blog/${post.slug}` },
+    ],
+  };
+
+  const faqSchema = post.faqs && post.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  } : null;
+
   const related = (post.relatedSlugs ?? [])
     .map((s) => blogPostBySlug[s])
     .filter(Boolean);
@@ -85,6 +106,16 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-10">
           <Breadcrumbs
