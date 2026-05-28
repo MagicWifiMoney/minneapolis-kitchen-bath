@@ -1,0 +1,3 @@
+# MNKB Changelog
+
+2026-05-28 17:30 CDT [claude-code] seo-content — Tier S SEO content ship (items 1-10 of 30). Added 5 KD-0/1 blog posts (tub-to-shower-conversion-cost-minneapolis, curbless-shower-design-guide, tile-shower-waterproofing-guide, walk-in-shower-no-door, 30-percent-rule-remodeling), 2 new service hubs (general-contractor, schluter-certified-shower-installer), and the kitchen remodel cost calculator at /tools/kitchen-remodel-cost-calculator. Added FAQPage + BreadcrumbList schema to /[service]/[city] and /services/[slug] pages. Combined 17,200+ monthly SV targeted across mostly KD<5 terms. Tier A (#11-20) + Tier B (#21-30) queued for follow-up. Research + 90-day plan in research/REPORT.md.

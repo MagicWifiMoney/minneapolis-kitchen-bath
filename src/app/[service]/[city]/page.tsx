@@ -103,6 +103,27 @@ export default async function ServiceCityPage({
     image: "https://minneapoliskitchenandbath.com/og-image.jpg",
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://minneapoliskitchenandbath.com" },
+      { "@type": "ListItem", position: 2, name: "Service Areas", item: "https://minneapoliskitchenandbath.com/service-areas" },
+      { "@type": "ListItem", position: 3, name: city.name, item: `https://minneapoliskitchenandbath.com/service-areas/${city.slug}` },
+      { "@type": "ListItem", position: 4, name: `${service.shortName} in ${city.name}`, item: `https://minneapoliskitchenandbath.com/${service.urlSegment}/${city.slug}` },
+    ],
+  };
+
+  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  } : null;
+
   const serviceIntro = service.cityIntroTemplate(city.name, city.localAngle);
   const relatedServices = service.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
@@ -114,6 +135,16 @@ export default async function ServiceCityPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       {/* Hero */}
       <section className="bg-slate-900 text-white py-16 px-4">

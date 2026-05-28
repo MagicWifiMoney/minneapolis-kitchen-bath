@@ -384,6 +384,135 @@ export const services: Service[] = [
     relatedServiceSlugs: ["kitchen-remodeling", "bathroom-remodeling"],
     isCityPageEnabled: false,
   },
+  {
+    slug: "general-contractor",
+    urlSegment: "general-contractor",
+    name: "General Contractor",
+    shortName: "General Contractor",
+    icon: "🔨",
+    tagline: "Licensed general contractor for Twin Cities home projects",
+    hero: "One contract, one project manager, every trade coordinated.",
+    description:
+      "Licensed general contractor services for Twin Cities homeowners. We pull permits, schedule trades, manage budgets, and handle inspections under a single fixed-price contract. Kitchens, baths, basements, additions, and whole-house remodels.",
+    metaTitleTemplate: (city) =>
+      `General Contractor in ${city}, MN | Licensed & Insured`,
+    metaDescriptionTemplate: (city) =>
+      `Licensed general contractor serving ${city}, Minnesota. Kitchens, baths, basements, additions. Permits pulled, trades managed, fixed-price quotes. Free in-home consultation.`,
+    h1Template: (city) => `General Contractor in ${city}, MN`,
+    whatsIncluded: [
+      "Licensed Minnesota general contractor (MN-BC# on file)",
+      "Permit pulling and city inspections under one contract",
+      "Trade coordination: plumbing, electrical, HVAC, framing, drywall, tile, paint",
+      "Fixed-price quotes (no time-and-materials surprises)",
+      "Single point of contact through entire project",
+      "Daily on-site project manager",
+      "Insurance coverage: general liability and workers comp",
+      "Lien waivers and final close-out paperwork",
+    ],
+    process: [
+      { step: "Discovery call", detail: "We walk the project, talk through scope, and set expectations on budget and timeline." },
+      { step: "Scope of work + quote", detail: "Detailed written scope, line-item budget, and fixed-price quote within 5-10 business days." },
+      { step: "Contract + permits", detail: "Signed contract, permits pulled, trades scheduled, material orders placed." },
+      { step: "Construction", detail: "Daily on-site PM, weekly status meetings, end-of-week clean-up and progress photos." },
+      { step: "Final inspections + close-out", detail: "Punch list, final inspections, warranty paperwork, care instructions." },
+    ],
+    priceRange: [
+      { tier: "Small projects", range: "$15,000-$60,000", description: "Single-room remodels, basement finishes, smaller additions." },
+      { tier: "Mid-range", range: "$60,000-$200,000", description: "Multi-room remodels, kitchens, primary baths, larger basements." },
+      { tier: "Major projects", range: "$200,000-$800,000+", description: "Whole-home remodels, large additions, structural reconfigurations." },
+    ],
+    faqs: [
+      {
+        question: "What does a general contractor actually do?",
+        answer:
+          "A licensed general contractor coordinates everything on a construction project under one contract: pulling permits, hiring and scheduling trades, ordering materials, managing budget and timeline, handling inspections, and warrantying the finished work. You get one phone number and one fixed-price quote instead of juggling separate plumbers, electricians, and carpenters.",
+      },
+      {
+        question: "Do I need a general contractor for a kitchen or bath remodel?",
+        answer:
+          "For most kitchen and bath remodels in the Twin Cities, yes. If the project involves plumbing relocation, electrical work, permits, or more than one trade, a licensed GC keeps the project on schedule and on budget. Smaller cosmetic projects (paint, hardware swaps) can be DIY or single-trade.",
+      },
+      {
+        question: "What is the markup on a general contractor?",
+        answer:
+          "Most reputable Twin Cities general contractors run a 15-25% overhead and profit margin on top of direct cost (labor, materials, sub trades). That covers project management, insurance, warranty, and permits. Lower than that usually means corners are being cut somewhere.",
+      },
+      {
+        question: "How is a general contractor different from a handyman?",
+        answer:
+          "A licensed general contractor carries a state license, general liability and workers comp insurance, can pull permits, and is legally responsible for the work of every sub trade on the project. A handyman is suitable for small repairs but cannot pull permits in Minneapolis or Saint Paul for plumbing, electrical, or structural work.",
+      },
+    ],
+    cityIntroTemplate: (city, localAngle) =>
+      `Licensed general contractor for ${city} homeowners. Kitchens, baths, basements, and whole-house remodels under one contract. ${localAngle}`,
+    relatedServiceSlugs: ["kitchen-remodeling", "bathroom-remodeling", "full-gut"],
+    isCityPageEnabled: true,
+  },
+  {
+    slug: "schluter-certified-shower-installer",
+    urlSegment: "schluter-certified-shower-installer",
+    name: "Schluter-Certified Shower Installation",
+    shortName: "Schluter Showers",
+    icon: "🚿",
+    tagline: "Schluter-Kerdi waterproofing on every tile shower",
+    hero: "The waterproofing system that does not leak. On every shower we build.",
+    description:
+      "We are a Schluter-trained shower installer serving the Twin Cities. Every tile shower we build uses a Schluter-Kerdi sheet membrane system over foam or cement board, with bonded Kerdi-Drain assemblies. No exceptions, no shortcuts, no green-board-and-mortar.",
+    metaTitleTemplate: (city) =>
+      `Schluter Certified Shower Installer in ${city}, MN`,
+    metaDescriptionTemplate: (city) =>
+      `Schluter-Kerdi tile shower installation in ${city}, MN. Sheet membrane waterproofing, Kerdi-Drain assemblies, custom tile, niches, benches, frameless glass.`,
+    h1Template: (city) => `Schluter Certified Shower Installer in ${city}, MN`,
+    whatsIncluded: [
+      "Schluter-Kerdi sheet membrane waterproofing on every wall",
+      "Kerdi-Drain bonded drain assembly",
+      "Kerdi-Board foam panels or Hardi cement board substrate",
+      "Custom tile shower walls and floor",
+      "Recessed niches with Kerdi-Board pre-fab niches",
+      "Benches, curbs, and curbless thresholds",
+      "Frameless glass or fixed-panel enclosures",
+      "Heated tile floor option",
+      "Lifetime workmanship warranty on waterproofing",
+    ],
+    process: [
+      { step: "Consultation + tile selection", detail: "We measure the shower, walk through tile and glass options, and finalize layout." },
+      { step: "Demo + substrate", detail: "Remove existing shower down to studs. Install Kerdi-Board or cement board with all seams and corners detailed." },
+      { step: "Waterproofing", detail: "Apply Kerdi membrane to every wall and the floor, lap into the Kerdi-Drain assembly. Test pan with a 24-hour flood test before tile." },
+      { step: "Tile + grout", detail: "Set tile, grout, seal natural stone if applicable. Install glass and trim." },
+      { step: "Final walk-through", detail: "Care instructions, warranty paperwork, and final inspection." },
+    ],
+    priceRange: [
+      { tier: "Basic Schluter shower", range: "$6,000-$12,000", description: "Subway tile or basic porcelain, standard 3x5 footprint, no niche." },
+      { tier: "Mid-range custom tile", range: "$12,000-$25,000", description: "Larger format tile, niche, bench, curbless conversion." },
+      { tier: "High-end custom", range: "$25,000-$50,000+", description: "Designer tile, fully tiled wet-room, frameless glass, heated floor, multiple niches." },
+    ],
+    faqs: [
+      {
+        question: "What is Schluter and why does it matter?",
+        answer:
+          "Schluter Systems makes a sheet-membrane waterproofing system (Kerdi) that is bonded directly behind tile. It is the gold-standard residential shower waterproofing method in 2026. Done correctly, a Schluter shower is essentially waterproof for the life of the tile. Most Twin Cities shower leaks we tear out were built with the old mortar-bed-and-pan method, which fails after 10-20 years.",
+      },
+      {
+        question: "How is Schluter different from RedGard?",
+        answer:
+          "RedGard is a paint-on liquid waterproofing membrane. It works when applied correctly, but installer technique matters: too thin and it fails. Schluter-Kerdi is a sheet membrane glued to the substrate. It is harder to install wrong because thickness is uniform. Both are accepted by the Tile Council of North America. We prefer Kerdi for consistency.",
+      },
+      {
+        question: "Can you do curbless showers with Schluter?",
+        answer:
+          "Yes. Schluter makes pre-pitched curbless shower trays (Kerdi-Shower-LT) and linear drain assemblies (Kerdi-Line) specifically for curbless construction. Every curbless shower we install in the Twin Cities uses this system.",
+      },
+      {
+        question: "How much does a Schluter shower cost compared to a regular tile shower?",
+        answer:
+          "The waterproofing system itself adds $800-$2,500 to a tile shower install compared to standard cement-board-and-liquid. The labor difference is minimal. The total cost is dominated by tile choice and shower size, not the waterproofing system.",
+      },
+    ],
+    cityIntroTemplate: (city, localAngle) =>
+      `Schluter-Kerdi tile shower installation for ${city} bathrooms. Every shower waterproofed to the highest residential standard available. ${localAngle}`,
+    relatedServiceSlugs: ["bathroom-remodeling", "tile-flooring"],
+    isCityPageEnabled: true,
+  },
 ];
 
 export const serviceBySlug = Object.fromEntries(services.map((s) => [s.slug, s]));

@@ -9,6 +9,11 @@ import CabinetBrands from "./kitchen-cabinet-brands-twin-cities";
 import BestTimeToRemodel from "./best-time-to-remodel-minnesota";
 import KitchenROI from "./kitchen-remodel-roi-minneapolis";
 import SmallBathroomIdeas from "./small-bathroom-remodel-ideas-minneapolis";
+import TubToShowerCost from "./tub-to-shower-conversion-cost-minneapolis";
+import CurblessShower from "./curbless-shower-design-guide";
+import TileShowerWaterproofing from "./tile-shower-waterproofing-guide";
+import WalkInShowerNoDoor from "./walk-in-shower-no-door";
+import ThirtyPercentRule from "./30-percent-rule-remodeling";
 
 export const blogBodyBySlug: Record<string, ComponentType> = {
   "kitchen-remodel-cost-minneapolis": KitchenRemodelCost,
@@ -21,4 +26,9 @@ export const blogBodyBySlug: Record<string, ComponentType> = {
   "best-time-to-remodel-minnesota": BestTimeToRemodel,
   "kitchen-remodel-roi-minneapolis": KitchenROI,
   "small-bathroom-remodel-ideas-minneapolis": SmallBathroomIdeas,
+  "tub-to-shower-conversion-cost-minneapolis": TubToShowerCost,
+  "curbless-shower-design-guide": CurblessShower,
+  "tile-shower-waterproofing-guide": TileShowerWaterproofing,
+  "walk-in-shower-no-door": WalkInShowerNoDoor,
+  "30-percent-rule-remodeling": ThirtyPercentRule,
 };

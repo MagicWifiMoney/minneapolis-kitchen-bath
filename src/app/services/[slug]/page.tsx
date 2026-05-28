@@ -84,12 +84,42 @@ export default async function ServiceDetailPage({
     .map((s) => services.find((x) => x.slug === s))
     .filter(Boolean) as typeof services;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://minneapoliskitchenandbath.com" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://minneapoliskitchenandbath.com/services" },
+      { "@type": "ListItem", position: 3, name: service.name, item: `https://minneapoliskitchenandbath.com/services/${service.slug}` },
+    ],
+  };
+
+  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  } : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <section className="bg-slate-900 text-white py-16 px-4">
         <div className="max-w-5xl mx-auto">

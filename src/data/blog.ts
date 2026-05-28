@@ -248,6 +248,121 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-cost-minneapolis",
     ],
   },
+  {
+    slug: "tub-to-shower-conversion-cost-minneapolis",
+    title: "Tub to Shower Conversion Cost in Minneapolis (2026 Guide)",
+    description:
+      "What a tub-to-shower conversion actually costs in the Twin Cities. Fiberglass surrounds from $8K, mid-range tile $15K-$30K, full custom tile with frameless glass $25K-$45K+.",
+    keywords: [
+      "tub to shower conversion cost",
+      "tub to shower conversion cost minneapolis",
+      "tub to shower conversion twin cities",
+      "convert tub to shower mn",
+    ],
+    excerpt:
+      "A real-world cost breakdown for converting your tub to a shower in Minneapolis. Plumbing, tile, glass, and resale considerations.",
+    date: "2026-05-28",
+    readTime: "8 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "cost-guides",
+    relatedSlugs: [
+      "bathroom-remodel-cost-minneapolis",
+      "curbless-shower-design-guide",
+      "tile-shower-waterproofing-guide",
+    ],
+  },
+  {
+    slug: "curbless-shower-design-guide",
+    title: "Curbless Shower Design Guide: Costs, Drainage, Waterproofing (Twin Cities 2026)",
+    description:
+      "A complete curbless shower guide for Minneapolis homes. Linear drains, Schluter waterproofing, glass options, costs $12K-$35K, and when not to do it.",
+    keywords: [
+      "curbless shower",
+      "curbless shower design",
+      "curbless shower minneapolis",
+      "linear drain shower twin cities",
+    ],
+    excerpt:
+      "Curbless showers have taken over Twin Cities primary baths. Drainage, waterproofing, glass, and real cost ranges.",
+    date: "2026-05-28",
+    readTime: "9 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "design-trends",
+    relatedSlugs: [
+      "walk-in-shower-no-door",
+      "tile-shower-waterproofing-guide",
+      "bathroom-remodel-cost-minneapolis",
+    ],
+  },
+  {
+    slug: "tile-shower-waterproofing-guide",
+    title: "Tile Shower Waterproofing: Schluter, RedGard, and Why It Matters (2026)",
+    description:
+      "Schluter-Kerdi vs RedGard vs Wedi: how Twin Cities tile showers should actually be waterproofed in 2026. What to ask your contractor.",
+    keywords: [
+      "tile shower waterproofing",
+      "schluter kerdi minneapolis",
+      "redgard vs schluter",
+      "shower waterproofing twin cities",
+    ],
+    excerpt:
+      "Old green-board showers leak. Modern Schluter-Kerdi and liquid membranes do not. A guide to systems, costs, and how to vet a contractor.",
+    date: "2026-05-28",
+    readTime: "8 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "how-to",
+    relatedSlugs: [
+      "curbless-shower-design-guide",
+      "bathroom-tile-trends-2026",
+      "bathroom-remodel-cost-minneapolis",
+    ],
+  },
+  {
+    slug: "walk-in-shower-no-door",
+    title: "Walk-In Shower With No Door: When It Works, When It Doesn't",
+    description:
+      "Doorless walk-in showers in Twin Cities primary baths. Minimum sizing, splash control, heated floor pairing, and when an enclosed shower is the better call.",
+    keywords: [
+      "walk in shower no door",
+      "doorless walk in shower",
+      "open shower design",
+      "wet room twin cities",
+    ],
+    excerpt:
+      "Doorless showers are gorgeous in the right primary bath and miserable in the wrong one. A guide to making the call.",
+    date: "2026-05-28",
+    readTime: "7 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "design-trends",
+    relatedSlugs: [
+      "curbless-shower-design-guide",
+      "bathroom-remodel-cost-minneapolis",
+      "bathroom-tile-trends-2026",
+    ],
+  },
+  {
+    slug: "30-percent-rule-remodeling",
+    title: "The 30% Rule in Remodeling: What It Actually Means",
+    description:
+      "The 30% rule says don't spend more than 30% of your home's value on a single remodel. How it applies to Twin Cities kitchens and baths, with concrete numbers.",
+    keywords: [
+      "30 percent rule remodeling",
+      "what is the 30 percent rule remodeling",
+      "remodeling budget rule of thumb",
+      "kitchen remodel budget rule",
+    ],
+    excerpt:
+      "A simple budget heuristic that keeps remodels from torpedoing resale. How the 30% rule plays out in Minneapolis, Edina, and Wayzata homes.",
+    date: "2026-05-28",
+    readTime: "6 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "buying-guides",
+    relatedSlugs: [
+      "kitchen-remodel-cost-minneapolis",
+      "bathroom-remodel-cost-minneapolis",
+      "kitchen-remodel-roi-minneapolis",
+    ],
+  },
 ];
 
 export const blogPostBySlug = Object.fromEntries(
