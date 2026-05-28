@@ -4,10 +4,19 @@ import { Resend } from "resend";
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hello@minneapoliskitchenandbath.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
 
-export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
 
+export async function POST(req: NextRequest) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 },
+      );
+    }
+    const resend = new Resend(apiKey);
+
     const body = await req.json();
     const { name, email, phone, projectType, message } = body;
 

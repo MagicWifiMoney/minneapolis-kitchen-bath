@@ -36,6 +36,13 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="tel:+16125550000"
+              className="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
+              aria-label="Call us"
+            >
+              (612) 555-0000
+            </a>
             <Link
               href="/contact"
               className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
@@ -43,6 +50,15 @@ export function Header() {
               Free Quote
             </Link>
           </nav>
+
+          {/* Mobile: tap-to-call always visible */}
+          <a
+            href="tel:+16125550000"
+            className="md:hidden text-sm font-semibold text-blue-700 ml-auto mr-2"
+            aria-label="Call us"
+          >
+            Call
+          </a>
 
           {/* Mobile menu button */}
           <button
