@@ -450,6 +450,45 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: ["kitchen-remodel-cost-minneapolis", "minneapolis-kitchen-remodel-permits", "kitchen-remodel-timeline-twin-cities"],
   },
   {
+    slug: "cambria-quartz-minnesota-made-guide",
+    title: "Cambria Quartz: A Complete Guide to Minnesota's Hometown Countertop Brand",
+    description:
+      "Cambria is the Minnesota-made quartz countertop brand. A complete guide to collections, pricing, the most-installed Twin Cities designs, and why local homeowners pick Cambria.",
+    keywords: ["cambria countertops review", "cambria quartz minnesota", "best cambria designs", "cambria vs silestone"],
+    excerpt: "Cambria is made in Le Sueur, Minnesota. A contractor's guide to collections, designs, pricing, and why Twin Cities kitchens choose Cambria.",
+    date: "2026-05-28",
+    readTime: "10 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "buying-guides",
+    relatedSlugs: ["quartz-vs-granite-countertops", "kitchen-remodel-cost-minneapolis", "best-kitchen-cabinet-brands-2026"],
+  },
+  {
+    slug: "kitchen-remodel-financing-minneapolis",
+    title: "Kitchen Remodel Financing in Minneapolis: 7 Real Options Compared",
+    description:
+      "Seven kitchen remodel financing options compared for Minneapolis homeowners: HELOC, home equity loan, cash-out refi, personal loans, FHA 203k, HomeStyle, and 0% promo cards.",
+    keywords: ["kitchen remodel financing", "kitchen remodel loan minneapolis", "heloc kitchen remodel", "fha 203k twin cities"],
+    excerpt: "Cash, HELOC, home equity loan, refinance, personal loan, 203k, or HomeStyle? A real-world comparison for Twin Cities kitchen remodels.",
+    date: "2026-05-28",
+    readTime: "9 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "buying-guides",
+    relatedSlugs: ["kitchen-remodel-cost-minneapolis", "30-percent-rule-remodeling", "realistic-budget-kitchen-remodel"],
+  },
+  {
+    slug: "realistic-budget-kitchen-remodel",
+    title: "What Is a Realistic Budget for a Kitchen Remodel? (2026)",
+    description:
+      "A realistic kitchen remodel budget runs 5-15% of home value. Twin Cities ranges: Minneapolis $17K-$52K, Edina $30K-$92K, Wayzata $46K-$140K. Allocation breakdown and tier-by-tier scope.",
+    keywords: ["realistic budget kitchen remodel", "what is a realistic budget for a kitchen remodel", "kitchen remodel budget twin cities", "is 30000 enough kitchen remodel"],
+    excerpt: "What a realistic kitchen remodel budget looks like in the Twin Cities by home value tier, plus the allocation breakdown by category.",
+    date: "2026-05-28",
+    readTime: "8 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "buying-guides",
+    relatedSlugs: ["kitchen-remodel-cost-minneapolis", "30-percent-rule-remodeling", "kitchen-remodel-financing-minneapolis"],
+  },
+  {
     slug: "30-percent-rule-remodeling",
     title: "The 30% Rule in Remodeling: What It Actually Means",
     description:

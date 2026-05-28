@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { cities } from "@/data/cities";
 import { services } from "@/data/services";
 import { blogPosts } from "@/data/blog";
+import { neighborhoodPages } from "@/data/neighborhoods";
 
 const BASE_URL = "https://minneapoliskitchenandbath.com";
 
@@ -80,11 +81,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  const neighborhoodSitemap: MetadataRoute.Sitemap = neighborhoodPages.map((n) => ({
+    url: `${BASE_URL}/${n.serviceUrlSegment}/${n.citySlug}/${n.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.9,
+  }));
+
   return [
     ...staticPages,
     ...servicePages,
     ...cityPages,
     ...serviceCityPages,
+    ...neighborhoodSitemap,
     ...blogPages,
   ];
 }

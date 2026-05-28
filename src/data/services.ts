@@ -513,6 +513,136 @@ export const services: Service[] = [
     relatedServiceSlugs: ["bathroom-remodeling", "tile-flooring"],
     isCityPageEnabled: true,
   },
+  {
+    slug: "basement-remodeling",
+    urlSegment: "basement-remodeling",
+    name: "Basement Remodeling",
+    shortName: "Basement Remodel",
+    icon: "🏚️",
+    tagline: "Finished basements, basement bathrooms, in-law suites",
+    hero: "Convert unfinished or dated basements into livable square footage.",
+    description:
+      "Full basement remodeling for Twin Cities homes. Basement bathroom adds, egress windows, in-law suites, home theaters, kids&apos; play spaces, and wet bars. We handle waterproofing, framing, electrical, plumbing, HVAC adjustments, and finish carpentry under one contract.",
+    metaTitleTemplate: (city) =>
+      `Basement Remodeling in ${city}, MN | Finished Basements & Basement Baths`,
+    metaDescriptionTemplate: (city) =>
+      `Basement remodeling contractors serving ${city}, Minnesota. Finished basements, basement bathrooms, in-law suites, egress windows. Licensed & insured. Free in-home quotes.`,
+    h1Template: (city) => `Basement Remodeling in ${city}, MN`,
+    whatsIncluded: [
+      "Moisture and drainage assessment before framing",
+      "Egress window installation when adding bedrooms",
+      "Framing, insulation, drywall, paint",
+      "Electrical and lighting design",
+      "Basement bathroom rough-in and finish",
+      "HVAC supply and return adjustments",
+      "Flooring (LVP standard, carpet, or tile)",
+      "Wet bar, fireplace, theater room build-out as needed",
+      "Permits and inspections",
+    ],
+    process: [
+      { step: "Discovery + moisture check", detail: "We walk the basement, check for moisture history, evaluate ceiling height and structural elements." },
+      { step: "Design + scope", detail: "Layout drawings, electrical plan, finish selections, fixed-price quote within 7-10 business days." },
+      { step: "Pre-construction", detail: "Permits pulled, materials ordered, egress window scheduled if needed." },
+      { step: "Construction", detail: "Framing through finish typically runs 6-12 weeks depending on scope." },
+      { step: "Close-out", detail: "Final inspections, punch list, warranty paperwork." },
+    ],
+    priceRange: [
+      { tier: "Basic finish", range: "$35,000-$75,000", description: "Open rec room, paint, LVP flooring, recessed lighting, no bathroom." },
+      { tier: "Mid-range w/ bath", range: "$75,000-$150,000", description: "Finish + full basement bathroom + bedroom w/ egress." },
+      { tier: "High-end / in-law suite", range: "$150,000-$300,000+", description: "Full suite, kitchenette, full bath, wet bar, theater, premium finishes." },
+    ],
+    faqs: [
+      {
+        question: "Do I need an egress window to add a basement bedroom?",
+        answer:
+          "Yes. Minnesota residential code requires an egress window in every basement sleeping room. Egress windows in the Twin Cities typically run $4,000-$8,000 installed depending on whether the existing window opening can be enlarged or a new opening needs to be cut.",
+      },
+      {
+        question: "Should I waterproof before finishing my basement?",
+        answer:
+          "If you have ANY history of water intrusion (efflorescence on the walls, damp spots, sump pump cycling frequently), yes. Address the source first: regrade exterior, extend downspouts, repair foundation cracks, install interior drain tile if needed. Finishing over an active moisture problem destroys the finish within 2-5 years.",
+      },
+      {
+        question: "What ceiling height do I need to finish a basement?",
+        answer:
+          "Minnesota code requires a minimum 7-foot finished ceiling height in habitable rooms. Some Twin Cities pre-war homes have basements with only 6&apos;6&quot; to 7&apos; of clearance, which means lowering the slab or accepting non-habitable status (storage only).",
+      },
+      {
+        question: "How long does a basement remodel take?",
+        answer:
+          "Basic finish jobs run 6-10 weeks. Adding a basement bathroom adds 2-4 weeks. Full in-law suites with kitchenettes can run 14-20 weeks. Material lead times on cabinets and flooring add to the total.",
+      },
+    ],
+    cityIntroTemplate: (city, localAngle) =>
+      `Basement remodeling for ${city} homes. Finished basements, basement baths, in-law suites, and egress installations. ${localAngle}`,
+    relatedServiceSlugs: ["bathroom-remodeling", "general-contractor", "full-gut"],
+    isCityPageEnabled: false,
+  },
+  {
+    slug: "whole-house-remodel",
+    urlSegment: "whole-house-remodel",
+    name: "Whole-House Remodel",
+    shortName: "Whole-House Remodel",
+    icon: "🏡",
+    tagline: "Multi-room and full-home remodels under one contract",
+    hero: "When two rooms is not enough. Single-contract whole-house renovation.",
+    description:
+      "Whole-house remodels for Twin Cities homes. Multi-room kitchen + bath + living combinations, open-concept conversions, second-story additions, and historic-home modernizations. Single project manager, single fixed-price contract, every trade coordinated.",
+    metaTitleTemplate: (city) =>
+      `Whole-House Remodel Contractors in ${city}, MN`,
+    metaDescriptionTemplate: (city) =>
+      `Whole-house remodel contractors serving ${city}, Minnesota. Multi-room renovations, open-concept conversions, second-story additions. Licensed general contractor.`,
+    h1Template: (city) => `Whole-House Remodel in ${city}, MN`,
+    whatsIncluded: [
+      "Multi-room scope: kitchens, baths, living spaces, basements",
+      "Open-concept wall removal with structural engineering",
+      "Second-story additions or pop-tops",
+      "MEP rough-in (plumbing, electrical, HVAC)",
+      "Drywall, insulation, paint throughout",
+      "Trim, doors, finish carpentry across the home",
+      "Permits and inspections under one contract",
+      "Single project manager from start to finish",
+      "Coordination with structural engineers and architects as needed",
+    ],
+    process: [
+      { step: "Discovery", detail: "Full walk-through, scope identification, structural feasibility check." },
+      { step: "Design + scope", detail: "Design drawings, engineering review for structural changes, finish selections, fixed-price quote." },
+      { step: "Pre-construction", detail: "Permits pulled, materials ordered, sub trades scheduled, demo plan set." },
+      { step: "Construction", detail: "Single on-site project manager, weekly status meetings, daily clean-up, sequenced trade scheduling." },
+      { step: "Close-out", detail: "Final inspections, full punch list, warranty paperwork, care instructions." },
+    ],
+    priceRange: [
+      { tier: "Two-room scope", range: "$80,000-$200,000", description: "Kitchen + primary bath, or kitchen + basement, or similar two-room scope." },
+      { tier: "First-floor conversion", range: "$150,000-$400,000+", description: "Open-concept conversion, kitchen + dining + living, plus structural changes." },
+      { tier: "Whole-home gut", range: "$300,000-$1,000,000+", description: "Top-to-bottom interior renovation, multiple bathrooms, structural reconfigurations." },
+    ],
+    faqs: [
+      {
+        question: "Do I need an architect for a whole-house remodel?",
+        answer:
+          "If the project involves structural changes (removing load-bearing walls, second-story additions, foundation work), yes. For straightforward multi-room remodels without structural reconfiguration, a designer is usually sufficient. We work with several Twin Cities architects and can recommend one.",
+      },
+      {
+        question: "Can I live in my home during a whole-house remodel?",
+        answer:
+          "Sometimes. If we can phase the work room by room, yes. For full-floor gut renovations or projects with major HVAC/electrical work, most homeowners move out for 8-16 weeks. We help plan the phasing and temporary housing logistics during pre-construction.",
+      },
+      {
+        question: "How long does a whole-house remodel take?",
+        answer:
+          "Two-room scope projects run 12-20 weeks on-site. First-floor conversions run 16-28 weeks. Full whole-home gut renovations run 6-14 months depending on scope. Add 4-12 weeks of design + material lead time before construction starts.",
+      },
+      {
+        question: "What is the markup on a whole-house remodel?",
+        answer:
+          "Reputable Twin Cities general contractors charge a 15-25% overhead and profit margin on top of direct cost. On a $300,000 whole-house remodel, that means roughly $45,000-$75,000 of the total goes to project management, insurance, warranty, and overhead. Lower than that range typically means corners are being cut.",
+      },
+    ],
+    cityIntroTemplate: (city, localAngle) =>
+      `Whole-house remodels for ${city} homes. Multi-room scope under a single fixed-price contract with one project manager from start to finish. ${localAngle}`,
+    relatedServiceSlugs: ["kitchen-remodeling", "bathroom-remodeling", "general-contractor", "full-gut"],
+    isCityPageEnabled: false,
+  },
 ];
 
 export const serviceBySlug = Object.fromEntries(services.map((s) => [s.slug, s]));

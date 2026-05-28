@@ -22,6 +22,9 @@ import SmallBathroomLayout from "./small-bathroom-layout-ideas";
 import RemodelVsRenovation from "./remodel-vs-renovation";
 import WetRoomDesign from "./wet-room-design-guide";
 import DIYKitchenRemodel from "./diy-kitchen-remodel-what-to-hire-out";
+import CambriaQuartzMNGuide from "./cambria-quartz-minnesota-made-guide";
+import KitchenRemodelFinancing from "./kitchen-remodel-financing-minneapolis";
+import RealisticBudgetKitchen from "./realistic-budget-kitchen-remodel";
 
 export const blogBodyBySlug: Record<string, ComponentType> = {
   "kitchen-remodel-cost-minneapolis": KitchenRemodelCost,
@@ -47,4 +50,7 @@ export const blogBodyBySlug: Record<string, ComponentType> = {
   "remodel-vs-renovation": RemodelVsRenovation,
   "wet-room-design-guide": WetRoomDesign,
   "diy-kitchen-remodel-what-to-hire-out": DIYKitchenRemodel,
+  "cambria-quartz-minnesota-made-guide": CambriaQuartzMNGuide,
+  "kitchen-remodel-financing-minneapolis": KitchenRemodelFinancing,
+  "realistic-budget-kitchen-remodel": RealisticBudgetKitchen,
 };
