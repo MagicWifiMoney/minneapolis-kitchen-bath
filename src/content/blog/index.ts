@@ -14,6 +14,14 @@ import CurblessShower from "./curbless-shower-design-guide";
 import TileShowerWaterproofing from "./tile-shower-waterproofing-guide";
 import WalkInShowerNoDoor from "./walk-in-shower-no-door";
 import ThirtyPercentRule from "./30-percent-rule-remodeling";
+import HeatedBathroomFloor from "./heated-bathroom-floor-cost-minnesota";
+import KitchenIslandCost from "./kitchen-island-cost-guide";
+import CrystalCabinetsMN from "./crystal-cabinets-minnesota-review";
+import BestKitchenCabinets2026 from "./best-kitchen-cabinet-brands-2026";
+import SmallBathroomLayout from "./small-bathroom-layout-ideas";
+import RemodelVsRenovation from "./remodel-vs-renovation";
+import WetRoomDesign from "./wet-room-design-guide";
+import DIYKitchenRemodel from "./diy-kitchen-remodel-what-to-hire-out";
 
 export const blogBodyBySlug: Record<string, ComponentType> = {
   "kitchen-remodel-cost-minneapolis": KitchenRemodelCost,
@@ -31,4 +39,12 @@ export const blogBodyBySlug: Record<string, ComponentType> = {
   "tile-shower-waterproofing-guide": TileShowerWaterproofing,
   "walk-in-shower-no-door": WalkInShowerNoDoor,
   "30-percent-rule-remodeling": ThirtyPercentRule,
+  "heated-bathroom-floor-cost-minnesota": HeatedBathroomFloor,
+  "kitchen-island-cost-guide": KitchenIslandCost,
+  "crystal-cabinets-minnesota-review": CrystalCabinetsMN,
+  "best-kitchen-cabinet-brands-2026": BestKitchenCabinets2026,
+  "small-bathroom-layout-ideas": SmallBathroomLayout,
+  "remodel-vs-renovation": RemodelVsRenovation,
+  "wet-room-design-guide": WetRoomDesign,
+  "diy-kitchen-remodel-what-to-hire-out": DIYKitchenRemodel,
 };
