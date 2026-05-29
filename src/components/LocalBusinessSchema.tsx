@@ -1,3 +1,5 @@
+import { cities } from "@/data/cities";
+
 export function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
@@ -9,15 +11,16 @@ export function LocalBusinessSchema() {
     email: "hello@minneapoliskitchenandbath.com",
     description:
       "Trusted local remodeling contractors for kitchens and bathrooms across the Twin Cities metro area.",
-    areaServed: [
-      { "@type": "City", name: "Minneapolis" },
-      { "@type": "City", name: "Saint Paul" },
-      { "@type": "City", name: "Edina" },
-      { "@type": "City", name: "Bloomington" },
-      { "@type": "City", name: "Plymouth" },
-      { "@type": "City", name: "Minnetonka" },
-      { "@type": "City", name: "Eden Prairie" },
-    ],
+    areaServed: cities.map((c) => ({
+      "@type": "City",
+      name: c.name,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: c.name,
+        addressRegion: "MN",
+        addressCountry: "US",
+      },
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Minneapolis",
