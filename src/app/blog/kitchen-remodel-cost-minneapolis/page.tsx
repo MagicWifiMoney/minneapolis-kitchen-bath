@@ -150,7 +150,7 @@ export default function KitchenRemodelCostMinneapolis() {
 
           <h2>Cabinet Costs in Minneapolis (2026)</h2>
           <p>
-            Cabinets are almost always the single largest line item. Here's what
+            Cabinets are almost always the single largest line item. Here&apos;s what
             to expect in the Minneapolis market:
           </p>
           <div className="not-prose overflow-x-auto mb-6">
@@ -264,8 +264,8 @@ export default function KitchenRemodelCostMinneapolis() {
           <p>
             From a pure ROI perspective, a mid-range kitchen remodel in
             Minneapolis returns approximately 70–75 cents on the dollar at
-            resale, according to Remodeling Magazine's 2025 Cost vs. Value
-            report for the Minneapolis metro. That's slightly above the national
+            resale, according to Remodeling Magazine&apos;s 2025 Cost vs. Value
+            report for the Minneapolis metro. That&apos;s slightly above the national
             average.
           </p>
           <p>

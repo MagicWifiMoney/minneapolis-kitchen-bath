@@ -1,117 +1,109 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { services } from "@/data/services";
+import { cities } from "@/data/cities";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Kitchen remodeling, bathroom renovations, custom cabinetry, countertops, and more. See all services from Minneapolis Kitchen & Bath.",
+    "Kitchen remodeling, bathroom renovations, custom cabinetry, countertops, tile, and full gut renovations across the Twin Cities. See pricing and our process.",
+  alternates: { canonical: "https://minneapoliskitchenandbath.com/services" },
 };
-
-const services = [
-  {
-    title: "Kitchen Remodeling",
-    slug: "kitchen-remodeling",
-    description:
-      "Full kitchen renovations from cabinet replacement to complete gut-and-rebuild. We handle layout planning, demo, plumbing rough-in, electrical, drywall, cabinets, counters, backsplash, flooring, and appliance install.",
-    highlights: [
-      "Custom and semi-custom cabinetry",
-      "Countertop fabrication and install",
-      "Tile backsplash",
-      "Lighting design",
-      "Appliance hookups",
-    ],
-  },
-  {
-    title: "Bathroom Remodeling",
-    slug: "bathroom-remodeling",
-    description:
-      "Transform any bathroom from powder room to master suite. We specialize in tile showers, soaking tubs, double vanities, and full layout redesigns.",
-    highlights: [
-      "Walk-in and tiled showers",
-      "Soaking and freestanding tubs",
-      "Vanity and fixture replacement",
-      "Heated floor installation",
-      "Exhaust fan and lighting",
-    ],
-  },
-  {
-    title: "Custom Cabinetry",
-    slug: "custom-cabinetry",
-    description:
-      "Made-to-order cabinetry for kitchens, bathrooms, mudrooms, laundry rooms, and home offices. Maximize every inch with storage designed for your space.",
-    highlights: [
-      "Full custom and semi-custom builds",
-      "Painted and stained finishes",
-      "Soft-close hardware",
-      "Pull-out shelves and organizers",
-    ],
-  },
-  {
-    title: "Countertops",
-    slug: "countertops",
-    description:
-      "We source and install premium countertops for kitchens and bathrooms. Quartz, granite, marble, quartzite, and butcher block available.",
-    highlights: [
-      "Quartz and engineered stone",
-      "Natural granite and marble",
-      "Butcher block and wood",
-      "Template and fabrication included",
-    ],
-  },
-  {
-    title: "Tile & Flooring",
-    slug: "tile-flooring",
-    description:
-      "Expert tile setting for floors, showers, backsplashes, and feature walls. We also install hardwood, LVP, and heated floor systems.",
-    highlights: [
-      "Large format tile",
-      "Mosaic and decorative tile",
-      "Hardwood and LVP",
-      "Radiant heated floors",
-    ],
-  },
-  {
-    title: "Full Gut Renovations",
-    slug: "full-gut",
-    description:
-      "Starting from scratch? We manage complete gut renovations — demo, structural changes, MEP rough-in, and full finish work — under one contract.",
-    highlights: [
-      "Single-contract project management",
-      "Structural wall removal",
-      "Plumbing and electrical relocation",
-      "Permit pulling and inspections",
-    ],
-  },
-];
 
 export default function ServicesPage() {
   return (
     <>
       <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4">Our Services</h1>
-          <p className="text-slate-300 text-lg">
-            Full-service kitchen and bathroom remodeling for Twin Cities homeowners.
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+          <p className="text-slate-300 text-lg max-w-3xl">
+            Full-service kitchen and bathroom remodeling for Twin Cities
+            homeowners. Licensed, insured, and locally based in Minneapolis.
           </p>
         </div>
       </section>
 
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid gap-8">
+        <div className="max-w-5xl mx-auto grid gap-6">
           {services.map((service) => (
-            <div key={service.slug} className="border border-slate-200 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h2>
+            <article
+              key={service.slug}
+              className="border border-slate-200 rounded-lg p-6 hover:border-blue-300 transition-colors"
+            >
+              <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
+                <div>
+                  <div className="text-3xl mb-2">{service.icon}</div>
+                  <h2 className="text-2xl font-bold text-slate-900">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="hover:text-blue-700"
+                    >
+                      {service.name}
+                    </Link>
+                  </h2>
+                </div>
+              </div>
               <p className="text-slate-600 mb-4">{service.description}</p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                {service.highlights.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1 mb-5">
+                {service.whatsIncluded.slice(0, 6).map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-slate-700"
+                  >
                     <span className="text-blue-600">✓</span>
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+                >
+                  Learn more
+                </Link>
+                <Link
+                  href="/contact"
+                  className="bg-slate-100 text-slate-900 px-5 py-2 rounded-md text-sm font-medium hover:bg-slate-200 transition-colors"
+                >
+                  Get a quote
+                </Link>
+              </div>
+            </article>
           ))}
+        </div>
+      </section>
+
+      {/* City-based landing pages for top services */}
+      <section className="py-16 px-4 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            Services by City
+          </h2>
+          <p className="text-slate-600 mb-6 max-w-3xl">
+            See pricing and local information for kitchen and bathroom
+            remodeling in your specific Twin Cities suburb.
+          </p>
+          {services
+            .filter((s) => s.isCityPageEnabled)
+            .map((s) => (
+              <div key={s.slug} className="mb-8">
+                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  {s.name}
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                  {cities.map((c) => (
+                    <Link
+                      key={`${s.slug}-${c.slug}`}
+                      href={`/${s.urlSegment}/${c.slug}`}
+                      className="text-sm text-blue-700 hover:underline hover:text-blue-900"
+                    >
+                      {s.shortName} in {c.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
         </div>
       </section>
 
