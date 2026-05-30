@@ -31,7 +31,7 @@ DB_PATH = RESEARCH / "competitor-history.sqlite"
 WEEKLY_REPORT = RESEARCH / "competitor-weekly-report.md"
 GAP_REPORT = RESEARCH / "competitor-keyword-gap.md"
 
-OWN_DOMAIN = "minneapoliskitchenbath.com"
+OWN_DOMAIN = "minneapoliskitchenandbath.com"
 
 COMPETITORS = [
     "mbros.com",
