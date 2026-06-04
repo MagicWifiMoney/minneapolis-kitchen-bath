@@ -1,4 +1,4 @@
-import Link from "next/link";
+import LeadCapture from "@/components/LeadCapture";\nimport Link from "next/link";
 import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { cities } from "@/data/cities";
@@ -147,7 +147,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why choose us */}
+      
+      {/* Lead Capture Section */}
+      <section className="py-20 px-4 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Planning a remodel?</h2>
+              <p className="text-lg text-slate-600 mb-6">
+                Don't start your project without knowing the local market rates. Download our 
+                comprehensive 2026 Cost Guide to see what homeowners in the Twin Cities are 
+                paying for quality renovations.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Average costs for Kitchens & Baths",
+                  "Material lead time estimates",
+                  "Local permit requirements checklist"
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-slate-700 font-medium">
+                    <span className="text-blue-600">✓</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <LeadCapture />
+          </div>
+        </div>
+      </section>
+\n      {/* Why choose us */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
