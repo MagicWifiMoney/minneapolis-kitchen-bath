@@ -1,4 +1,5 @@
-import LeadCapture from "@/components/LeadCapture";\nimport Link from "next/link";
+import LeadCapture from "@/components/LeadCapture";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { cities } from "@/data/cities";
