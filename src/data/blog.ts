@@ -47,6 +47,28 @@ export const blogPosts: BlogPostMeta[] = [
       "quartz-vs-granite-countertops",
       "kitchen-remodel-timeline-twin-cities",
     ],
+    faqs: [
+      {
+        question: "How much does a kitchen remodel cost in Minneapolis?",
+        answer:
+          "A kitchen remodel in Minneapolis typically costs $15,000–$100,000+. Budget remodels (cabinet refacing, new appliances, countertop swap) run $15,000–$30,000. Mid-range full remodels with semi-custom cabinets and quartz countertops run $35,000–$75,000. High-end custom kitchens with custom cabinetry, premium appliances, and structural changes start at $80,000.",
+      },
+      {
+        question: "What is the biggest cost in a kitchen remodel?",
+        answer:
+          "Cabinets are typically the largest single cost, representing 30–40% of the total kitchen remodel budget. In Minneapolis, stock cabinets run $3,000–$8,000, semi-custom $8,000–$25,000, and full custom cabinets $25,000–$50,000+.",
+      },
+      {
+        question: "How long does a kitchen remodel take in the Twin Cities?",
+        answer:
+          "Most kitchen remodels in the Twin Cities take 6–12 weeks from demolition to completion. Simple cosmetic updates (countertops + backsplash) can be done in 2–3 weeks. Full gut renovations with custom cabinetry typically take 10–16 weeks due to cabinet lead times.",
+      },
+      {
+        question: "Does a kitchen remodel add value in Minneapolis?",
+        answer:
+          "Yes — a mid-range kitchen remodel in the Minneapolis metro returns approximately 70–80% of its cost at resale, according to Remodeling Magazine's Cost vs. Value report. High-end remodels typically return 50–60% but significantly improve your ability to sell quickly in competitive markets like Edina, Minnetonka, and Wayzata.",
+      },
+    ],
   },
   {
     slug: "bathroom-remodel-cost-minneapolis",
