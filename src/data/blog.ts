@@ -633,6 +633,94 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-roi-minneapolis",
     ],
   },
+  {
+    slug: "is-30000-enough-kitchen-remodel",
+    title: "Is $30,000 Enough for a Kitchen Remodel?",
+    description:
+      "Is $30,000 enough for a kitchen remodel in the Twin Cities? Yes for a layout-in-place refresh with semi-custom cabinets and quartz — not a full gut. See exactly what $30K buys.",
+    keywords: [
+      "is 30000 enough for a kitchen remodel",
+      "$30000 kitchen remodel",
+      "kitchen remodel budget Minneapolis",
+    ],
+    excerpt:
+      "What a $30,000 kitchen remodel actually gets you in the Twin Cities — and where the budget runs out.",
+    date: "2026-06-02",
+    readTime: "4 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "cost-guides",
+    relatedSlugs: [
+      "kitchen-remodel-cost-minneapolis",
+      "kitchen-remodel-under-10000",
+      "realistic-budget-kitchen-remodel",
+    ],
+  },
+  {
+    slug: "kitchen-or-bathroom-remodel-first",
+    title: "Should You Remodel the Kitchen or Bathroom First?",
+    description:
+      "Kitchen or bathroom first? In most Twin Cities homes, remodel the kitchen first for daily payoff and resale — unless a bathroom is failing, is your only one, or is holding back a sale.",
+    keywords: [
+      "remodel kitchen or bathroom first",
+      "which room to remodel first",
+      "kitchen vs bathroom remodel priority",
+    ],
+    excerpt:
+      "Which room earns the top of the budget — and the exceptions where the bathroom should go first.",
+    date: "2026-06-02",
+    readTime: "4 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "how-to",
+    relatedSlugs: [
+      "kitchen-remodel-cost-minneapolis",
+      "bathroom-remodel-cost-minneapolis",
+      "30-percent-rule-remodeling",
+    ],
+  },
+  {
+    slug: "most-expensive-part-bathroom-remodel",
+    title: "What Is the Most Expensive Part of a Bathroom Remodel?",
+    description:
+      "The tiled shower is the most expensive part of a bathroom remodel — 30–50% of the budget once you count waterproofing, tile, and labor. Where the money goes and where to save.",
+    keywords: [
+      "most expensive part of bathroom remodel",
+      "bathroom remodel cost breakdown",
+      "tile shower cost Minneapolis",
+    ],
+    excerpt:
+      "Why the tiled shower dominates a bathroom budget — and where to save without cutting the wrong corner.",
+    date: "2026-06-03",
+    readTime: "4 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "cost-guides",
+    relatedSlugs: [
+      "bathroom-remodel-cost-minneapolis",
+      "tile-shower-waterproofing-guide",
+      "small-bathroom-remodel-ideas-minneapolis",
+    ],
+  },
+  {
+    slug: "kitchen-remodel-under-10000",
+    title: "Can You Remodel a Kitchen for $10,000?",
+    description:
+      "Can you remodel a kitchen for $10,000 in the Twin Cities? Not a full remodel — but a real cosmetic refresh: paint or reface cabinets, new counters, backsplash, faucet, and lighting.",
+    keywords: [
+      "kitchen remodel under 10000",
+      "10000 kitchen remodel",
+      "cheap kitchen remodel Minneapolis",
+    ],
+    excerpt:
+      "What a $10,000 budget realistically does in a Twin Cities kitchen — and what it won't.",
+    date: "2026-06-03",
+    readTime: "4 min read",
+    author: "Minneapolis Kitchen & Bath team",
+    category: "cost-guides",
+    relatedSlugs: [
+      "is-30000-enough-kitchen-remodel",
+      "kitchen-remodel-cost-minneapolis",
+      "best-kitchen-cabinet-brands-2026",
+    ],
+  },
 ];
 
 export const blogPostBySlug = Object.fromEntries(
