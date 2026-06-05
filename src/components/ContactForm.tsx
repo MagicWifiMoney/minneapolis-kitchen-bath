@@ -37,7 +37,11 @@ export function ContactForm() {
       }
       // Differentiate so the user knows whether to fix input or just retry.
       if (res.status === 400) {
-        setError("Please fill in every required field and try again.");
+        // Surface the API's specific validation reason (e.g. invalid email).
+        const data = await res.json().catch(() => ({}));
+        setError(
+          data.error || "Please check your entries and try again.",
+        );
       } else {
         setError(
           "Our system couldn't send your message right now. Please try again in a moment or call us directly.",
@@ -76,7 +80,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
           Name *

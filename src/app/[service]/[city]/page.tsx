@@ -152,7 +152,7 @@ export default async function ServiceCityPage({
 
   // City-localized FAQs — reused for both the visible section and the JSON-LD
   // so the structured data always matches the rendered text.
-  const localizedFaqs = service.faqs.map((f) => ({
+  const localizedFaqs = (service.faqs ?? []).map((f) => ({
     question: f.question.replace("Minneapolis", city.name),
     answer: f.answer.replace(/Minneapolis|Twin Cities/g, city.name),
   }));
