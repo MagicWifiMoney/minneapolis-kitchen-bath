@@ -42,7 +42,7 @@ export function LocalBusinessSchema() {
       },
     ],
     priceRange: "$$",
-    image: "https://minneapoliskitchenandbath.com/og-image.jpg",
+    image: "https://minneapoliskitchenandbath.com/opengraph-image",
     sameAs: [],
   };
 

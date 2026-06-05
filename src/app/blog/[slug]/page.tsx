@@ -56,7 +56,7 @@ export default async function BlogPostPage({
     description: post.description,
     image: post.image
       ? [post.image]
-      : ["https://minneapoliskitchenandbath.com/og-image.jpg"],
+      : [`https://minneapoliskitchenandbath.com/blog/${post.slug}/opengraph-image`],
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     author: {
@@ -70,7 +70,7 @@ export default async function BlogPostPage({
       name: "Minneapolis Kitchen & Bath",
       logo: {
         "@type": "ImageObject",
-        url: "https://minneapoliskitchenandbath.com/og-image.jpg",
+        url: "https://minneapoliskitchenandbath.com/opengraph-image",
       },
     },
     mainEntityOfPage: `https://minneapoliskitchenandbath.com/blog/${post.slug}`,
