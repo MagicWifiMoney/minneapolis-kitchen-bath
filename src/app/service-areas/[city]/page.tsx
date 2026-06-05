@@ -113,7 +113,7 @@ export default async function CityServiceAreaPage({
       longitude: city.lng,
     },
     priceRange: "$$",
-    image: "https://minneapoliskitchenandbath.com/og-image.jpg",
+    image: "https://minneapoliskitchenandbath.com/opengraph-image",
   };
 
   return (

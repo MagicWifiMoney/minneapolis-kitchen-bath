@@ -80,7 +80,7 @@ export default async function NeighborhoodPage({
       addressCountry: "US",
     },
     priceRange: "$$$",
-    image: "https://minneapoliskitchenandbath.com/og-image.jpg",
+    image: "https://minneapoliskitchenandbath.com/opengraph-image",
   };
 
   const breadcrumbSchema = {

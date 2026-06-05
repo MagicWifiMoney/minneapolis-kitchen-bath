@@ -33,21 +33,14 @@ export const metadata: Metadata = {
     title: "Minneapolis Kitchen & Bath | Remodeling Contractors",
     description:
       "Trusted local remodeling contractors for kitchens and bathrooms across the Twin Cities.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Minneapolis Kitchen & Bath",
-      },
-    ],
+    // og:image is provided by the generated opengraph-image route (src/app/opengraph-image.tsx).
   },
   twitter: {
     card: "summary_large_image",
     title: "Minneapolis Kitchen & Bath | Remodeling Contractors",
     description:
       "Trusted local remodeling contractors for kitchens and bathrooms across the Twin Cities.",
-    images: ["/og-image.jpg"],
+    // twitter:image falls back to the generated opengraph-image route.
   },
   robots: {
     index: true,

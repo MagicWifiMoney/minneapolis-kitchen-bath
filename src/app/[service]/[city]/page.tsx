@@ -137,7 +137,7 @@ export default async function ServiceCityPage({
       addressCountry: "US",
     },
     priceRange: "$$",
-    image: "https://minneapoliskitchenandbath.com/og-image.jpg",
+    image: "https://minneapoliskitchenandbath.com/opengraph-image",
   };
 
   const breadcrumbSchema = {
