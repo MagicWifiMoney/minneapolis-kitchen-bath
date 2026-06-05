@@ -25,6 +25,10 @@ import DIYKitchenRemodel from "./diy-kitchen-remodel-what-to-hire-out";
 import CambriaQuartzMNGuide from "./cambria-quartz-minnesota-made-guide";
 import KitchenRemodelFinancing from "./kitchen-remodel-financing-minneapolis";
 import RealisticBudgetKitchen from "./realistic-budget-kitchen-remodel";
+import Is30kEnoughKitchen from "./is-30000-enough-kitchen-remodel";
+import KitchenOrBathroomFirst from "./kitchen-or-bathroom-remodel-first";
+import MostExpensiveBathroom from "./most-expensive-part-bathroom-remodel";
+import KitchenRemodelUnder10000 from "./kitchen-remodel-under-10000";
 
 export const blogBodyBySlug: Record<string, ComponentType> = {
   "kitchen-remodel-cost-minneapolis": KitchenRemodelCost,
@@ -53,4 +57,8 @@ export const blogBodyBySlug: Record<string, ComponentType> = {
   "cambria-quartz-minnesota-made-guide": CambriaQuartzMNGuide,
   "kitchen-remodel-financing-minneapolis": KitchenRemodelFinancing,
   "realistic-budget-kitchen-remodel": RealisticBudgetKitchen,
+  "is-30000-enough-kitchen-remodel": Is30kEnoughKitchen,
+  "kitchen-or-bathroom-remodel-first": KitchenOrBathroomFirst,
+  "most-expensive-part-bathroom-remodel": MostExpensiveBathroom,
+  "kitchen-remodel-under-10000": KitchenRemodelUnder10000,
 };
