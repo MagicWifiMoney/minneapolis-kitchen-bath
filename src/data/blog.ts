@@ -92,6 +92,28 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-cost-minneapolis",
       "bathroom-tile-trends-2026",
     ],
+    faqs: [
+      {
+        question: "How much does a bathroom remodel cost in Minneapolis?",
+        answer:
+          "In 2026, a powder room or half bath runs $8,000–$18,000, a full hall bath with a tiled shower runs $18,000–$45,000, and a primary suite with custom tile, a freestanding tub, and a double vanity runs $45,000–$100,000+. Tile work, waterproofing, and labor are the biggest drivers.",
+      },
+      {
+        question: "Why does a small bathroom cost so much to remodel?",
+        answer:
+          "Bathrooms are plumbing-dense and tile-heavy in a small footprint, so the per-square-foot cost is often higher than a kitchen. A 45 sq ft hall bath can reach $25,000 once you include a properly waterproofed tile shower, new fixtures, electrical, and finishes — most of the cost is labor and behind-the-wall work, not floor area.",
+      },
+      {
+        question: "What adds the most cost to a bathroom remodel?",
+        answer:
+          "A custom tile shower — especially a curbless (zero-entry) walk-in with frameless glass — is usually the single most expensive element, running $12,000–$50,000+ depending on size and tile. Moving plumbing (relocating a toilet flange or drain) and a freestanding tub are the next biggest add-ons.",
+      },
+      {
+        question: "Does a bathroom remodel add value to a Twin Cities home?",
+        answer:
+          "Yes. A mid-range bathroom remodel returns roughly 65–70% of its cost at resale per Remodeling Magazine's Cost vs. Value report. Adding a primary ensuite where there wasn't one often returns over 100% in higher-end neighborhoods like Edina, Minnetonka, and Wayzata.",
+      },
+    ],
   },
   {
     slug: "quartz-vs-granite-countertops",
@@ -114,6 +136,28 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-cost-minneapolis",
       "kitchen-cabinet-brands-twin-cities",
+    ],
+    faqs: [
+      {
+        question: "Is quartz or granite cheaper in the Twin Cities?",
+        answer:
+          "Granite usually starts a bit lower — roughly $45–$85/sq ft installed versus $55–$95/sq ft for quartz. But Cambria, which is made in Le Sueur, Minnesota, is often priced competitively with imported granite locally, so the gap is smaller here than in many markets. For a typical 45 sq ft kitchen, expect $2,400–$3,800 for granite and $3,000–$4,300 for quartz installed.",
+      },
+      {
+        question: "Which lasts longer, quartz or granite?",
+        answer:
+          "Both will outlive the rest of your kitchen. Quartz is non-porous and never needs sealing, so it resists stains and bacteria with zero maintenance. Granite is slightly more heat-resistant and can be refinished if it's ever scratched or chipped, but it needs resealing every 1–3 years to stay stain-resistant.",
+      },
+      {
+        question: "Can I put a hot pan on quartz or granite?",
+        answer:
+          "On granite, yes — set a hot pan directly on it. On quartz, use a trivet. Quartz is bound with polymer resin that can scorch or discolor under sustained high heat (above roughly 300°F), so prolonged contact with a pan straight off the burner can leave a mark.",
+      },
+      {
+        question: "What is the most popular countertop in Minneapolis kitchens?",
+        answer:
+          "Quartz, by a wide margin. Its zero-maintenance durability, consistent patterning, and the availability of Minnesota-made Cambria have made it the default choice for most Twin Cities remodels. Granite remains popular with homeowners who love natural stone or want maximum heat resistance, and quartzite is growing for marble-look kitchens.",
+      },
     ],
   },
   {

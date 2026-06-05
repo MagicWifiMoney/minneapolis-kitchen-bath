@@ -132,6 +132,123 @@ export default function Body() {
         the marble fragility.
       </p>
 
+      <h2>What It Actually Costs for a Real Twin Cities Kitchen</h2>
+      <p>
+        Per-square-foot numbers are useful for comparison, but they hide what
+        you&apos;ll actually write a check for. A typical Twin Cities kitchen
+        has <strong>40&ndash;55 square feet</strong> of countertop once you
+        count the perimeter runs plus an island. Here&apos;s how that translates
+        installed, including fabrication, edge profile, cutouts, and a standard
+        undermount sink cutout.
+      </p>
+
+      <div className="not-prose overflow-x-auto my-8">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Material
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                ~45 sq ft kitchen
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                With a large island (~60 sq ft)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Quartz (Cambria / Silestone)", "$3,000–$4,300", "$4,000–$5,700"],
+              ["Granite", "$2,400–$3,800", "$3,200–$5,100"],
+              ["Quartzite", "$3,600–$6,300", "$4,800–$8,400"],
+              ["Butcher block (perimeter) + stone island", "$2,200–$3,500", "—"],
+            ].map(([m, a, b]) => (
+              <tr key={m} className="border-b border-gray-200">
+                <td className="p-3 border border-gray-200 font-medium">{m}</td>
+                <td className="p-3 border border-gray-200 text-gray-700">{a}</td>
+                <td className="p-3 border border-gray-200 text-gray-700">{b}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Want the whole-kitchen picture instead of just counters? Run the numbers
+        in our{" "}
+        <Link href="/tools/kitchen-remodel-cost-calculator">
+          kitchen remodel cost calculator
+        </Link>{" "}
+        or read the full{" "}
+        <Link href="/blog/kitchen-remodel-cost-minneapolis">
+          Minneapolis kitchen remodel cost guide
+        </Link>
+        .
+      </p>
+
+      <h2>Daily Living: What Each Material Is Like to Own</h2>
+      <p>
+        Spec sheets don&apos;t tell you what a countertop feels like five years
+        in. Here&apos;s what we hear back from Twin Cities homeowners.
+      </p>
+      <p>
+        <strong>Quartz</strong> is the &quot;forget about it&quot; surface. No
+        sealing, wipe with soap and water, and it shrugs off the red-wine and
+        turmeric spills that terrify granite owners. The two real-world
+        cautions: don&apos;t set a screaming-hot cast-iron pan straight from the
+        burner onto it (the resin can scorch or discolor &mdash; always use a
+        trivet), and direct sun on a south-facing window over years can fade
+        some darker pigments, which is why quartz can&apos;t go in a
+        three-season porch.
+      </p>
+      <p>
+        <strong>Granite</strong> rewards a little ritual. Once or twice a year
+        you wipe on a sealer &mdash; ten minutes for a whole kitchen &mdash; and
+        in exchange you get a surface you can pull a roast straight out of the
+        oven onto. The honest downside is the porous corners: an unsealed
+        granite top near the coffee station will eventually show a faint ring
+        from a leaky travel mug. Seal it and that disappears.
+      </p>
+
+      <h2>Edge Profiles &amp; Thickness</h2>
+      <p>
+        The edge you pick changes both the price and the feel of the kitchen.
+        In the Twin Cities right now the clear favorite is a clean{" "}
+        <strong>eased or square (&quot;mitered&quot;) edge</strong> on a
+        thick-looking slab, which reads modern and is what photographs well for
+        resale. Bullnose and ogee edges still suit traditional and
+        Victorian-era homes in Summit Avenue or Linden Hills, but they date a
+        contemporary kitchen quickly.
+      </p>
+      <ul>
+        <li>
+          <strong>Standard 3 cm slab, eased edge:</strong> included in most
+          quotes &mdash; the safe default.
+        </li>
+        <li>
+          <strong>Mitered edge (built up to 2&quot;&ndash;4&quot; apron):</strong>{" "}
+          adds roughly $20&ndash;$40/linear foot but gives a high-end waterfall
+          or thick-counter look without paying for a thicker slab.
+        </li>
+        <li>
+          <strong>Waterfall island sides:</strong> stunning in quartz (the
+          pattern matches seamlessly); budget an extra $900&ndash;$2,000
+          depending on slab.
+        </li>
+      </ul>
+
+      <h2>What About Sintered Stone &amp; Porcelain Slab?</h2>
+      <p>
+        A fourth option worth knowing about: ultra-compact sintered surfaces
+        like <strong>Dekton</strong> and porcelain slabs. They&apos;re fully
+        UV-stable (so they <em>can</em> go in an outdoor or porch kitchen),
+        nearly indestructible against heat and scratches, and increasingly
+        common in modern Edina and Wayzata builds. The trade-offs are cost
+        ($90&ndash;$150/sq ft installed) and the fact that fewer local
+        fabricators cut them well &mdash; ask to see a finished edge before you
+        commit.
+      </p>
+
       <h2>Resale Impact in Minneapolis</h2>
       <p>
         From a resale perspective in the Twin Cities market, both quartz and
