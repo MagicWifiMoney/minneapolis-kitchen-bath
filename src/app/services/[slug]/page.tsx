@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { services, serviceBySlug } from "@/data/services";
 import { cities } from "@/data/cities";
+import { BASE_URL, ORG_ID, business } from "@/data/business";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
@@ -56,17 +57,20 @@ export default async function ServiceDetailPage({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${BASE_URL}/services/${service.slug}#service`,
     serviceType: service.name,
+    name: service.name,
+    url: `${BASE_URL}/services/${service.slug}`,
+    // Reference the site-wide LocalBusiness node (rendered in the root layout)
+    // so the service and its provider are one connected graph.
     provider: {
       "@type": "HomeAndConstructionBusiness",
-      name: "Minneapolis Kitchen & Bath",
-      url: "https://minneapoliskitchenandbath.com",
-      areaServed: cities.map((c) => ({
-        "@type": "City",
-        name: c.name,
-      })),
+      "@id": ORG_ID,
+      name: business.name,
+      url: business.url,
+      telephone: business.telephone,
     },
-    areaServed: cities.map((c) => c.name).join(", "),
+    areaServed: cities.map((c) => ({ "@type": "City", name: c.name })),
     description: service.description,
     offers: service.priceRange.map((p) => ({
       "@type": "Offer",

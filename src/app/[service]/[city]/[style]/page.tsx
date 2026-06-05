@@ -4,6 +4,7 @@ import Link from "next/link";
 import { neighborhoodPages, neighborhoodPageBySlug } from "@/data/neighborhoods";
 import { serviceByUrlSegment } from "@/data/services";
 import { cityBySlug } from "@/data/cities";
+import { business, postalAddress, ORG_ID } from "@/data/business";
 import { neighborhoodBodyByKey } from "@/content/neighborhoods";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
@@ -60,8 +61,9 @@ export default async function NeighborhoodPage({
     "@id": `${url}#business`,
     name: `Minneapolis Kitchen & Bath — ${service.shortName} in ${page.neighborhoodName}`,
     url,
-    telephone: "+16125550000",
-    email: "hello@minneapoliskitchenandbath.com",
+    parentOrganization: { "@id": ORG_ID },
+    telephone: business.telephone,
+    email: business.email,
     description: page.metaDescription,
     areaServed: {
       "@type": "Place",
@@ -72,15 +74,9 @@ export default async function NeighborhoodPage({
         longitude: city.lng,
       },
     },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Minneapolis",
-      addressRegion: "MN",
-      postalCode: "55401",
-      addressCountry: "US",
-    },
+    address: postalAddress(),
     priceRange: "$$$",
-    image: "https://minneapoliskitchenandbath.com/opengraph-image",
+    image: business.image,
   };
 
   const breadcrumbSchema = {

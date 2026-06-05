@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { cities, cityBySlug } from "@/data/cities";
 import { services } from "@/data/services";
+import { business, postalAddress, ORG_ID } from "@/data/business";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { RelatedLinks } from "@/components/RelatedLinks";
@@ -94,8 +95,10 @@ export default async function CityServiceAreaPage({
     "@id": `https://minneapoliskitchenandbath.com/service-areas/${city.slug}#business`,
     name: `Minneapolis Kitchen & Bath — Serving ${city.name}, MN`,
     url: `https://minneapoliskitchenandbath.com/service-areas/${city.slug}`,
-    telephone: "+16125550000",
-    email: "hello@minneapoliskitchenandbath.com",
+    parentOrganization: { "@id": ORG_ID },
+    telephone: business.telephone,
+    email: business.email,
+    address: postalAddress(),
     description: `Kitchen and bathroom remodeling contractors serving ${city.name}, MN. Licensed, insured, locally based in the Twin Cities.`,
     areaServed: {
       "@type": "City",
@@ -112,8 +115,8 @@ export default async function CityServiceAreaPage({
       latitude: city.lat,
       longitude: city.lng,
     },
-    priceRange: "$$",
-    image: "https://minneapoliskitchenandbath.com/opengraph-image",
+    priceRange: business.priceRange,
+    image: business.image,
   };
 
   return (
