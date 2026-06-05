@@ -7,6 +7,7 @@ import {
 } from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
 import { blogPostBySlug } from "@/data/blog";
+import { neighborhoodPages } from "@/data/neighborhoods";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
@@ -175,6 +176,18 @@ export default async function ServiceCityPage({
       href: `/blog/${p.slug}`,
       title: p.title,
       description: p.excerpt,
+    }));
+  // Neighborhood-specific guides for this exact service + city, so the deep
+  // long-form pages are discoverable (and not orphaned in the sitemap alone).
+  const neighborhoodGuides = neighborhoodPages
+    .filter(
+      (n) =>
+        n.serviceUrlSegment === service.urlSegment && n.citySlug === city.slug,
+    )
+    .map((n) => ({
+      href: `/${n.serviceUrlSegment}/${n.citySlug}/${n.slug}`,
+      title: `${n.neighborhoodName} ${n.homeStyle} ${service.shortName}`,
+      description: n.metaDescription,
     }));
   const relatedServices = service.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
@@ -387,6 +400,14 @@ export default async function ServiceCityPage({
         heading={`Ready to start your ${city.name} ${service.shortName.toLowerCase()}?`}
         subheading={`Free in-home consultation and quote. Most ${city.name} quotes delivered within 48 hours.`}
       />
+
+      {neighborhoodGuides.length > 0 && (
+        <RelatedLinks
+          heading={`${city.name} neighborhood ${service.shortName.toLowerCase()} guides`}
+          links={neighborhoodGuides}
+          columns={neighborhoodGuides.length >= 3 ? 3 : 2}
+        />
+      )}
 
       {guideLinks.length > 0 && (
         <RelatedLinks
