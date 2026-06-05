@@ -6,12 +6,48 @@ import {
   services,
 } from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
+import { blogPostBySlug } from "@/data/blog";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
 import { RelatedLinks } from "@/components/RelatedLinks";
 
 type RouteParams = { service: string; city: string };
+
+// Curated planning guides per service so each city page links out to relevant
+// blog content (helps users plan, and gives these pages real internal links).
+const SERVICE_GUIDE_SLUGS: Record<string, string[]> = {
+  "kitchen-remodeling": [
+    "kitchen-remodel-cost-minneapolis",
+    "kitchen-remodel-timeline-twin-cities",
+    "minneapolis-kitchen-remodel-permits",
+  ],
+  "bathroom-remodeling": [
+    "bathroom-remodel-cost-minneapolis",
+    "bathroom-tile-trends-2026",
+    "small-bathroom-remodel-ideas-minneapolis",
+  ],
+  "custom-cabinetry": [
+    "best-kitchen-cabinet-brands-2026",
+    "kitchen-cabinet-brands-twin-cities",
+    "crystal-cabinets-minnesota-review",
+  ],
+  countertops: [
+    "quartz-vs-granite-countertops",
+    "cambria-quartz-minnesota-made-guide",
+    "kitchen-remodel-cost-minneapolis",
+  ],
+  "general-contractor": [
+    "remodel-vs-renovation",
+    "30-percent-rule-remodeling",
+    "realistic-budget-kitchen-remodel",
+  ],
+  "schluter-showers": [
+    "tile-shower-waterproofing-guide",
+    "curbless-shower-design-guide",
+    "walk-in-shower-no-door",
+  ],
+};
 
 export async function generateStaticParams(): Promise<RouteParams[]> {
   const enabledServices = services.filter((s) => s.isCityPageEnabled);
@@ -132,6 +168,14 @@ export default async function ServiceCityPage({
   } : null;
 
   const serviceIntro = service.cityIntroTemplate(city.name, city.localAngle);
+  const guideLinks = (SERVICE_GUIDE_SLUGS[service.slug] ?? [])
+    .map((s) => blogPostBySlug[s])
+    .filter(Boolean)
+    .map((p) => ({
+      href: `/blog/${p.slug}`,
+      title: p.title,
+      description: p.excerpt,
+    }));
   const relatedServices = service.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
     .filter(Boolean) as typeof services;
@@ -343,6 +387,13 @@ export default async function ServiceCityPage({
         heading={`Ready to start your ${city.name} ${service.shortName.toLowerCase()}?`}
         subheading={`Free in-home consultation and quote. Most ${city.name} quotes delivered within 48 hours.`}
       />
+
+      {guideLinks.length > 0 && (
+        <RelatedLinks
+          heading={`${city.name} ${service.shortName.toLowerCase()} planning guides`}
+          links={guideLinks}
+        />
+      )}
 
       <RelatedLinks
         heading={`Related services in ${city.name}`}
