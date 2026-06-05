@@ -15,6 +15,40 @@ export default function Body() {
         Minneapolis kitchen remodel in 2026.
       </p>
 
+      <div className="not-prose overflow-x-auto my-8">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Phase
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Typical duration
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                On-site?
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Consultation & scope", "1–2 weeks", "No"],
+              ["Design & quote", "2–4 weeks", "No"],
+              ["Contract, ordering & lead time", "5–10 weeks", "No"],
+              ["Demo & rough-in", "2–3 weeks", "Yes"],
+              ["Drywall, cabinets & counters", "3–4 weeks", "Yes"],
+              ["Backsplash, appliances & punch list", "2–3 weeks", "Yes"],
+            ].map(([phase, dur, onsite]) => (
+              <tr key={phase} className="border-b border-gray-200">
+                <td className="p-3 border border-gray-200 font-medium">{phase}</td>
+                <td className="p-3 border border-gray-200 text-gray-700">{dur}</td>
+                <td className="p-3 border border-gray-200 text-gray-600">{onsite}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <h2>Weeks 1–2: Initial Consultation &amp; Scope</h2>
       <p>
         <strong>What happens:</strong> In-home consultation, measurements,

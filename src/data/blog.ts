@@ -203,6 +203,23 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-cost-minneapolis",
       "minneapolis-kitchen-remodel-permits",
     ],
+    faqs: [
+      {
+        question: "How long does a kitchen remodel take in the Twin Cities?",
+        answer:
+          "Plan on 3–6 months from signing the contract to cooking in your new kitchen. On-site construction is the shorter part — typically 6–12 weeks — while design (2–4 weeks), ordering and cabinet lead time (5–10 weeks), and permitting (1–3 weeks) consume the rest of the calendar.",
+      },
+      {
+        question: "What part of a kitchen remodel takes the longest?",
+        answer:
+          "Cabinet lead time. Semi-custom cabinets run 4–6 weeks and full custom 6–10 weeks from order to delivery, and almost nothing on site can finish until they arrive. Ordering cabinets the day you sign the contract is the single biggest thing you can do to keep the project on schedule.",
+      },
+      {
+        question: "Can I speed up my kitchen remodel?",
+        answer:
+          "Yes — start design 2–3 months before you want construction to begin, order cabinets immediately, choose semi-custom over full custom, keep the existing layout to minimize permit and rough-in time, and lock in every finish decision before demo day so nothing stalls the crew.",
+      },
+    ],
   },
   {
     slug: "minneapolis-kitchen-remodel-permits",
@@ -224,6 +241,28 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-cost-minneapolis",
       "kitchen-remodel-timeline-twin-cities",
+    ],
+    faqs: [
+      {
+        question: "Do I need a permit to remodel my kitchen in Minneapolis?",
+        answer:
+          "Almost certainly. Any kitchen remodel that moves plumbing, adds electrical circuits, relocates gas, changes walls, or exceeds the city's dollar threshold (typically $1,000–$5,000) requires a building permit plus trade permits. Purely cosmetic work — paint, swapping a faucet or dishwasher in the same footprint — usually does not.",
+      },
+      {
+        question: "How much do remodel permits cost in the Twin Cities?",
+        answer:
+          "For a typical $50,000 kitchen or bath remodel, combined building, plumbing, electrical, and mechanical permit fees run roughly $600–$1,200 in Minneapolis and Saint Paul, and somewhat higher in suburbs like Edina where fees scale with project valuation. Review time is usually 1–3 weeks.",
+      },
+      {
+        question: "Who pulls the permit — me or the contractor?",
+        answer:
+          "Your contractor should, and a licensed one will. The permit holder is legally responsible for the work passing inspection, so a contractor who won't pull permits is a red flag that often means they aren't licensed. A Minnesota residential building contractor license is required for any project over $15,000.",
+      },
+      {
+        question: "What happens if remodel work was done without a permit?",
+        answer:
+          "Unpermitted work commonly surfaces at resale. Buyers' inspectors check permit history, and lenders may refuse to finance the sale until permits are pulled retroactively — which can mean opening walls and redoing work to current code. It's far cheaper to permit the work up front.",
+      },
     ],
   },
   {
@@ -312,6 +351,23 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-timeline-twin-cities",
       "kitchen-remodel-cost-minneapolis",
+    ],
+    faqs: [
+      {
+        question: "What is the best month to start a kitchen remodel in Minnesota?",
+        answer:
+          "Start the design phase in October–November and target a December–February construction window. Contractor availability is widest in winter, cabinet and permit lead times are shortest, and because Minnesota winters keep you indoors anyway, a winter remodel doesn't cost you patio, garden, or lake season the way a summer one does.",
+      },
+      {
+        question: "Is it cheaper to remodel in winter?",
+        answer:
+          "Often, modestly. Most quality firms won't openly discount, but contractors keeping crews busy through February tend to be more generous on change orders and absorb more 'found problem' costs, and several local suppliers (Cambria and others) run Q1 promotions. The bigger winter savings is time — faster scheduling and shorter lead times.",
+      },
+      {
+        question: "Can you remodel in the winter in Minnesota?",
+        answer:
+          "Yes. Interior kitchen and bathroom gut renovations have no weather dependency — crews work through every Minnesota winter without weather-related schedule slips. The only weather-sensitive work is exterior: window/door replacement, additions needing foundation work, and roofing tie-ins, which are best done April–November.",
+      },
     ],
   },
   {
