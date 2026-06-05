@@ -23,19 +23,9 @@ const nextConfig: NextConfig = {
       },
     ];
 
-    return [
-      { source: "/:path*", headers: securityHeaders },
-      // Long-cache the immutable hashed build assets.
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
+    // Note: Next.js already applies immutable long-cache headers to
+    // /_next/static assets, so we don't override Cache-Control here.
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 
