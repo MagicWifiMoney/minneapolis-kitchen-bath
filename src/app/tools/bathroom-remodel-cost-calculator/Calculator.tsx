@@ -156,7 +156,9 @@ export default function Calculator() {
                 max={200}
                 value={sqft}
                 onChange={(e) => setSqft(Number(e.target.value))}
-                className="mt-3 w-full accent-blue-500"
+                className="mt-3 w-full accent-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                aria-label="Bathroom size in square feet"
+                aria-valuetext={`${sqft} square feet`}
               />
               <div className="mt-1 flex justify-between text-xs text-gray-500">
                 <span>25</span>
@@ -226,7 +228,11 @@ export default function Calculator() {
           </div>
         </section>
 
-        <section className="mt-8 grid gap-4 sm:grid-cols-3">
+        <section
+          className="mt-8 grid gap-4 sm:grid-cols-3"
+          aria-live="polite"
+          aria-label="Estimated bathroom remodel cost"
+        >
           <div className="rounded-xl border border-gray-800 bg-gray-950/60 p-5">
             <div className="text-xs uppercase tracking-wide text-gray-500">Low estimate</div>
             <div className="mt-2 text-3xl font-bold text-gray-100">{fmt(calc.low)}</div>

@@ -114,10 +114,17 @@ export default async function ServiceCityPage({
     ],
   };
 
-  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+  // City-localized FAQs — reused for both the visible section and the JSON-LD
+  // so the structured data always matches the rendered text.
+  const localizedFaqs = service.faqs.map((f) => ({
+    question: f.question.replace("Minneapolis", city.name),
+    answer: f.answer.replace(/Minneapolis|Twin Cities/g, city.name),
+  }));
+
+  const faqSchema = localizedFaqs.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: service.faqs.map((f) => ({
+    mainEntity: localizedFaqs.map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
@@ -327,11 +334,9 @@ export default async function ServiceCityPage({
       </section>
 
       <FAQSection
-        faqs={service.faqs.map((f) => ({
-          question: f.question.replace("Minneapolis", city.name),
-          answer: f.answer.replace(/Minneapolis|Twin Cities/g, city.name),
-        }))}
+        faqs={localizedFaqs}
         heading={`${city.name} ${service.shortName} FAQs`}
+        withSchema={false}
       />
 
       <CTA

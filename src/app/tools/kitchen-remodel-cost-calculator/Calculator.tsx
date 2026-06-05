@@ -93,39 +93,11 @@ export default function Calculator() {
     return { baseCost, scopeBreakdown, scopeTotal, subtotal, mult, low, mid, high };
   }, [sqft, tier, scope, location]);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        name: "Kitchen Remodel Cost Calculator (Twin Cities)",
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
-        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        url: "https://www.mnkitchenbath.com/tools/kitchen-remodel-cost-calculator",
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mnkitchenbath.com" },
-          { "@type": "ListItem", position: 2, name: "Tools", item: "https://www.mnkitchenbath.com/tools" },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Kitchen Remodel Cost Calculator",
-            item: "https://www.mnkitchenbath.com/tools/kitchen-remodel-cost-calculator",
-          },
-        ],
-      },
-    ],
-  };
+  // Note: WebApplication + BreadcrumbList JSON-LD is emitted once in page.tsx
+  // with the correct production domain. It is intentionally not duplicated here.
 
   return (
     <main className="min-h-screen bg-gray-900 text-gray-100">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <div className="mx-auto max-w-5xl px-6 py-16">
         <nav className="mb-6 text-sm text-gray-400">
           <Link href="/" className="hover:text-blue-400">Home</Link>
@@ -180,7 +152,9 @@ export default function Calculator() {
                 max={400}
                 value={sqft}
                 onChange={(e) => setSqft(Number(e.target.value))}
-                className="mt-3 w-full accent-blue-500"
+                className="mt-3 w-full accent-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                aria-label="Kitchen size in square feet"
+                aria-valuetext={`${sqft} square feet`}
               />
               <div className="mt-1 flex justify-between text-xs text-gray-500">
                 <span>60</span>
@@ -250,7 +224,11 @@ export default function Calculator() {
           </div>
         </section>
 
-        <section className="mt-8 grid gap-4 sm:grid-cols-3">
+        <section
+          className="mt-8 grid gap-4 sm:grid-cols-3"
+          aria-live="polite"
+          aria-label="Estimated kitchen remodel cost"
+        >
           <div className="rounded-xl border border-gray-800 bg-gray-950/60 p-5">
             <div className="text-xs uppercase tracking-wide text-gray-500">Low estimate</div>
             <div className="mt-2 text-3xl font-bold text-gray-100">{fmt(calc.low)}</div>
