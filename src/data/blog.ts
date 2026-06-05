@@ -47,6 +47,28 @@ export const blogPosts: BlogPostMeta[] = [
       "quartz-vs-granite-countertops",
       "kitchen-remodel-timeline-twin-cities",
     ],
+    faqs: [
+      {
+        question: "How much does a kitchen remodel cost in Minneapolis?",
+        answer:
+          "A kitchen remodel in Minneapolis typically costs $15,000–$100,000+. Budget remodels (cabinet refacing, new appliances, countertop swap) run $15,000–$30,000. Mid-range full remodels with semi-custom cabinets and quartz countertops run $35,000–$75,000. High-end custom kitchens with custom cabinetry, premium appliances, and structural changes start at $80,000.",
+      },
+      {
+        question: "What is the biggest cost in a kitchen remodel?",
+        answer:
+          "Cabinets are typically the largest single cost, representing 30–40% of the total kitchen remodel budget. In Minneapolis, stock cabinets run $3,000–$8,000, semi-custom $8,000–$25,000, and full custom cabinets $25,000–$50,000+.",
+      },
+      {
+        question: "How long does a kitchen remodel take in the Twin Cities?",
+        answer:
+          "Most kitchen remodels in the Twin Cities take 6–12 weeks from demolition to completion. Simple cosmetic updates (countertops + backsplash) can be done in 2–3 weeks. Full gut renovations with custom cabinetry typically take 10–16 weeks due to cabinet lead times.",
+      },
+      {
+        question: "Does a kitchen remodel add value in Minneapolis?",
+        answer:
+          "Yes — a mid-range kitchen remodel in the Minneapolis metro returns approximately 70–80% of its cost at resale, according to Remodeling Magazine's Cost vs. Value report. High-end remodels typically return 50–60% but significantly improve your ability to sell quickly in competitive markets like Edina, Minnetonka, and Wayzata.",
+      },
+    ],
   },
   {
     slug: "bathroom-remodel-cost-minneapolis",
@@ -70,6 +92,28 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-cost-minneapolis",
       "bathroom-tile-trends-2026",
     ],
+    faqs: [
+      {
+        question: "How much does a bathroom remodel cost in Minneapolis?",
+        answer:
+          "In 2026, a powder room or half bath runs $8,000–$18,000, a full hall bath with a tiled shower runs $18,000–$45,000, and a primary suite with custom tile, a freestanding tub, and a double vanity runs $45,000–$100,000+. Tile work, waterproofing, and labor are the biggest drivers.",
+      },
+      {
+        question: "Why does a small bathroom cost so much to remodel?",
+        answer:
+          "Bathrooms are plumbing-dense and tile-heavy in a small footprint, so the per-square-foot cost is often higher than a kitchen. A 45 sq ft hall bath can reach $25,000 once you include a properly waterproofed tile shower, new fixtures, electrical, and finishes — most of the cost is labor and behind-the-wall work, not floor area.",
+      },
+      {
+        question: "What adds the most cost to a bathroom remodel?",
+        answer:
+          "A custom tile shower — especially a curbless (zero-entry) walk-in with frameless glass — is usually the single most expensive element, running $12,000–$50,000+ depending on size and tile. Moving plumbing (relocating a toilet flange or drain) and a freestanding tub are the next biggest add-ons.",
+      },
+      {
+        question: "Does a bathroom remodel add value to a Twin Cities home?",
+        answer:
+          "Yes. A mid-range bathroom remodel returns roughly 65–70% of its cost at resale per Remodeling Magazine's Cost vs. Value report. Adding a primary ensuite where there wasn't one often returns over 100% in higher-end neighborhoods like Edina, Minnetonka, and Wayzata.",
+      },
+    ],
   },
   {
     slug: "quartz-vs-granite-countertops",
@@ -92,6 +136,28 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-cost-minneapolis",
       "kitchen-cabinet-brands-twin-cities",
+    ],
+    faqs: [
+      {
+        question: "Is quartz or granite cheaper in the Twin Cities?",
+        answer:
+          "Granite usually starts a bit lower — roughly $45–$85/sq ft installed versus $55–$95/sq ft for quartz. But Cambria, which is made in Le Sueur, Minnesota, is often priced competitively with imported granite locally, so the gap is smaller here than in many markets. For a typical 45 sq ft kitchen, expect $2,400–$3,800 for granite and $3,000–$4,300 for quartz installed.",
+      },
+      {
+        question: "Which lasts longer, quartz or granite?",
+        answer:
+          "Both will outlive the rest of your kitchen. Quartz is non-porous and never needs sealing, so it resists stains and bacteria with zero maintenance. Granite is slightly more heat-resistant and can be refinished if it's ever scratched or chipped, but it needs resealing every 1–3 years to stay stain-resistant.",
+      },
+      {
+        question: "Can I put a hot pan on quartz or granite?",
+        answer:
+          "On granite, yes — set a hot pan directly on it. On quartz, use a trivet. Quartz is bound with polymer resin that can scorch or discolor under sustained high heat (above roughly 300°F), so prolonged contact with a pan straight off the burner can leave a mark.",
+      },
+      {
+        question: "What is the most popular countertop in Minneapolis kitchens?",
+        answer:
+          "Quartz, by a wide margin. Its zero-maintenance durability, consistent patterning, and the availability of Minnesota-made Cambria have made it the default choice for most Twin Cities remodels. Granite remains popular with homeowners who love natural stone or want maximum heat resistance, and quartzite is growing for marble-look kitchens.",
+      },
     ],
   },
   {
@@ -137,6 +203,23 @@ export const blogPosts: BlogPostMeta[] = [
       "kitchen-remodel-cost-minneapolis",
       "minneapolis-kitchen-remodel-permits",
     ],
+    faqs: [
+      {
+        question: "How long does a kitchen remodel take in the Twin Cities?",
+        answer:
+          "Plan on 3–6 months from signing the contract to cooking in your new kitchen. On-site construction is the shorter part — typically 6–12 weeks — while design (2–4 weeks), ordering and cabinet lead time (5–10 weeks), and permitting (1–3 weeks) consume the rest of the calendar.",
+      },
+      {
+        question: "What part of a kitchen remodel takes the longest?",
+        answer:
+          "Cabinet lead time. Semi-custom cabinets run 4–6 weeks and full custom 6–10 weeks from order to delivery, and almost nothing on site can finish until they arrive. Ordering cabinets the day you sign the contract is the single biggest thing you can do to keep the project on schedule.",
+      },
+      {
+        question: "Can I speed up my kitchen remodel?",
+        answer:
+          "Yes — start design 2–3 months before you want construction to begin, order cabinets immediately, choose semi-custom over full custom, keep the existing layout to minimize permit and rough-in time, and lock in every finish decision before demo day so nothing stalls the crew.",
+      },
+    ],
   },
   {
     slug: "minneapolis-kitchen-remodel-permits",
@@ -158,6 +241,28 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-cost-minneapolis",
       "kitchen-remodel-timeline-twin-cities",
+    ],
+    faqs: [
+      {
+        question: "Do I need a permit to remodel my kitchen in Minneapolis?",
+        answer:
+          "Almost certainly. Any kitchen remodel that moves plumbing, adds electrical circuits, relocates gas, changes walls, or exceeds the city's dollar threshold (typically $1,000–$5,000) requires a building permit plus trade permits. Purely cosmetic work — paint, swapping a faucet or dishwasher in the same footprint — usually does not.",
+      },
+      {
+        question: "How much do remodel permits cost in the Twin Cities?",
+        answer:
+          "For a typical $50,000 kitchen or bath remodel, combined building, plumbing, electrical, and mechanical permit fees run roughly $600–$1,200 in Minneapolis and Saint Paul, and somewhat higher in suburbs like Edina where fees scale with project valuation. Review time is usually 1–3 weeks.",
+      },
+      {
+        question: "Who pulls the permit — me or the contractor?",
+        answer:
+          "Your contractor should, and a licensed one will. The permit holder is legally responsible for the work passing inspection, so a contractor who won't pull permits is a red flag that often means they aren't licensed. A Minnesota residential building contractor license is required for any project over $15,000.",
+      },
+      {
+        question: "What happens if remodel work was done without a permit?",
+        answer:
+          "Unpermitted work commonly surfaces at resale. Buyers' inspectors check permit history, and lenders may refuse to finance the sale until permits are pulled retroactively — which can mean opening walls and redoing work to current code. It's far cheaper to permit the work up front.",
+      },
     ],
   },
   {
@@ -246,6 +351,23 @@ export const blogPosts: BlogPostMeta[] = [
     relatedSlugs: [
       "kitchen-remodel-timeline-twin-cities",
       "kitchen-remodel-cost-minneapolis",
+    ],
+    faqs: [
+      {
+        question: "What is the best month to start a kitchen remodel in Minnesota?",
+        answer:
+          "Start the design phase in October–November and target a December–February construction window. Contractor availability is widest in winter, cabinet and permit lead times are shortest, and because Minnesota winters keep you indoors anyway, a winter remodel doesn't cost you patio, garden, or lake season the way a summer one does.",
+      },
+      {
+        question: "Is it cheaper to remodel in winter?",
+        answer:
+          "Often, modestly. Most quality firms won't openly discount, but contractors keeping crews busy through February tend to be more generous on change orders and absorb more 'found problem' costs, and several local suppliers (Cambria and others) run Q1 promotions. The bigger winter savings is time — faster scheduling and shorter lead times.",
+      },
+      {
+        question: "Can you remodel in the winter in Minnesota?",
+        answer:
+          "Yes. Interior kitchen and bathroom gut renovations have no weather dependency — crews work through every Minnesota winter without weather-related schedule slips. The only weather-sensitive work is exterior: window/door replacement, additions needing foundation work, and roofing tie-ins, which are best done April–November.",
+      },
     ],
   },
   {

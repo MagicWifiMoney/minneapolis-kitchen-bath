@@ -39,7 +39,7 @@ export function FAQSection({
               key={q.question}
               className="group border border-slate-200 rounded-lg p-5 open:bg-slate-50"
             >
-              <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-start justify-between gap-4">
+              <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-start justify-between gap-4 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
                 <span>{q.question}</span>
                 <span className="text-blue-600 mt-1 group-open:rotate-45 transition-transform text-xl leading-none">
                   +

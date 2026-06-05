@@ -84,6 +84,59 @@ export default function Body() {
         Minneapolis. Lead time is generally 1–2 weeks.
       </p>
 
+      <h2>Permit Cost &amp; Timeline by City (At a Glance)</h2>
+      <p>
+        Rough numbers for a typical $50,000 kitchen or full-bath remodel with
+        plumbing, electrical, and mechanical permits. Fees scale with project
+        valuation, so a larger gut renovation will run higher.
+      </p>
+      <div className="not-prose overflow-x-auto my-8">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                City
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Combined permit fees
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Typical review time
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Notes
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Minneapolis", "$600–$1,200", "1–3 weeks", "CPED / Minneapolis Development Review"],
+              ["Saint Paul", "$600–$1,300", "1–3 weeks", "DSI; add 2–6 weeks if HPC review applies"],
+              ["Edina", "$800–$1,700", "1–2 weeks", "Fees are % of valuation; higher than Mpls"],
+              ["Bloomington", "$650–$1,300", "1–2 weeks", "Online application standard"],
+              ["Eden Prairie / Plymouth", "$700–$1,400", "1–2 weeks", "Community Development handles review"],
+            ].map(([city, fee, time, note]) => (
+              <tr key={city} className="border-b border-gray-200 align-top">
+                <td className="p-3 border border-gray-200 font-medium">{city}</td>
+                <td className="p-3 border border-gray-200 text-green-700 font-semibold">
+                  {fee}
+                </td>
+                <td className="p-3 border border-gray-200 text-gray-700">{time}</td>
+                <td className="p-3 border border-gray-200 text-gray-600">{note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Looking up your specific city? Our{" "}
+        <Link href="/tools/permit-lookup-twin-cities">
+          Twin Cities permit lookup tool
+        </Link>{" "}
+        links straight to each city&apos;s permit office and estimates lead time
+        by project type.
+      </p>
+
       <h2>Who Pulls the Permit?</h2>
       <p>
         Almost always your contractor — and you should expect them to. The

@@ -202,6 +202,58 @@ export default function Body() {
         involved) for total project timelines of 5–10 weeks.
       </p>
 
+      <h2>Where to Save and Where to Splurge</h2>
+      <p>
+        After hundreds of Twin Cities bathrooms, here&apos;s where the money
+        actually matters and where you can pull back without anyone noticing.
+      </p>
+      <div className="not-prose overflow-x-auto my-8">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Splurge here
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Save here
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              [
+                "Waterproofing & the shower valve — failures here are catastrophic and behind tile",
+                "Field tile — a $5/sq ft porcelain looks great next to a pricier accent",
+              ],
+              [
+                "An accurate, well-installed exhaust fan (Panasonic) — moisture is the enemy in MN",
+                "Toilet — a $500–$700 elongated one-piece performs like a $1,200 one",
+              ],
+              [
+                "Vanity drawers & soft-close hardware you touch daily",
+                "Mirror & accessories — easy to upgrade later for a fraction of the cost",
+              ],
+            ].map(([splurge, save]) => (
+              <tr key={splurge} className="border-b border-gray-200 align-top">
+                <td className="p-3 border border-gray-200 text-gray-700">
+                  {splurge}
+                </td>
+                <td className="p-3 border border-gray-200 text-gray-700">
+                  {save}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Want a number tailored to your size, finish level, and city? Try our{" "}
+        <Link href="/tools/bathroom-remodel-cost-calculator">
+          bathroom remodel cost calculator
+        </Link>{" "}
+        for a low/mid/high estimate in under a minute.
+      </p>
+
       <h2>Bathroom Remodel ROI in Minneapolis</h2>
       <p>
         Mid-range bathroom remodels return approximately 65–70% of cost at

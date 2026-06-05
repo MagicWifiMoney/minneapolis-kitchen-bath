@@ -6,8 +6,13 @@ Outputs CSV + JSON in this dir. Run from anywhere.
 import csv, json, os, sys, time, base64, urllib.request, urllib.error
 from pathlib import Path
 
-USER = "jakegiebel@fermatcommerce.com"
-PASSWORD = "fdfa2690ca8fff85"
+USER = os.environ.get("DATAFORSEO_LOGIN", "")
+PASSWORD = os.environ.get("DATAFORSEO_PASSWORD", "")
+if not USER or not PASSWORD:
+    sys.exit(
+        "Set DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD environment variables "
+        "before running this script."
+    )
 OUT = Path(__file__).parent
 LOCATION_NAME = "Minneapolis,Minnesota,United States"  # Google Ads location
 LOCATION_CODE = 2840  # United States — Labs only accepts country-level

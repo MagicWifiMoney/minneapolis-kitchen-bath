@@ -18,10 +18,21 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey);
 
     const body = await req.json();
-    const { name, email, phone, projectType, message } = body;
+    const { name, email, phone, projectType, message, company } = body;
+
+    // Honeypot: a filled "company" field means a bot. Pretend success so the
+    // bot moves on, but send nothing.
+    if (company) {
+      return NextResponse.json({ ok: true });
+    }
 
     if (!name || !email || !projectType || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    // Basic shape check — keeps obviously malformed submissions out of the inbox.
+    if (typeof email !== "string" || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
     await resend.emails.send({

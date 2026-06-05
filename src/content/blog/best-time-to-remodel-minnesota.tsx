@@ -10,6 +10,42 @@ export default function Body() {
         homeowners realize.
       </p>
 
+      <div className="not-prose overflow-x-auto my-8">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Season
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Contractor availability
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Lead times
+              </th>
+              <th className="text-left p-3 font-semibold border border-gray-200">
+                Best for
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Winter (Nov–Feb)", "Wide open", "Shortest", "Interior kitchen & bath gut remodels"],
+              ["Spring (Mar–May)", "Filling up fast", "Lengthening", "Baths; windows/doors in mild weather"],
+              ["Summer (Jun–Aug)", "Booked 3–6 mo. out", "Longest", "Additions, foundation, roofing tie-ins"],
+              ["Fall (Sep–Oct)", "Good", "Moderate", "Starting design for a winter build"],
+            ].map(([season, avail, lead, best]) => (
+              <tr key={season} className="border-b border-gray-200 align-top">
+                <td className="p-3 border border-gray-200 font-medium">{season}</td>
+                <td className="p-3 border border-gray-200 text-gray-700">{avail}</td>
+                <td className="p-3 border border-gray-200 text-gray-700">{lead}</td>
+                <td className="p-3 border border-gray-200 text-gray-600">{best}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <h2>Why Winter Is the Best Time</h2>
       <h3>1. Contractor availability is wide open</h3>
       <p>

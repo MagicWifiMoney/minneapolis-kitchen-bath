@@ -235,6 +235,7 @@ export default async function ServiceDetailPage({
       <FAQSection
         faqs={service.faqs}
         heading={`${service.name} FAQs`}
+        withSchema={false}
       />
 
       {service.isCityPageEnabled && (

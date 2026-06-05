@@ -32,7 +32,7 @@ export function RelatedLinks({
             <Link
               key={l.href}
               href={l.href}
-              className="block p-5 rounded-lg bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all"
+              className="group block p-5 rounded-lg bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
               <div className="font-semibold text-slate-900 group-hover:text-blue-700">
                 {l.title}
