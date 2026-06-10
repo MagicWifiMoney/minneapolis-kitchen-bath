@@ -1,30 +1,31 @@
 # CLEANUP REPORT — Minneapolis Kitchen & Bath
 
-Generated 2026-06-09 by claude-code.
+Generated 2026-06-09 by claude-code. Covers the one-time cleanup pass plus the technical SEO pass run the same day.
 
-## TECHNICAL SEO
+## FIXED
 
-Audit of all public pages (~165 URLs: home, about, contact, 10 service pages, 17 city pages, 102 service-city pages, 4 neighborhood pages, 26 blog posts, 3 tools).
+- Added the missing `/og-image.jpg` (it was referenced in 8 places, including the LocalBusiness schema and every page's OG tags, but returned 404 in production); now generated at build time at that exact URL. Shipped to main, verified live.
+- Added canonical tags to `/about` and `/contact`, the only two pages missing them. Shipped to main, verified live.
+- Replaced the placeholder phone number (612) 555-0000 with the real number (612) 688-2413 in all 11 code locations: header, footer, contact page, and every JSON-LD telephone field. Shipped to main, verified live. (Done at Jake's request mid-session.)
+- Updated the stale placeholder phone in `public/llms.txt` to the real number.
+- Installed the missing `lucide-react` dependency locally; the build was failing on `src/components/LeadCapture.tsx` because a remote commit added the import without the package being installed here.
+- Deleted `README_TEMP.md`, a leftover one-line stub.
+- Rewrote `README.md`; it was the untouched create-next-app boilerplate and described nothing about the actual project (wrong font, wrong paths, generic deploy advice that contradicts this repo's git-only deploy rule).
 
-### Fixed in this pass
-- **Missing OG image (was a live 404).** `src/app/layout.tsx`, the LocalBusiness schema, blog posts, and all programmatic city/style pages reference `https://minneapoliskitchenandbath.com/og-image.jpg`, but no such file existed. Added `src/app/og-image.jpg/route.tsx`, a build-time-generated 1200x630 image served at that exact URL (verified 200, `image/png`). All 8 existing references now resolve without touching them.
-- **Missing canonical tags on `/about` and `/contact`.** Every other page had one. Added `alternates.canonical` to both (verified in rendered HTML).
+## BLOCKED
 
-### Already in good shape (no action taken)
-- Unique title + meta description on every page, via static metadata or `generateMetadata` driven by the data files.
-- Open Graph + Twitter card tags site-wide via the root layout, with per-page OG on blog and programmatic pages.
-- Exactly one `<h1>` per page, headings descend logically (h1 then h2 then h3).
-- No `<img>` elements anywhere (the site is text/CSS only), so no alt-text issues exist.
-- `robots.ts` generates a correct robots.txt: allows everything except `/api/`, declares the sitemap.
-- `sitemap.ts` generates sitemap.xml covering all page types, with real lastModified dates on blog posts.
-- Canonicals all point to live, self-referencing URLs. Blog data supports an external `canonical` field for syndicated posts; none currently in use.
-- All internal links resolve. Hardcoded blog links match slugs in `src/data/blog.ts`; dynamic links are generated from the same data files that generate the routes, so they cannot drift.
-- Schema markup is extensive: site-wide `HomeAndConstructionBusiness` (LocalBusiness subtype) with areaServed driven by the cities data, plus BreadcrumbList and FAQPage JSON-LD components used across pages.
+- Nothing. Dependencies installed, the production build passes, and all pages prerender. No fix hit the 3-attempt limit.
 
-### Noted, not fixed (judgment calls, out of scope per instructions)
-- Many page titles exceed 60 characters once the ` | Minneapolis Kitchen & Bath` template suffix is appended (the suffix alone is 30 chars). Titles are unique and descriptive; shortening them means rewriting copy.
-- The LocalBusiness schema `telephone` is `+16125550000`, a 555 placeholder (see Marketing below).
-- `sameAs` in the LocalBusiness schema is an empty array. Real profile URLs would strengthen the entity, but inventing them is not an option.
+## SKIPPED
+
+- `AGENTS.md` is locally a symlink to `~/AGENTS.md` (git shows a typechange against the committed 5-line Next.js note). Left untouched: it looks like deliberate local setup, and committing a symlink to an absolute home-directory path would break the repo anywhere else.
+- Untracked `research/index-submit.log` and `scripts/vercel-should-build.sh` left as-is; they predate this pass and appear to be in active use by other tooling.
+- Page titles that exceed 60 characters once the ` | Minneapolis Kitchen & Bath` template suffix (30 chars) is appended. Titles are unique and descriptive; shortening them means rewriting copy, which was out of scope.
+- The empty `sameAs: []` in the LocalBusiness schema. Real profile URLs (Google Business Profile, Houzz, etc.) would help, but inventing URLs is worse than leaving it empty.
+- `NEXT_PUBLIC_GTM_ID` falls back to `GTM-XXXXXXX` in code. Whether the real ID is set is a Vercel env question, not a code fix; flagged below instead.
+- The 102 programmatic service-city pages and 4 neighborhood pages are thin and template-driven, but thinning or rewriting them is content strategy, explicitly out of scope.
+- No alt-text work was needed: the site contains zero `<img>` elements (text and CSS only).
+- Everything else on the SEO checklist already passed: unique titles/descriptions on all ~165 pages, OG/Twitter cards site-wide, one H1 per page with logical heading order, correct robots.txt and sitemap.xml, self-referencing canonicals, all internal links resolving (dynamic links are generated from the same data files as the routes), and extensive JSON-LD (LocalBusiness, BreadcrumbList, FAQPage).
 
 ## MARKETING OPPORTUNITIES
 
@@ -44,14 +45,12 @@ Twin Cities homeowners researching kitchen and bathroom remodels, at two intent 
 - The 4 neighborhood pages are a thin layer on top of an already-thin layer.
 
 ### Lead capture
-- **Exists:** contact form on `/contact` (posts to `/api/contact` via Resend), "Get a Free Quote" CTAs in the header, homepage hero, homepage footer CTA, and on the tools pages. Phone links in header and footer.
-- **Missing:** no email capture anywhere. A reader who finishes a cost guide has no option besides "request a quote," which is too big an ask at research stage. The calculators collect project details and then throw the answer away; they are the natural place to offer "email me my estimate" and they currently capture nothing.
-- **Broken in spirit:** every phone link is `tel:+16125550000`, a 555 placeholder. Anyone who taps to call gets nothing. Same number is in the LocalBusiness schema.
+- **Exists:** contact form on `/contact` (posts to `/api/contact` via Resend), "Get a Free Quote" CTAs in the header, homepage hero, homepage footer CTA, and on the tools pages. Phone links in header and footer (now a real number).
+- **Missing:** no email capture anywhere. A reader who finishes a cost guide has no option besides "request a quote," which is too big an ask at research stage. The calculators collect project details and then throw the answer away; they are the natural place to offer "email me my estimate" and they currently capture nothing. (A `LeadCapture` component recently appeared in the codebase, so this may already be in progress.)
 
 ### Quick wins, ranked by effort
-1. **Replace the placeholder phone number** in Header, Footer, and LocalBusinessSchema with a real one (even a tracking number). Minutes of work; right now the primary conversion path for mobile users is a dead number.
-2. **Set the real GTM container ID.** `NEXT_PUBLIC_GTM_ID` falls back to `GTM-XXXXXXX`, so if the env var is not set in Vercel, the site has no analytics and no conversion tracking at all. Verify in Vercel env settings.
-3. **Add Google Business Profile and any social URLs to `sameAs`** in the schema once they exist.
-4. **Add "email me my estimate" to both calculators.** The form infrastructure (Resend) already exists; this turns the highest-intent traffic on the site into a lead list.
-5. **Add 3 to 5 real project photos and 2 to 3 testimonials** to the homepage and top service pages. Highest impact item on this list, but requires real assets from Jake, not code.
-6. **Beef up the top 6 to 8 city pages** (Minneapolis, Saint Paul, Edina, Minnetonka, Eden Prairie, Plymouth) with genuinely local detail before adding any more programmatic breadth. More thin pages will not help until the existing ones can rank.
+1. **Set the real GTM container ID.** `NEXT_PUBLIC_GTM_ID` falls back to `GTM-XXXXXXX`, so if the env var is not set in Vercel, the site has no analytics and no conversion tracking at all. Verify in Vercel env settings.
+2. **Add Google Business Profile and any social URLs to `sameAs`** in the schema once they exist.
+3. **Add "email me my estimate" to both calculators.** The form infrastructure (Resend) already exists; this turns the highest-intent traffic on the site into a lead list.
+4. **Add 3 to 5 real project photos and 2 to 3 testimonials** to the homepage and top service pages. Highest impact item on this list, but requires real assets from Jake, not code.
+5. **Beef up the top 6 to 8 city pages** (Minneapolis, Saint Paul, Edina, Minnetonka, Eden Prairie, Plymouth) with genuinely local detail before adding any more programmatic breadth. More thin pages will not help until the existing ones can rank.

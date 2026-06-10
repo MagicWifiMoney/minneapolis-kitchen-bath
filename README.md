@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Minneapolis Kitchen & Bath
 
-## Getting Started
+Marketing and lead-generation website for a Twin Cities kitchen and bathroom remodeling company. Live at [minneapoliskitchenandbath.com](https://minneapoliskitchenandbath.com).
 
-First, run the development server:
+Built with Next.js (App Router), React, Tailwind CSS v4, and TypeScript. All pages are statically generated; the only server code is the contact form API route, which sends email via Resend.
+
+## What the site contains
+
+Roughly 165 statically generated pages, all driven by data files in `src/data/`:
+
+- Core pages: home, about, services, service areas, blog index, contact
+- 10 service pages (`/services/[slug]`)
+- 17 city pages (`/service-areas/[city]`)
+- 102 programmatic service-city pages (`/[service]/[city]`) for the 6 city-enabled services
+- 4 neighborhood/style pages (`/[service]/[city]/[style]`)
+- 26 blog posts (`/blog/[slug]`)
+- 3 interactive tools: kitchen cost calculator, bathroom cost calculator, Twin Cities permit lookup
+
+SEO infrastructure: generated `robots.txt` and `sitemap.xml`, canonical tags on every page, site-wide LocalBusiness JSON-LD plus per-page Breadcrumb and FAQ schema, Open Graph and Twitter cards, a build-time generated `/og-image.jpg`, and `public/llms.txt`.
+
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (all pages prerender)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Environment variables (set in Vercel for production):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `NEXT_PUBLIC_GTM_ID` - Google Tag Manager container ID (falls back to a placeholder if unset)
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` - GSC verification token
+- `RESEND_API_KEY` - used by `/api/contact` to deliver contact form submissions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploying
 
-## Learn More
+Production deploys come from `git push origin main` only. The Vercel project (`giebz/minneapoliskitchenandbath`) auto-builds on push. Never deploy with the Vercel CLI; see `CLAUDE.md` for why.
 
-To learn more about Next.js, take a look at the following resources:
+## Repo layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/` - routes (App Router)
+- `src/components/` - shared components (Header, Footer, schema, contact form, etc.)
+- `src/data/` - cities, services, neighborhoods, and blog content that drive the programmatic pages and sitemap
+- `marketing/` - off-site marketing playbooks and notes (not deployed)
+- `research/` - SEO research artifacts and reports (not deployed)
+- `scripts/` - operational scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Current state
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site is live and indexed (sitemap submitted to Google Search Console, URLs submitted to IndexNow). Content is text-only so far: there are no project photos, testimonials, or email capture yet. See `CLEANUP_REPORT.md` and `CHANGELOG.md` for recent audit findings and history.
