@@ -11,6 +11,10 @@ Generated 2026-06-09 by claude-code. Covers the one-time cleanup pass plus the t
 - Installed the missing `lucide-react` dependency locally; the build was failing on `src/components/LeadCapture.tsx` because a remote commit added the import without the package being installed here.
 - Deleted `README_TEMP.md`, a leftover one-line stub.
 - Rewrote `README.md`; it was the untouched create-next-app boilerplate and described nothing about the actual project (wrong font, wrong paths, generic deploy advice that contradicts this repo's git-only deploy rule).
+- Deleted 5 unused create-next-app default SVGs from `public/` (file, globe, next, vercel, window); nothing referenced them and they were shipping to production.
+- Deleted 5 stale research artifacts (`internal-linking-fixes.json`, `internal-linking-report.md`, `schema-suggestions.md`, `schema-coverage-report.md`, `schema-fraud-flags.md`): the linking audit ran against route templates instead of real pages, the schema suggestions used the wrong domain and recommended things that now exist, and all are regenerable from the scripts in `scripts/`.
+- Added the missing Article and BreadcrumbList JSON-LD to the flagship static post `/blog/kitchen-remodel-cost-minneapolis` (the one real gap the stale schema report pointed at; every other blog post already had both via the `[slug]` template). Verified rendering.
+- Committed `scripts/vercel-should-build.sh` (the Vercel build-skip helper was untracked) and gitignored `research/*.log`.
 
 ## BLOCKED
 

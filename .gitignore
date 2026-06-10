@@ -43,3 +43,6 @@ next-env.d.ts
 # Local research artifacts (DataForSEO raw data)
 research/raw.json
 research/*.csv
+
+# research logs
+research/*.log

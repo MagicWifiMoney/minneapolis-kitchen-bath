@@ -25,6 +25,48 @@ export const metadata: Metadata = {
   },
 };
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "How Much Does a Kitchen Remodel Cost in Minneapolis? (2026 Guide)",
+  description:
+    "Minneapolis kitchen remodel costs in 2026: budget refreshes from $15,000, mid-range $35,000–$75,000, high-end $80,000+. Detailed breakdown by cabinet, countertop, appliance, and labor costs in the Twin Cities.",
+  image: ["https://minneapoliskitchenandbath.com/og-image.jpg"],
+  datePublished: "2026-03-15",
+  dateModified: "2026-03-15",
+  author: {
+    "@type": "Organization",
+    name: "Minneapolis Kitchen & Bath",
+    url: "https://minneapoliskitchenandbath.com",
+    sameAs: ["https://minneapoliskitchenandbath.com/about"],
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Minneapolis Kitchen & Bath",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://minneapoliskitchenandbath.com/og-image.jpg",
+    },
+  },
+  mainEntityOfPage:
+    "https://minneapoliskitchenandbath.com/blog/kitchen-remodel-cost-minneapolis",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://minneapoliskitchenandbath.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://minneapoliskitchenandbath.com/blog" },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "How Much Does a Kitchen Remodel Cost in Minneapolis? (2026 Guide)",
+      item: "https://minneapoliskitchenandbath.com/blog/kitchen-remodel-cost-minneapolis",
+    },
+  ],
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -67,6 +109,14 @@ const faqSchema = {
 export default function KitchenRemodelCostMinneapolis() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
