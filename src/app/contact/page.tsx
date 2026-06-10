@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get a free quote from Minneapolis Kitchen & Bath. We respond to all inquiries within one business day.",
+  alternates: { canonical: "https://minneapoliskitchenandbath.com/contact" },
 };
 
 export default function ContactPage() {

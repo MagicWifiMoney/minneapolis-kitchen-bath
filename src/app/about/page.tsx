@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn about Minneapolis Kitchen & Bath — local remodeling experts serving the Twin Cities metro since day one.",
+  alternates: { canonical: "https://minneapoliskitchenandbath.com/about" },
 };
 
 export default function AboutPage() {
