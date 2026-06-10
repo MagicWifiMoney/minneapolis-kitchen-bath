@@ -7,7 +7,7 @@ export function LocalBusinessSchema() {
     "@id": "https://minneapoliskitchenandbath.com/#business",
     name: "Minneapolis Kitchen & Bath",
     url: "https://minneapoliskitchenandbath.com",
-    telephone: "+16125550000",
+    telephone: "+16126882413",
     email: "hello@minneapoliskitchenandbath.com",
     description:
       "Trusted local remodeling contractors for kitchens and bathrooms across the Twin Cities metro area.",

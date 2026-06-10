@@ -24,10 +24,10 @@ export function Footer() {
               <li>Minneapolis, MN 55401</li>
               <li>
                 <a
-                  href="tel:+16125550000"
+                  href="tel:+16126882413"
                   className="hover:text-white transition-colors"
                 >
-                  (612) 555-0000
+                  (612) 688-2413
                 </a>
               </li>
               <li>

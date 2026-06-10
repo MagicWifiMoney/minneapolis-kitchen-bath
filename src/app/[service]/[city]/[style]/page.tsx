@@ -60,7 +60,7 @@ export default async function NeighborhoodPage({
     "@id": `${url}#business`,
     name: `Minneapolis Kitchen & Bath — ${service.shortName} in ${page.neighborhoodName}`,
     url,
-    telephone: "+16125550000",
+    telephone: "+16126882413",
     email: "hello@minneapoliskitchenandbath.com",
     description: page.metaDescription,
     areaServed: {

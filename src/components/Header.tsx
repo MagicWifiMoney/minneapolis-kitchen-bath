@@ -37,11 +37,11 @@ export function Header() {
               </Link>
             ))}
             <a
-              href="tel:+16125550000"
+              href="tel:+16126882413"
               className="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
               aria-label="Call us"
             >
-              (612) 555-0000
+              (612) 688-2413
             </a>
             <Link
               href="/contact"
@@ -53,7 +53,7 @@ export function Header() {
 
           {/* Mobile: tap-to-call always visible */}
           <a
-            href="tel:+16125550000"
+            href="tel:+16126882413"
             className="md:hidden text-sm font-semibold text-blue-700 ml-auto mr-2"
             aria-label="Call us"
           >

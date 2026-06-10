@@ -30,8 +30,8 @@ export default function ContactPage() {
             <ul className="space-y-4 text-slate-600">
               <li>
                 <span className="font-medium text-slate-900 block">Phone</span>
-                <a href="tel:+16125550000" className="hover:text-blue-600 transition-colors">
-                  (612) 555-0000
+                <a href="tel:+16126882413" className="hover:text-blue-600 transition-colors">
+                  (612) 688-2413
                 </a>
               </li>
               <li>

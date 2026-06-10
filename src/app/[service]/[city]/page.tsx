@@ -74,7 +74,7 @@ export default async function ServiceCityPage({
     "@id": `https://minneapoliskitchenandbath.com/${service.urlSegment}/${city.slug}#business`,
     name: `Minneapolis Kitchen & Bath — ${service.shortName} in ${city.name}`,
     url: `https://minneapoliskitchenandbath.com/${service.urlSegment}/${city.slug}`,
-    telephone: "+16125550000",
+    telephone: "+16126882413",
     email: "hello@minneapoliskitchenandbath.com",
     description: service.metaDescriptionTemplate(city.name),
     areaServed: {
