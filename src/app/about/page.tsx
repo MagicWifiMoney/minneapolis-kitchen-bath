@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
+import { CTA } from "@/components/CTA";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -11,17 +12,17 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4">About Minneapolis Kitchen & Bath</h1>
-          <p className="text-slate-300 text-lg">
-            Local remodelers who treat your home like our own.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="About Minneapolis Kitchen & Bath"
+        subtitle="Local remodelers who treat your home like our own."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "About" },
+        ]}
+      />
 
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-3xl mx-auto prose prose-slate">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-3xl mx-auto prose prose-lg prose-site">
           <h2>Who We Are</h2>
           <p>
             Minneapolis Kitchen & Bath is a locally owned remodeling company serving homeowners
@@ -49,17 +50,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 px-4 bg-blue-600 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
-          <Link
-            href="/contact"
-            className="bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors inline-block"
-          >
-            Request a Free Quote
-          </Link>
-        </div>
-      </section>
+      <CTA
+        heading="Ready to get started?"
+        subheading="Free in-home consultation and fixed-price quotes."
+        buttonLabel="Request a Free Quote"
+        variant="white"
+      />
     </>
   );
 }

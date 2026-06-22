@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export type RelatedLink = {
   href: string;
@@ -20,31 +21,36 @@ export function RelatedLinks({
     columns === 4
       ? "md:grid-cols-2 lg:grid-cols-4"
       : columns === 3
-      ? "md:grid-cols-2 lg:grid-cols-3"
-      : "md:grid-cols-2";
+        ? "md:grid-cols-2 lg:grid-cols-3"
+        : "md:grid-cols-2";
 
   return (
-    <section className="py-12 px-4 bg-slate-50 border-t border-slate-200">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-stone-50 border-t border-stone-200/60">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">{heading}</h2>
+        <h2 className="font-display text-2xl font-semibold text-stone-900 mb-6">
+          {heading}
+        </h2>
         <div className={`grid grid-cols-1 ${grid} gap-4`}>
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="block p-5 rounded-lg bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all"
+              className="group block p-5 rounded-2xl bg-white border border-stone-200/80 hover:border-teal-200 hover:shadow-lg hover:shadow-stone-200/50 transition-all"
             >
-              <div className="font-semibold text-slate-900 group-hover:text-blue-700">
+              <div className="font-semibold text-stone-900 group-hover:text-teal-800 transition-colors">
                 {l.title}
               </div>
               {l.description && (
-                <div className="text-sm text-slate-600 mt-1">
+                <div className="text-sm text-stone-500 mt-1 leading-relaxed">
                   {l.description}
                 </div>
               )}
-              <div className="mt-2 text-sm text-blue-600 font-medium">
-                Read more →
-              </div>
+              <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-teal-700">
+                Read more
+                <ArrowRight
+                  className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                />
+              </span>
             </Link>
           ))}
         </div>

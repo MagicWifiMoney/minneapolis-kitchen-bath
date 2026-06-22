@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Kitchen & Bath Remodeling Blog",
@@ -20,7 +22,6 @@ const categoryLabels: Record<string, string> = {
 export default function BlogPage() {
   const sorted = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
 
-  // Group by category for the in-page index
   const byCategory = sorted.reduce<Record<string, typeof blogPosts>>(
     (acc, p) => {
       (acc[p.category] ||= []).push(p);
@@ -31,31 +32,27 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Remodeling Tips &amp; Resources
-          </h1>
-          <p className="text-slate-300 text-lg max-w-2xl">
-            Practical guides for Twin Cities homeowners planning kitchen and
-            bathroom projects — pricing, timelines, permits, design trends,
-            and more.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Remodeling Tips & Resources"
+        subtitle="Practical guides for Twin Cities homeowners planning kitchen and bathroom projects — pricing, timelines, permits, design trends, and more."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Blog" },
+        ]}
+      />
 
-      <section className="py-12 px-4 bg-white">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="font-display text-2xl font-semibold text-stone-900 mb-6">
             Latest articles
           </h2>
-          <div className="grid gap-6">
+          <div className="grid gap-5">
             {sorted.map((post) => (
               <article
                 key={post.slug}
-                className="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="border border-stone-200/80 rounded-2xl p-6 hover:border-teal-200 hover:shadow-lg hover:shadow-stone-200/50 transition-all"
               >
-                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mb-2">
+                <div className="flex flex-wrap items-center gap-3 text-sm text-stone-500 mb-3">
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -65,25 +62,25 @@ export default function BlogPage() {
                   </time>
                   <span>·</span>
                   <span>{post.readTime}</span>
-                  <span>·</span>
-                  <span className="px-2 py-0.5 bg-slate-100 rounded text-xs font-medium text-slate-700">
+                  <span className="px-2.5 py-0.5 bg-stone-100 rounded-full text-xs font-semibold text-stone-600">
                     {categoryLabels[post.category] ?? post.category}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-semibold text-stone-900 mb-2">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="hover:text-blue-600 transition-colors"
+                    className="hover:text-teal-800 transition-colors"
                   >
                     {post.title}
                   </Link>
                 </h3>
-                <p className="text-slate-600">{post.excerpt}</p>
+                <p className="text-stone-600 leading-relaxed">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="mt-3 inline-block text-sm font-medium text-blue-600 hover:underline"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 hover:text-teal-800"
                 >
-                  Read more →
+                  Read more
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </article>
             ))}
@@ -91,26 +88,26 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="py-12 px-4 bg-slate-50 border-t border-slate-200">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-stone-50 border-t border-stone-200/60">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="font-display text-2xl font-semibold text-stone-900 mb-6">
             Browse by topic
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.entries(byCategory).map(([cat, posts]) => (
               <div
                 key={cat}
-                className="bg-white rounded-lg border border-slate-200 p-5"
+                className="bg-white rounded-2xl border border-stone-200/80 p-5"
               >
-                <h3 className="font-semibold text-slate-900 mb-3">
+                <h3 className="font-semibold text-stone-900 mb-3">
                   {categoryLabels[cat] ?? cat}
                 </h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {posts.map((p) => (
                     <li key={p.slug}>
                       <Link
                         href={`/blog/${p.slug}`}
-                        className="text-sm text-blue-700 hover:underline"
+                        className="text-sm text-stone-600 hover:text-teal-700 transition-colors leading-snug"
                       >
                         {p.title}
                       </Link>

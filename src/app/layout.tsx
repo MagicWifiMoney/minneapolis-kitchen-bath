@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LocalBusinessSchema } from "@/components/LocalBusinessSchema";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX";
 
@@ -87,7 +97,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <LocalBusinessSchema />
       </head>
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+      <body
+        className={`${dmSans.variable} ${fraunces.variable} font-sans min-h-full flex flex-col`}
+      >
         {/* GTM noscript */}
         <noscript>
           <iframe

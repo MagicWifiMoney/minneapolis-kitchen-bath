@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { neighborhoodPages, neighborhoodPageBySlug } from "@/data/neighborhoods";
 import { serviceByUrlSegment } from "@/data/services";
 import { cityBySlug } from "@/data/cities";
 import { neighborhoodBodyByKey } from "@/content/neighborhoods";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHero } from "@/components/PageHero";
 import { CTA } from "@/components/CTA";
 
 type RouteParams = { service: string; city: string; style: string };
@@ -106,40 +105,24 @@ export default async function NeighborhoodPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <Breadcrumbs
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Service Areas", href: "/service-areas" },
-              { name: city.name, href: `/service-areas/${city.slug}` },
-              { name: service.shortName, href: `/${serviceSeg}/${citySlug}` },
-              { name: page.neighborhoodName },
-            ]}
-          />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{page.h1}</h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-            {page.intro}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-8">
-            <Link
-              href="/contact"
-              className="bg-blue-600 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              Get a Free Quote
-            </Link>
-            <Link
-              href={`/${serviceSeg}/${citySlug}`}
-              className="bg-white/10 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-white/20 transition-colors"
-            >
-              {service.shortName} in {city.name}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Service Areas", href: "/service-areas" },
+          { name: city.name, href: `/service-areas/${city.slug}` },
+          { name: service.shortName, href: `/${serviceSeg}/${citySlug}` },
+          { name: page.neighborhoodName },
+        ]}
+        title={page.h1}
+        subtitle={page.intro}
+        actions={[
+          { label: "Get a Free Quote", href: "/contact" },
+          { label: `${service.shortName} in ${city.name}`, href: `/${serviceSeg}/${citySlug}`, variant: "secondary" },
+        ]}
+      />
 
-      <article className="max-w-3xl mx-auto px-4 py-12">
-        <div className="prose prose-lg max-w-none prose-headings:scroll-mt-24 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+        <div className="prose prose-lg prose-site max-w-none">
           <Body />
         </div>
       </article>
@@ -147,7 +130,7 @@ export default async function NeighborhoodPage({
       <CTA
         heading={`Planning a ${service.shortName.toLowerCase()} in ${page.neighborhoodName}?`}
         subheading="Free in-home consultation. Fixed-price quotes within 5-10 business days."
-        variant="blue"
+        variant="white"
       />
     </>
   );

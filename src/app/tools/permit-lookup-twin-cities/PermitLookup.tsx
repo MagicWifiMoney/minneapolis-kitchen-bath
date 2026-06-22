@@ -83,24 +83,24 @@ export default function PermitLookup() {
   const leadRange = `${leadWeeks} to ${leadWeeks + 2} weeks`;
 
   return (
-    <main className="min-h-screen bg-gray-900 text-gray-100">
+    <main className="bg-white text-stone-900">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <nav className="mb-6 text-sm text-gray-400">
-          <Link href="/" className="hover:text-blue-400">Home</Link>
+        <nav className="mb-6 text-sm text-stone-500">
+          <Link href="/" className="hover:text-teal-700">Home</Link>
           <span className="mx-2">/</span>
-          <span>Tools</span>
+          <Link href="/tools" className="hover:text-teal-700">Tools</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-200">Permit Lookup</span>
+          <span className="text-stone-800">Permit Lookup</span>
         </nav>
 
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
           Twin Cities Remodel Permit Lookup
         </h1>
-        <p className="mt-3 text-lg text-blue-400">
+        <p className="mt-3 text-lg text-teal-700">
           Find the right office, fee structure, and lead time for your city.
         </p>
 
-        <section className="prose prose-invert mt-8 max-w-none">
+        <section className="prose prose-site mt-8 max-w-none">
           <p>
             Every Minneapolis remodel permit lives at a different desk. The City of Minneapolis pulls
             permits through CPED. Saint Paul runs through DSI. Edina, Wayzata, Minnetonka, Plymouth,
@@ -131,14 +131,14 @@ export default function PermitLookup() {
           </p>
         </section>
 
-        <section className="mt-12 rounded-2xl border border-gray-800 bg-gray-950/60 p-6 sm:p-8">
+        <section className="mt-12 rounded-2xl border border-stone-200/80 bg-stone-50 p-6 sm:p-8">
           <div className="grid gap-8 md:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-300">City</label>
+              <label className="block text-sm font-medium text-stone-700">City</label>
               <select
                 value={slug}
                 onChange={(e) => setSlug(e.target.value)}
-                className="mt-3 w-full rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-sm text-gray-100 focus:border-blue-500 focus:outline-none"
+                className="mt-3 w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-sm text-stone-900 focus:border-teal-500 focus:outline-none"
               >
                 {cities.map((c) => (
                   <option key={c.slug} value={c.slug}>
@@ -149,17 +149,17 @@ export default function PermitLookup() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Project type</label>
+              <label className="block text-sm font-medium text-stone-700">Project type</label>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-5">
                 {PROJECT_TYPES.map((p) => (
                   <button
                     key={p}
                     type="button"
                     onClick={() => setProject(p)}
-                    className={`rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                    className={`rounded-xl border px-3 py-2 text-xs font-medium transition ${
                       project === p
-                        ? "border-blue-500 bg-blue-500/20 text-blue-300"
-                        : "border-gray-700 bg-gray-900 text-gray-300 hover:border-gray-600"
+                        ? "border-teal-600 bg-teal-50 text-teal-800"
+                        : "border-stone-200 bg-white text-stone-700 hover:border-stone-300"
                     }`}
                   >
                     {p}
@@ -170,82 +170,82 @@ export default function PermitLookup() {
           </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-gray-800 bg-gray-950/60 p-6 sm:p-8">
+        <section className="mt-8 rounded-2xl border border-stone-200/80 bg-stone-50 p-6 sm:p-8">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="text-2xl font-bold text-gray-100">{city.name}</h2>
-            <span className="text-sm text-gray-400">{city.county} County</span>
+            <h2 className="text-2xl font-semibold text-stone-900">{city.name}</h2>
+            <span className="text-sm text-stone-500">{city.county} County</span>
           </div>
 
           <dl className="mt-6 grid gap-6 sm:grid-cols-2">
             <div>
-              <dt className="text-xs uppercase tracking-wide text-gray-500">Driving time from Minneapolis</dt>
-              <dd className="mt-1 text-sm text-gray-200">{city.drivingTimeFromMpls}</dd>
+              <dt className="text-xs uppercase tracking-wide text-stone-400">Driving time from Minneapolis</dt>
+              <dd className="mt-1 text-sm text-stone-800">{city.drivingTimeFromMpls}</dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wide text-gray-500">Permit office</dt>
+              <dt className="text-xs uppercase tracking-wide text-stone-400">Permit office</dt>
               <dd className="mt-1 text-sm">
                 {city.permitOfficeUrl ? (
                   <a
                     href={city.permitOfficeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
+                    className="text-teal-700 hover:text-teal-700 underline"
                   >
                     Visit {city.name} permit portal
                   </a>
                 ) : (
-                  <span className="text-gray-400">Contact city hall directly</span>
+                  <span className="text-stone-500">Contact city hall directly</span>
                 )}
               </dd>
             </div>
             <div className="sm:col-span-2">
-              <dt className="text-xs uppercase tracking-wide text-gray-500">Local permit note</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-gray-200">{city.permitNote}</dd>
+              <dt className="text-xs uppercase tracking-wide text-stone-400">Local permit note</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-stone-800">{city.permitNote}</dd>
             </div>
           </dl>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-6 sm:p-8">
-          <div className="text-xs uppercase tracking-wide text-blue-300">
+        <section className="mt-8 rounded-2xl border border-teal-200 bg-teal-50 p-6 sm:p-8">
+          <div className="text-xs uppercase tracking-wide text-teal-700">
             Recommendation &mdash; {project} remodel in {city.name}
           </div>
-          <p className="mt-3 text-lg font-semibold text-gray-100">
+          <p className="mt-3 text-lg font-semibold text-stone-900">
             For your remodel scope, expect permits to take {leadRange} in this city.
           </p>
           <p
-            className="mt-3 text-sm leading-relaxed text-gray-300"
+            className="mt-3 text-sm leading-relaxed text-stone-700"
             dangerouslySetInnerHTML={{ __html: PROJECT_MESSAGE[project] }}
           />
         </section>
 
-        <section className="mt-10 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-100">
+        <section className="mt-10 rounded-2xl border border-teal-200 bg-teal-50 p-8 text-center">
+          <h2 className="text-2xl font-semibold text-stone-900">
             We&apos;ll pull the permit for you
           </h2>
-          <p className="mt-2 text-gray-300">
+          <p className="mt-2 text-stone-700">
             On every full-scope remodel we manage permits, inspections, and the city schedule so you don&apos;t have to.
           </p>
           <Link
             href="/contact"
-            className="mt-5 inline-block rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400"
+            className="mt-5 inline-block rounded-xl bg-teal-700 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-800"
           >
             Talk to a Twin Cities remodeler
           </Link>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-100">Frequently asked questions</h2>
+          <h2 className="text-2xl font-semibold text-stone-900">Frequently asked questions</h2>
           <div className="mt-6 space-y-4">
             {FAQS.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-xl border border-gray-800 bg-gray-950/60 p-5"
+                className="group rounded-xl border border-stone-200/80 bg-stone-50 p-5"
               >
-                <summary className="cursor-pointer list-none text-base font-semibold text-gray-100">
+                <summary className="cursor-pointer list-none text-base font-semibold text-stone-900">
                   {f.q}
                 </summary>
                 <p
-                  className="mt-3 text-sm leading-relaxed text-gray-300"
+                  className="mt-3 text-sm leading-relaxed text-stone-700"
                   dangerouslySetInnerHTML={{ __html: f.a }}
                 />
               </details>

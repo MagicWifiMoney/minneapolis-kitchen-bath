@@ -25,31 +25,38 @@ export default function LeadCapture() {
       } else {
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
     }
   };
 
   if (status === 'success') {
     return (
-      <div className="bg-blue-50 p-8 rounded-xl border border-blue-200 text-center">
-        <CheckCircle2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Check your inbox!</h3>
-        <p className="text-slate-600">The 2026 Remodel Cost Guide is on its way.</p>
+      <div className="bg-teal-50 p-8 rounded-2xl border border-teal-100 text-center">
+        <CheckCircle2 className="w-12 h-12 text-teal-600 mx-auto mb-4" />
+        <h3 className="text-xl font-semibold text-stone-900 mb-2">Check your inbox!</h3>
+        <p className="text-stone-600">The 2026 Remodel Cost Guide is on its way.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-8 rounded-xl shadow-xl border border-slate-100">
-      <h3 className="text-xl font-bold text-slate-900 mb-6">Get the 2026 Cost Guide</h3>
+    <div className="bg-white p-8 sm:p-9 rounded-2xl shadow-xl shadow-stone-200/60 border border-stone-200/80">
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold text-stone-900 mb-1">
+          Get the 2026 Cost Guide
+        </h3>
+        <p className="text-sm text-stone-500">
+          Twin Cities pricing data, delivered to your inbox.
+        </p>
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
-            Email Address
+          <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-1.5">
+            Email address
           </label>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
             <input
               id="email"
               type="email"
@@ -57,14 +64,17 @@ export default function LeadCapture() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400 text-stone-900 placeholder:text-stone-400 transition-colors"
             />
           </div>
         </div>
+        {status === 'error' && (
+          <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+        )}
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg shadow-blue-200"
+          className="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg shadow-teal-700/20"
         >
           {status === 'loading' ? (
             <>
@@ -74,13 +84,13 @@ export default function LeadCapture() {
           ) : (
             <>
               Download Guide
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </>
           )}
         </button>
       </form>
-      <p className="text-[10px] text-slate-400 mt-4 text-center uppercase font-bold tracking-widest">
-        Local Data • 2026 Edition
+      <p className="text-[11px] text-stone-400 mt-5 text-center uppercase font-semibold tracking-widest">
+        Local data · 2026 edition
       </p>
     </div>
   );

@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
+
+const inputClass =
+  "w-full border border-stone-200 bg-stone-50/50 rounded-xl px-3.5 py-2.5 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400 transition-colors";
 
 export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
@@ -39,9 +43,9 @@ export function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-        <p className="text-green-800 font-medium text-lg">Message sent!</p>
-        <p className="text-green-700 mt-2">
+      <div className="bg-teal-50 border border-teal-100 rounded-2xl p-8 text-center">
+        <p className="text-teal-900 font-semibold text-lg">Message sent!</p>
+        <p className="text-teal-800 mt-2">
           We&apos;ll be in touch within one business day.
         </p>
       </div>
@@ -51,53 +55,31 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-1.5">
           Name *
         </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <input id="name" name="name" type="text" required className={inputClass} />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-1.5">
           Email *
         </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <input id="email" name="email" type="email" required className={inputClass} />
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="phone" className="block text-sm font-medium text-stone-700 mb-1.5">
           Phone
         </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <input id="phone" name="phone" type="tel" className={inputClass} />
       </div>
 
       <div>
-        <label htmlFor="projectType" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="projectType" className="block text-sm font-medium text-stone-700 mb-1.5">
           Project Type *
         </label>
-        <select
-          id="projectType"
-          name="projectType"
-          required
-          className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
+        <select id="projectType" name="projectType" required className={inputClass}>
           <option value="">Select a project type</option>
           <option value="kitchen">Kitchen Remodel</option>
           <option value="bathroom">Bathroom Remodel</option>
@@ -110,7 +92,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-1.5">
           Tell us about your project *
         </label>
         <textarea
@@ -118,7 +100,7 @@ export function ContactForm() {
           name="message"
           required
           rows={4}
-          className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className={`${inputClass} resize-none`}
         />
       </div>
 
@@ -129,9 +111,16 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state === "submitting"}
-        className="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-teal-700 text-white py-3.5 rounded-xl font-semibold hover:bg-teal-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-teal-700/20"
       >
-        {state === "submitting" ? "Sending…" : "Send Message"}
+        {state === "submitting" ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Sending…
+          </>
+        ) : (
+          "Send Message"
+        )}
       </button>
     </form>
   );

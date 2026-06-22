@@ -46,6 +46,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.9,
     },
+    {
+      url: `${BASE_URL}/tools`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${BASE_URL}/tools/kitchen-remodel-cost-calculator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/tools/bathroom-remodel-cost-calculator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/tools/permit-lookup-twin-cities`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
   ];
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({

@@ -22,30 +22,37 @@ export function FAQSection({
   };
 
   return (
-    <section className="py-12 px-4 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-stone-200/60">
+      <div className="max-w-3xl mx-auto">
         {withSchema && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         )}
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-          {heading}
-        </h2>
-        <div className="space-y-4">
+        <div className="text-center mb-10">
+          <p className="text-sm font-semibold text-teal-700 uppercase tracking-wider mb-2">
+            FAQ
+          </p>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-stone-900 tracking-tight">
+            {heading}
+          </h2>
+        </div>
+        <div className="space-y-3">
           {faqs.map((q) => (
             <details
               key={q.question}
-              className="group border border-slate-200 rounded-lg p-5 open:bg-slate-50"
+              className="group rounded-2xl border border-stone-200/80 bg-stone-50/50 open:bg-white open:shadow-sm open:shadow-stone-100 transition-all"
             >
-              <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-start justify-between gap-4">
+              <summary className="font-semibold text-stone-900 cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5">
                 <span>{q.question}</span>
-                <span className="text-blue-600 mt-1 group-open:rotate-45 transition-transform text-xl leading-none">
+                <span
+                  className="text-teal-600 mt-0.5 group-open:rotate-45 transition-transform text-xl leading-none shrink-0"
+                >
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-slate-700 leading-relaxed">{q.answer}</p>
+              <p className="px-6 pb-5 text-stone-600 leading-relaxed">{q.answer}</p>
             </details>
           ))}
         </div>

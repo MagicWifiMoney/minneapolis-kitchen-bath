@@ -6,7 +6,7 @@ import {
   services,
 } from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHero } from "@/components/PageHero";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
 import { RelatedLinks } from "@/components/RelatedLinks";
@@ -146,65 +146,46 @@ export default async function ServiceCityPage({
         />
       )}
 
-      {/* Hero */}
-      <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <Breadcrumbs
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Service Areas", href: "/service-areas" },
-              { name: city.name, href: `/service-areas/${city.slug}` },
-              { name: service.shortName },
-            ]}
-          />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {service.h1Template(city.name)}
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-            {service.hero}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-8">
-            <Link
-              href="/contact"
-              className="bg-blue-600 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              Get a Free Quote
-            </Link>
-            <Link
-              href={`/services/${service.slug}`}
-              className="bg-white/10 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-white/20 transition-colors"
-            >
-              About {service.shortName}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Service Areas", href: "/service-areas" },
+          { name: city.name, href: `/service-areas/${city.slug}` },
+          { name: service.shortName },
+        ]}
+        title={service.h1Template(city.name)}
+        subtitle={service.hero}
+        actions={[
+          { label: "Get a Free Quote", href: "/contact" },
+          { label: `About ${service.shortName}`, href: `/services/${service.slug}`, variant: "secondary" },
+        ]}
+      />
 
       {/* Intro + local angle */}
-      <section className="py-12 px-4 bg-white">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
-          <p className="text-slate-700 text-lg leading-relaxed mb-6">
+          <p className="text-stone-700 text-lg leading-relaxed mb-6">
             {serviceIntro}
           </p>
-          <p className="text-slate-700 leading-relaxed">
+          <p className="text-stone-700 leading-relaxed">
             {service.description}
           </p>
         </div>
       </section>
 
       {/* What's included */}
-      <section className="py-12 px-4 bg-slate-50">
+      <section className="py-12 px-4 bg-stone-50">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
             What&apos;s Included in a {city.name} {service.shortName}
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {service.whatsIncluded.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2 text-slate-700"
+                className="flex items-start gap-2 text-stone-700"
               >
-                <span className="text-blue-600 font-bold mt-0.5">✓</span>
+                <span className="text-teal-600 font-display font-semibold mt-0.5">✓</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -215,10 +196,10 @@ export default async function ServiceCityPage({
       {/* Pricing tiers */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-2">
             {city.name} {service.shortName} Cost Ranges (2026)
           </h2>
-          <p className="text-slate-600 mb-6 max-w-3xl">
+          <p className="text-stone-600 mb-6 max-w-3xl">
             Real pricing tiers based on actual {city.name}-area projects.
             {city.medianHomeValue > 500000
               ? ` ${city.name} budgets typically run in the mid-to-high range, given the ${"$" +
@@ -230,13 +211,13 @@ export default async function ServiceCityPage({
             {service.priceRange.map((t) => (
               <div
                 key={t.tier}
-                className="bg-white border border-slate-200 rounded-lg p-5"
+                className="bg-white border border-stone-200 rounded-2xl p-5"
               >
-                <div className="font-semibold text-slate-900 mb-1">{t.tier}</div>
-                <div className="text-2xl font-bold text-blue-700 mb-2">
+                <div className="font-semibold text-stone-900 mb-1">{t.tier}</div>
+                <div className="text-2xl font-display font-semibold text-teal-700 mb-2">
                   {t.range}
                 </div>
-                <div className="text-sm text-slate-600">{t.description}</div>
+                <div className="text-sm text-stone-600">{t.description}</div>
               </div>
             ))}
           </div>
@@ -244,25 +225,25 @@ export default async function ServiceCityPage({
       </section>
 
       {/* Process */}
-      <section className="py-12 px-4 bg-slate-50">
+      <section className="py-12 px-4 bg-stone-50">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
             Our Process
           </h2>
           <ol className="space-y-4">
             {service.process.map((p, i) => (
               <li
                 key={p.step}
-                className="flex gap-4 bg-white border border-slate-200 rounded-lg p-5"
+                className="flex gap-4 bg-white border border-stone-200 rounded-2xl p-5"
               >
-                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">
+                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-teal-600 text-white font-display font-semibold flex items-center justify-center">
                   {i + 1}
                 </span>
                 <div>
-                  <div className="font-semibold text-slate-900 mb-1">
+                  <div className="font-semibold text-stone-900 mb-1">
                     {p.step}
                   </div>
-                  <div className="text-slate-700">{p.detail}</div>
+                  <div className="text-stone-700">{p.detail}</div>
                 </div>
               </li>
             ))}
@@ -273,15 +254,15 @@ export default async function ServiceCityPage({
       {/* Local detail: neighborhoods + home styles + permits */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
             About Remodeling in {city.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-stone-900 mb-2">
                 Neighborhoods we serve in {city.name}
               </h3>
-              <p className="text-slate-700">
+              <p className="text-stone-700">
                 {city.neighborhoods.join(", ")}
                 {city.zip.length > 0 && (
                   <>
@@ -294,15 +275,15 @@ export default async function ServiceCityPage({
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-stone-900 mb-2">
                 Typical {city.name} homes
               </h3>
-              <p className="text-slate-700">
+              <p className="text-stone-700">
                 {city.homeStyles.join(", ")}.
               </p>
             </div>
           </div>
-          <div className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl">
             <h3 className="font-semibold text-amber-900 mb-2">
               {city.name} permit notes
             </h3>

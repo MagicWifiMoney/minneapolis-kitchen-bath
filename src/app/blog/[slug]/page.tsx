@@ -6,6 +6,7 @@ import { blogBodyBySlug } from "@/content/blog";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { FAQSection } from "@/components/FAQSection";
+import { InlineCta } from "@/components/InlineCta";
 
 export async function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
@@ -116,72 +117,70 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <article className="max-w-4xl mx-auto px-4 py-12">
-        <header className="mb-10">
-          <Breadcrumbs
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Blog", href: "/blog" },
-              { name: post.title },
-            ]}
-          />
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            {post.title}
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            {post.description}
-          </p>
-          <div className="flex items-center gap-4 mt-6 text-sm text-gray-500">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-            <span>·</span>
-            <span>{post.readTime}</span>
-            <span>·</span>
-            <span>{post.author}</span>
-          </div>
-        </header>
 
-        <div className="prose prose-lg max-w-none prose-headings:scroll-mt-24 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+      <div className="bg-hero-pattern border-b border-stone-200/60">
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <header>
+            <Breadcrumbs
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Blog", href: "/blog" },
+                { name: post.title },
+              ]}
+            />
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-stone-900 mb-4 leading-tight tracking-tight">
+              {post.title}
+            </h1>
+            <p className="text-xl text-stone-600 leading-relaxed">
+              {post.description}
+            </p>
+            <div className="flex items-center gap-4 mt-6 text-sm text-stone-500">
+              <time dateTime={post.date}>
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              <span>·</span>
+              <span>{post.readTime}</span>
+              <span>·</span>
+              <span>{post.author}</span>
+            </div>
+          </header>
+        </article>
+      </div>
+
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+        <div className="prose prose-lg prose-site max-w-none">
           <Body />
         </div>
 
-        <div className="mt-12 p-8 bg-gray-900 text-white rounded-2xl text-center">
-          <h2 className="text-2xl font-bold mb-3">
-            Get a Free Quote for Your Project
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Serving Minneapolis, St. Paul, Edina, Minnetonka, Eden Prairie &amp;
-            the entire Twin Cities metro. Most quotes delivered within 48 hours.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-gray-900 font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Request a Free Quote →
-          </Link>
-        </div>
+        <InlineCta
+          heading="Get a Free Quote for Your Project"
+          subheading="Serving Minneapolis, St. Paul, Edina, Minnetonka, Eden Prairie & the entire Twin Cities metro. Most quotes delivered within 48 hours."
+        />
 
         {post.faqs && post.faqs.length > 0 && (
           <FAQSection faqs={post.faqs} heading="Frequently Asked Questions" />
         )}
 
         {related.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-xl font-bold mb-4">Related Articles</h2>
+          <div className="mt-12 border-t border-stone-200 pt-10">
+            <h2 className="font-display text-xl font-semibold text-stone-900 mb-5">
+              Related Articles
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {related.map((p) => (
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="block p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors"
+                  className="group block p-5 border border-stone-200/80 rounded-2xl hover:border-teal-200 hover:shadow-md transition-all"
                 >
-                  <div className="font-semibold text-gray-900">{p.title}</div>
-                  <div className="text-sm text-gray-500 mt-1">
+                  <div className="font-semibold text-stone-900 group-hover:text-teal-800 transition-colors">
+                    {p.title}
+                  </div>
+                  <div className="text-sm text-stone-500 mt-1 leading-relaxed">
                     {p.excerpt}
                   </div>
                 </Link>
@@ -194,7 +193,7 @@ export default async function BlogPostPage({
       <CTA
         heading="Ready to start your remodel?"
         subheading="Free in-home consultation. Detailed fixed-price quotes."
-        variant="blue"
+        variant="white"
       />
     </>
   );

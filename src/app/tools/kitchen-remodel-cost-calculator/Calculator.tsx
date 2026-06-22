@@ -102,18 +102,18 @@ export default function Calculator() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        url: "https://www.mnkitchenbath.com/tools/kitchen-remodel-cost-calculator",
+        url: "https://minneapoliskitchenandbath.com/tools/kitchen-remodel-cost-calculator",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mnkitchenbath.com" },
-          { "@type": "ListItem", position: 2, name: "Tools", item: "https://www.mnkitchenbath.com/tools" },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://minneapoliskitchenandbath.com" },
+          { "@type": "ListItem", position: 2, name: "Tools", item: "https://minneapoliskitchenandbath.com/tools" },
           {
             "@type": "ListItem",
             position: 3,
             name: "Kitchen Remodel Cost Calculator",
-            item: "https://www.mnkitchenbath.com/tools/kitchen-remodel-cost-calculator",
+            item: "https://minneapoliskitchenandbath.com/tools/kitchen-remodel-cost-calculator",
           },
         ],
       },
@@ -121,26 +121,26 @@ export default function Calculator() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-900 text-gray-100">
+    <main className="bg-white text-stone-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <nav className="mb-6 text-sm text-gray-400">
-          <Link href="/" className="hover:text-blue-400">Home</Link>
+        <nav className="mb-6 text-sm text-stone-500">
+          <Link href="/" className="hover:text-teal-700">Home</Link>
           <span className="mx-2">/</span>
-          <span>Tools</span>
+          <Link href="/tools" className="hover:text-teal-700">Tools</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-200">Kitchen Remodel Cost Calculator</span>
+          <span className="text-stone-800">Kitchen Remodel Cost Calculator</span>
         </nav>
 
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl text-stone-900">
           Kitchen Remodel Cost Calculator
         </h1>
-        <p className="mt-3 text-lg text-blue-400">Twin Cities pricing, built from real local jobs.</p>
+        <p className="mt-3 text-lg text-teal-700">Twin Cities pricing, built from real local jobs.</p>
 
-        <section className="prose prose-invert mt-8 max-w-none">
+        <section className="prose prose-site mt-8 max-w-none">
           <p>
             A kitchen remodel cost calculator is only as good as the data behind it. This one is
             built from full kitchen renovations we&apos;ve completed across Minneapolis, Saint Paul,
@@ -168,11 +168,11 @@ export default function Calculator() {
           </p>
         </section>
 
-        <section className="mt-12 rounded-2xl border border-gray-800 bg-gray-950/60 p-6 sm:p-8">
+        <section className="mt-12 rounded-2xl border border-stone-200/80 bg-stone-50 p-6 sm:p-8">
           <div className="grid gap-8 md:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-300">
-                Kitchen size: <span className="text-blue-400">{sqft} sq ft</span>
+              <label className="block text-sm font-medium text-stone-700">
+                Kitchen size: <span className="text-teal-700">{sqft} sq ft</span>
               </label>
               <input
                 type="range"
@@ -180,26 +180,26 @@ export default function Calculator() {
                 max={400}
                 value={sqft}
                 onChange={(e) => setSqft(Number(e.target.value))}
-                className="mt-3 w-full accent-blue-500"
+                className="mt-3 w-full accent-teal-600"
               />
-              <div className="mt-1 flex justify-between text-xs text-gray-500">
+              <div className="mt-1 flex justify-between text-xs text-stone-400">
                 <span>60</span>
                 <span>400</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Finish tier</label>
+              <label className="block text-sm font-medium text-stone-700">Finish tier</label>
               <div className="mt-3 grid grid-cols-3 gap-2">
                 {(Object.keys(TIERS) as Tier[]).map((t) => (
                   <button
                     key={t}
                     type="button"
                     onClick={() => setTier(t)}
-                    className={`rounded-lg border px-3 py-2 text-sm font-medium transition ${
+                    className={`rounded-xl border px-3 py-2 text-sm font-medium transition ${
                       tier === t
-                        ? "border-blue-500 bg-blue-500/20 text-blue-300"
-                        : "border-gray-700 bg-gray-900 text-gray-300 hover:border-gray-600"
+                        ? "border-teal-600 bg-teal-50 text-teal-800"
+                        : "border-stone-200 bg-white text-stone-700 hover:border-stone-300"
                     }`}
                   >
                     {t}
@@ -209,12 +209,12 @@ export default function Calculator() {
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-300">Scope of work</label>
+              <label className="block text-sm font-medium text-stone-700">Scope of work</label>
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {SCOPE_ITEMS.map((item) => (
                   <label
                     key={item.key}
-                    className="flex cursor-pointer items-center justify-between rounded-lg border border-gray-800 bg-gray-900 px-3 py-2 hover:border-gray-700"
+                    className="flex cursor-pointer items-center justify-between rounded-xl border border-stone-200 bg-white px-3 py-2 hover:border-stone-300"
                   >
                     <span className="flex items-center gap-3">
                       <input
@@ -223,22 +223,22 @@ export default function Calculator() {
                         onChange={(e) =>
                           setScope((s) => ({ ...s, [item.key]: e.target.checked }))
                         }
-                        className="h-4 w-4 accent-blue-500"
+                        className="h-4 w-4 accent-teal-600"
                       />
-                      <span className="text-sm text-gray-200">{item.label}</span>
+                      <span className="text-sm text-stone-800">{item.label}</span>
                     </span>
-                    <span className="text-xs text-gray-500">+{fmt(item.cost)}</span>
+                    <span className="text-xs text-stone-400">+{fmt(item.cost)}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-300">City</label>
+              <label className="block text-sm font-medium text-stone-700">City</label>
               <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="mt-3 w-full rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-sm text-gray-100 focus:border-blue-500 focus:outline-none"
+                className="mt-3 w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-sm text-stone-900 focus:border-teal-500 focus:outline-none"
               >
                 {LOCATIONS.map((l) => (
                   <option key={l.name} value={l.name}>
@@ -251,79 +251,79 @@ export default function Calculator() {
         </section>
 
         <section className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-gray-800 bg-gray-950/60 p-5">
-            <div className="text-xs uppercase tracking-wide text-gray-500">Low estimate</div>
-            <div className="mt-2 text-3xl font-bold text-gray-100">{fmt(calc.low)}</div>
+          <div className="rounded-xl border border-stone-200/80 bg-stone-50 p-5">
+            <div className="text-xs uppercase tracking-wide text-stone-400">Low estimate</div>
+            <div className="mt-2 text-3xl font-semibold text-stone-900">{fmt(calc.low)}</div>
           </div>
-          <div className="rounded-xl border border-blue-500/40 bg-blue-500/10 p-5">
-            <div className="text-xs uppercase tracking-wide text-blue-300">Most likely</div>
-            <div className="mt-2 text-3xl font-bold text-blue-200">{fmt(calc.mid)}</div>
+          <div className="rounded-xl border border-teal-200 bg-teal-50 p-5">
+            <div className="text-xs uppercase tracking-wide text-teal-700">Most likely</div>
+            <div className="mt-2 text-3xl font-semibold text-teal-800">{fmt(calc.mid)}</div>
           </div>
-          <div className="rounded-xl border border-gray-800 bg-gray-950/60 p-5">
-            <div className="text-xs uppercase tracking-wide text-gray-500">High estimate</div>
-            <div className="mt-2 text-3xl font-bold text-gray-100">{fmt(calc.high)}</div>
+          <div className="rounded-xl border border-stone-200/80 bg-stone-50 p-5">
+            <div className="text-xs uppercase tracking-wide text-stone-400">High estimate</div>
+            <div className="mt-2 text-3xl font-semibold text-stone-900">{fmt(calc.high)}</div>
           </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-gray-800 bg-gray-950/60 p-6">
-          <h2 className="text-lg font-semibold text-gray-100">Cost breakdown</h2>
-          <ul className="mt-4 divide-y divide-gray-800 text-sm">
+        <section className="mt-8 rounded-2xl border border-stone-200/80 bg-stone-50 p-6">
+          <h2 className="text-lg font-semibold text-stone-900">Cost breakdown</h2>
+          <ul className="mt-4 divide-y divide-stone-200 text-sm">
             <li className="flex justify-between py-2">
-              <span className="text-gray-300">
+              <span className="text-stone-700">
                 Base build ({sqft} sq ft &times; {fmt(TIERS[tier])}/sqft, {tier})
               </span>
-              <span className="text-gray-100">{fmt(calc.baseCost)}</span>
+              <span className="text-stone-900">{fmt(calc.baseCost)}</span>
             </li>
             {calc.scopeBreakdown.map((s) => (
               <li key={s.label} className="flex justify-between py-2">
-                <span className="text-gray-300">{s.label}</span>
-                <span className="text-gray-100">{fmt(s.cost)}</span>
+                <span className="text-stone-700">{s.label}</span>
+                <span className="text-stone-900">{fmt(s.cost)}</span>
               </li>
             ))}
             <li className="flex justify-between py-2">
-              <span className="text-gray-300">Subtotal</span>
-              <span className="text-gray-100">{fmt(calc.subtotal)}</span>
+              <span className="text-stone-700">Subtotal</span>
+              <span className="text-stone-900">{fmt(calc.subtotal)}</span>
             </li>
             <li className="flex justify-between py-2">
-              <span className="text-gray-300">
+              <span className="text-stone-700">
                 Location adjustment ({location}, {calc.mult}x)
               </span>
-              <span className="text-gray-100">{fmt(calc.mid - calc.subtotal)}</span>
+              <span className="text-stone-900">{fmt(calc.mid - calc.subtotal)}</span>
             </li>
             <li className="flex justify-between py-2 font-semibold">
-              <span className="text-gray-200">Most likely total</span>
-              <span className="text-blue-300">{fmt(calc.mid)}</span>
+              <span className="text-stone-800">Most likely total</span>
+              <span className="text-teal-700">{fmt(calc.mid)}</span>
             </li>
           </ul>
         </section>
 
-        <section className="mt-10 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-100">
+        <section className="mt-10 rounded-2xl border border-teal-200 bg-teal-50 p-8 text-center">
+          <h2 className="text-2xl font-semibold text-stone-900">
             Want a real fixed-price quote?
           </h2>
-          <p className="mt-2 text-gray-300">
+          <p className="mt-2 text-stone-700">
             We&apos;ll walk your kitchen, confirm scope, and send a line-item proposal within a week.
           </p>
           <Link
             href="/contact"
-            className="mt-5 inline-block rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400"
+            className="mt-5 inline-block rounded-xl bg-teal-700 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-800"
           >
             Get a real fixed-price quote
           </Link>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-100">Frequently asked questions</h2>
+          <h2 className="text-2xl font-semibold text-stone-900">Frequently asked questions</h2>
           <div className="mt-6 space-y-4">
             {FAQS.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-xl border border-gray-800 bg-gray-950/60 p-5"
+                className="group rounded-xl border border-stone-200/80 bg-stone-50 p-5"
               >
-                <summary className="cursor-pointer list-none text-base font-semibold text-gray-100">
+                <summary className="cursor-pointer list-none text-base font-semibold text-stone-900">
                   {f.q}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-gray-300">{f.a}</p>
+                <p className="mt-3 text-sm leading-relaxed text-stone-700">{f.a}</p>
               </details>
             ))}
           </div>

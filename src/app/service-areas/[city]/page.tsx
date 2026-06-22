@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { cities, cityBySlug } from "@/data/cities";
 import { services } from "@/data/services";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHero } from "@/components/PageHero";
 import { CTA } from "@/components/CTA";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { FAQSection } from "@/components/FAQSection";
@@ -123,71 +123,51 @@ export default async function CityServiceAreaPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
       />
 
-      <section className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <Breadcrumbs
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Service Areas", href: "/service-areas" },
-              { name: city.name },
-            ]}
-          />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Kitchen & Bath Remodeling in {city.name}, MN
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-            Licensed, insured remodeling contractors serving {city.name},{" "}
-            {city.county} County. {city.drivingTimeFromMpls} from our
-            Minneapolis base.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-8">
-            <Link
-              href="/contact"
-              className="bg-blue-600 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              Get a Free Quote
-            </Link>
-            <Link
-              href="/services"
-              className="bg-white/10 text-white px-7 py-3 rounded-md text-lg font-medium hover:bg-white/20 transition-colors"
-            >
-              All Services
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Service Areas", href: "/service-areas" },
+          { name: city.name },
+        ]}
+        title={`Kitchen & Bath Remodeling in ${city.name}, MN`}
+        subtitle={`Licensed, insured remodeling contractors serving ${city.name}, ${city.county} County. ${city.drivingTimeFromMpls} from our Minneapolis base.`}
+        actions={[
+          { label: "Get a Free Quote", href: "/contact" },
+          { label: "All Services", href: "/services", variant: "secondary" },
+        ]}
+      />
 
       {/* Intro & local angle */}
-      <section className="py-12 px-4 bg-white">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-4">
             Remodeling in {city.name}
           </h2>
-          <p className="text-slate-700 text-lg leading-relaxed mb-4">
+          <p className="text-stone-700 text-lg leading-relaxed mb-4">
             {city.localAngle}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 not-prose">
-            <div className="bg-slate-50 rounded-lg p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
+            <div className="bg-stone-50 rounded-2xl p-4">
+              <div className="text-xs uppercase tracking-wide text-stone-500 mb-1">
                 Population
               </div>
-              <div className="text-2xl font-bold text-slate-900">
+              <div className="text-2xl font-display font-semibold text-stone-900">
                 {city.population.toLocaleString()}
               </div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
+            <div className="bg-stone-50 rounded-2xl p-4">
+              <div className="text-xs uppercase tracking-wide text-stone-500 mb-1">
                 Median home value
               </div>
-              <div className="text-2xl font-bold text-slate-900">
+              <div className="text-2xl font-display font-semibold text-stone-900">
                 ${city.medianHomeValue.toLocaleString()}
               </div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
+            <div className="bg-stone-50 rounded-2xl p-4">
+              <div className="text-xs uppercase tracking-wide text-stone-500 mb-1">
                 County
               </div>
-              <div className="text-2xl font-bold text-slate-900">
+              <div className="text-2xl font-display font-semibold text-stone-900">
                 {city.county}
               </div>
             </div>
@@ -196,9 +176,9 @@ export default async function CityServiceAreaPage({
       </section>
 
       {/* Services available in this city */}
-      <section className="py-12 px-4 bg-slate-50">
+      <section className="py-12 px-4 bg-stone-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
             Services we offer in {city.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -206,15 +186,15 @@ export default async function CityServiceAreaPage({
               <Link
                 key={l.href}
                 href={l.href}
-                className="block p-5 rounded-lg bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all"
+                className="block p-5 rounded-2xl bg-white border border-stone-200 hover:border-teal-400 hover:shadow-sm transition-all"
               >
-                <div className="font-semibold text-slate-900">{l.title}</div>
+                <div className="font-semibold text-stone-900">{l.title}</div>
                 {l.description && (
-                  <div className="text-sm text-slate-600 mt-1">
+                  <div className="text-sm text-stone-600 mt-1">
                     {l.description}
                   </div>
                 )}
-                <div className="mt-2 text-sm text-blue-600 font-medium">
+                <div className="mt-2 text-sm text-teal-600 font-medium">
                   Learn more →
                 </div>
               </Link>
@@ -227,10 +207,10 @@ export default async function CityServiceAreaPage({
       <section className="py-12 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+            <h3 className="text-xl font-display font-semibold text-stone-900 mb-3">
               {city.name} neighborhoods we serve
             </h3>
-            <ul className="grid grid-cols-2 gap-1 text-slate-700">
+            <ul className="grid grid-cols-2 gap-1 text-stone-700">
               {city.neighborhoods.map((n) => (
                 <li key={n} className="text-sm">
                   · {n}
@@ -238,16 +218,16 @@ export default async function CityServiceAreaPage({
               ))}
             </ul>
             {city.zip.length > 0 && (
-              <p className="text-xs text-slate-500 mt-3">
+              <p className="text-xs text-stone-500 mt-3">
                 ZIP codes: {city.zip.join(", ")}
               </p>
             )}
           </div>
           <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+            <h3 className="text-xl font-display font-semibold text-stone-900 mb-3">
               Common {city.name} home styles
             </h3>
-            <ul className="space-y-1 text-slate-700">
+            <ul className="space-y-1 text-stone-700">
               {city.homeStyles.map((s) => (
                 <li key={s} className="text-sm">
                   · {s}
@@ -261,7 +241,7 @@ export default async function CityServiceAreaPage({
       {/* Permits */}
       <section className="py-12 px-4 bg-amber-50 border-y border-amber-200">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-amber-900 mb-3">
+          <h2 className="text-2xl font-display font-semibold text-amber-900 mb-3">
             Permits in {city.name}
           </h2>
           <p className="text-amber-900/90 leading-relaxed">{city.permitNote}</p>

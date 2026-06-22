@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { InlineCta } from "@/components/InlineCta";
 
 export const metadata: Metadata = {
   title: "How Much Does a Kitchen Remodel Cost in Minneapolis? (2026 Guide)",
@@ -121,37 +123,38 @@ export default function KitchenRemodelCostMinneapolis() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <article className="max-w-4xl mx-auto px-4 py-12">
-        <header className="mb-10">
-          <nav className="text-sm text-gray-500 mb-4">
-            <Link href="/" className="hover:text-gray-800">
-              Home
-            </Link>{" "}
-            /{" "}
-            <Link href="/blog" className="hover:text-gray-800">
-              Blog
-            </Link>{" "}
-            / Kitchen Remodel Cost Minneapolis
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            How Much Does a Kitchen Remodel Cost in Minneapolis? (2026 Guide)
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Real cost data from Twin Cities projects — from $15,000 budget
-            refreshes to $100,000+ custom kitchens. Updated for 2026 material
-            and labor prices.
-          </p>
-          <div className="flex items-center gap-4 mt-6 text-sm text-gray-500">
-            <time dateTime="2026-03-15">March 15, 2026</time>
-            <span>·</span>
-            <span>8 min read</span>
-            <span>·</span>
-            <span>Minneapolis Kitchen &amp; Bath team</span>
-          </div>
-        </header>
+      <div className="bg-hero-pattern border-b border-stone-200/60">
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <header>
+            <Breadcrumbs
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Blog", href: "/blog" },
+                { name: "Kitchen Remodel Cost Minneapolis" },
+              ]}
+            />
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-stone-900 mb-4 leading-tight tracking-tight">
+              How Much Does a Kitchen Remodel Cost in Minneapolis? (2026 Guide)
+            </h1>
+            <p className="text-xl text-stone-600 leading-relaxed">
+              Real cost data from Twin Cities projects — from $15,000 budget
+              refreshes to $100,000+ custom kitchens. Updated for 2026 material
+              and labor prices.
+            </p>
+            <div className="flex items-center gap-4 mt-6 text-sm text-stone-500">
+              <time dateTime="2026-03-15">March 15, 2026</time>
+              <span>·</span>
+              <span>8 min read</span>
+              <span>·</span>
+              <span>Minneapolis Kitchen &amp; Bath team</span>
+            </div>
+          </header>
+        </article>
+      </div>
 
-        <div className="prose prose-lg max-w-none">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-10 not-prose">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+        <div className="prose prose-lg prose-site max-w-none">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-10 not-prose">
             <h2 className="text-lg font-semibold text-amber-900 mb-3">
               📊 2026 Minneapolis Kitchen Remodel Cost Summary
             </h2>
@@ -173,10 +176,10 @@ export default function KitchenRemodelCostMinneapolis() {
                   desc: "Custom cabinetry, premium appliances, structural changes, custom tile",
                 },
               ].map((t) => (
-                <div key={t.tier} className="bg-white rounded-lg p-4 border border-amber-100">
-                  <div className="font-bold text-gray-900 mb-1">{t.tier}</div>
-                  <div className="text-2xl font-bold text-amber-700 mb-2">{t.range}</div>
-                  <div className="text-sm text-gray-600">{t.desc}</div>
+                <div key={t.tier} className="bg-white rounded-xl p-4 border border-amber-100">
+                  <div className="font-semibold text-stone-900 mb-1">{t.tier}</div>
+                  <div className="text-2xl font-semibold text-amber-700 mb-2">{t.range}</div>
+                  <div className="text-sm text-stone-600">{t.desc}</div>
                 </div>
               ))}
             </div>
@@ -206,10 +209,10 @@ export default function KitchenRemodelCostMinneapolis() {
           <div className="not-prose overflow-x-auto mb-6">
             <table className="w-full border-collapse text-sm">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="text-left p-3 font-semibold border border-gray-200">Cabinet Type</th>
-                  <th className="text-left p-3 font-semibold border border-gray-200">Cost Range (installed)</th>
-                  <th className="text-left p-3 font-semibold border border-gray-200">Best For</th>
+                <tr className="bg-stone-100">
+                  <th className="text-left p-3 font-semibold border border-stone-200">Cabinet Type</th>
+                  <th className="text-left p-3 font-semibold border border-stone-200">Cost Range (installed)</th>
+                  <th className="text-left p-3 font-semibold border border-stone-200">Best For</th>
                 </tr>
               </thead>
               <tbody>
@@ -219,10 +222,10 @@ export default function KitchenRemodelCostMinneapolis() {
                   ["Custom", "$25,000–$60,000+", "High-end finishes, unusual layouts"],
                   ["Cabinet Refacing", "$4,000–$9,000", "Good bones, tight budget"],
                 ].map(([type, cost, best]) => (
-                  <tr key={type} className="border-b border-gray-200">
-                    <td className="p-3 border border-gray-200 font-medium">{type}</td>
-                    <td className="p-3 border border-gray-200 text-green-700 font-semibold">{cost}</td>
-                    <td className="p-3 border border-gray-200 text-gray-600">{best}</td>
+                  <tr key={type} className="border-b border-stone-200">
+                    <td className="p-3 border border-stone-200 font-medium">{type}</td>
+                    <td className="p-3 border border-stone-200 text-teal-700 font-semibold">{cost}</td>
+                    <td className="p-3 border border-stone-200 text-stone-600">{best}</td>
                   </tr>
                 ))}
               </tbody>
@@ -329,9 +332,9 @@ export default function KitchenRemodelCostMinneapolis() {
           <h2>Frequently Asked Questions</h2>
           <div className="space-y-6 not-prose">
             {faqSchema.mainEntity.map((q) => (
-              <div key={q.name} className="border border-gray-200 rounded-lg p-6">
-                <h3 className="font-semibold text-gray-900 mb-2">{q.name}</h3>
-                <p className="text-gray-600">{q.acceptedAnswer.text}</p>
+              <div key={q.name} className="border border-stone-200/80 rounded-2xl p-6 bg-stone-50/50">
+                <h3 className="font-semibold text-stone-900 mb-2">{q.name}</h3>
+                <p className="text-stone-600">{q.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
@@ -345,32 +348,21 @@ export default function KitchenRemodelCostMinneapolis() {
           </p>
         </div>
 
-        <div className="mt-12 p-8 bg-gray-900 text-white rounded-2xl text-center">
-          <h2 className="text-2xl font-bold mb-3">
-            Get Your Free Kitchen Remodel Quote
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Serving Minneapolis, St. Paul, Edina, Minnetonka &amp; the Twin
-            Cities metro. Most quotes delivered within 48 hours.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-gray-900 font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Request a Free Quote →
-          </Link>
-        </div>
+        <InlineCta
+          heading="Get Your Free Kitchen Remodel Quote"
+          subheading="Serving Minneapolis, St. Paul, Edina, Minnetonka & the Twin Cities metro. Most quotes delivered within 48 hours."
+        />
 
-        <div className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Related Articles</h2>
+        <div className="mt-10 border-t border-stone-200 pt-10">
+          <h2 className="font-display text-xl font-semibold text-stone-900 mb-4">Related Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link href="/blog/bathroom-tile-trends-2026" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
-              <div className="font-semibold text-gray-900">Bathroom Tile Trends 2026</div>
-              <div className="text-sm text-gray-500 mt-1">What Minneapolis homeowners are choosing this year</div>
+            <Link href="/blog/bathroom-tile-trends-2026" className="group block p-5 border border-stone-200/80 rounded-2xl hover:border-teal-200 transition-colors">
+              <div className="font-semibold text-stone-900 group-hover:text-teal-800">Bathroom Tile Trends 2026</div>
+              <div className="text-sm text-stone-500 mt-1">What Minneapolis homeowners are choosing this year</div>
             </Link>
-            <Link href="/blog/quartz-vs-granite-countertops" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
-              <div className="font-semibold text-gray-900">Quartz vs. Granite Countertops</div>
-              <div className="text-sm text-gray-500 mt-1">Which is right for your Minneapolis kitchen?</div>
+            <Link href="/blog/quartz-vs-granite-countertops" className="group block p-5 border border-stone-200/80 rounded-2xl hover:border-teal-200 transition-colors">
+              <div className="font-semibold text-stone-900 group-hover:text-teal-800">Quartz vs. Granite Countertops</div>
+              <div className="text-sm text-stone-500 mt-1">Which is right for your Minneapolis kitchen?</div>
             </Link>
           </div>
         </div>
