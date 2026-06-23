@@ -15,6 +15,8 @@ export type City = {
   lat: number;
   lng: number;
   serviceTier: "premium" | "core" | "extended";
+  landmarks: string[];
+  localCharacter: string;
 };
 
 export const cities: City[] = [
@@ -34,6 +36,8 @@ export const cities: City[] = [
     lat: 44.9778,
     lng: -93.265,
     serviceTier: "core",
+    landmarks: ["Stone Arch Bridge", "Lake Harriet", "Minnehaha Falls", "Chain of Lakes"],
+    localCharacter: "A dense urban center dominated by historic pre-war housing stock, active neighborhood associations, and scenic lakes.",
   },
   {
     slug: "saint-paul",
@@ -51,6 +55,8 @@ export const cities: City[] = [
     lat: 44.9537,
     lng: -93.0900,
     serviceTier: "core",
+    landmarks: ["Cathedral of St. Paul", "Summit Avenue", "Como Park Zoo & Conservatory", "Mississippi River Boulevard"],
+    localCharacter: "Minnesota's historic capital city, featuring beautifully preserved Victorian, Craftsman, and Tudor architecture and strong neighborhood preservation guidelines.",
   },
   {
     slug: "edina",
@@ -68,6 +74,8 @@ export const cities: City[] = [
     lat: 44.8897,
     lng: -93.3499,
     serviceTier: "premium",
+    landmarks: ["Centennial Lakes Park", "50th & France", "Braemar Golf Course", "The Galleria Edina"],
+    localCharacter: "An upscale residential suburb known for luxury home designs, high-end shopping districts, and a strong preference for custom premium finishes.",
   },
   {
     slug: "minnetonka",
@@ -85,6 +93,8 @@ export const cities: City[] = [
     lat: 44.9211,
     lng: -93.4687,
     serviceTier: "premium",
+    landmarks: ["Lake Minnetonka", "Shady Oak Lake", "Minnehaha Creek Trail", "Ridgedale Center"],
+    localCharacter: "A wooded, lake-influenced community blending mid-century ramblers and massive custom lakefront builds near the shores of Lake Minnetonka.",
   },
   {
     slug: "wayzata",
@@ -102,6 +112,8 @@ export const cities: City[] = [
     lat: 44.9733,
     lng: -93.5066,
     serviceTier: "premium",
+    landmarks: ["Wayzata Bay", "Lake Street Shopping District", "Dakota Rail Regional Trail", "Wayzata Beach"],
+    localCharacter: "A premier lakefront enclave characterized by high-end waterfront estates, strict shoreline overlay districts, and boutique shopping.",
   },
   {
     slug: "eden-prairie",
@@ -119,6 +131,8 @@ export const cities: City[] = [
     lat: 44.8547,
     lng: -93.4708,
     serviceTier: "core",
+    landmarks: ["Purgatory Creek Park", "Bryant Lake Regional Park", "Eden Prairie Center", "Staring Lake Observatory"],
+    localCharacter: "A family-centric suburb established primarily in the 1990s, dominated by large executive two-story homes and modern office parks.",
   },
   {
     slug: "bloomington",
@@ -136,6 +150,8 @@ export const cities: City[] = [
     lat: 44.8408,
     lng: -93.2983,
     serviceTier: "core",
+    landmarks: ["Mall of America", "Hyland Lake Park Reserve", "Bush Lake Beach", "Minnesota Valley National Wildlife Refuge"],
+    localCharacter: "A major metropolitan suburb featuring a high concentration of 1950s split-levels and ramblers built during the post-war housing boom.",
   },
   {
     slug: "plymouth",
@@ -153,6 +169,8 @@ export const cities: City[] = [
     lat: 45.0105,
     lng: -93.4555,
     serviceTier: "core",
+    landmarks: ["Medicine Lake", "French Regional Park", "Hilde Performance Center", "Millennium Garden"],
+    localCharacter: "A sprawling, affluent suburb centered around Medicine Lake, featuring active outdoor trails and large 1990s executive subdivisions.",
   },
   {
     slug: "maple-grove",
@@ -170,6 +188,8 @@ export const cities: City[] = [
     lat: 45.0727,
     lng: -93.4558,
     serviceTier: "core",
+    landmarks: ["Elm Creek Park Reserve", "The Shoppes at Arbor Lakes", "Weaver Lake Beach", "Maple Grove Town Green"],
+    localCharacter: "A fast-growing northwest suburb famous for its vibrant shopping districts, master-planned developments, and modern family homes.",
   },
   {
     slug: "eagan",
@@ -187,6 +207,8 @@ export const cities: City[] = [
     lat: 44.8041,
     lng: -93.1668,
     serviceTier: "core",
+    landmarks: ["Lebanon Hills Regional Park", "Cascade Bay Waterpark", "Twin Cities Premium Outlets", "Caponi Art Park"],
+    localCharacter: "A rolling, lake-dotted south-metro suburb with a strong mix of 1980s family subdivisions and active corporate campuses.",
   },
   {
     slug: "burnsville",
@@ -204,6 +226,8 @@ export const cities: City[] = [
     lat: 44.7677,
     lng: -93.2777,
     serviceTier: "core",
+    landmarks: ["Buck Hill Ski Area", "Sunset Pond Park", "Crystal Lake Beach", "Ames Performing Arts Center"],
+    localCharacter: "A mature south-metro hub featuring rolling hills, a mix of split-level homes, and a centrally planned Heart of the City downtown district.",
   },
   {
     slug: "richfield",
@@ -221,6 +245,8 @@ export const cities: City[] = [
     lat: 44.8833,
     lng: -93.2830,
     serviceTier: "core",
+    landmarks: ["Wood Lake Nature Center", "Veterans Memorial Park", "Richfield Lake", "Lyndale Avenue Retail Corridor"],
+    localCharacter: "An inner-ring, post-war suburb containing compact mid-century homes and an active community close to South Minneapolis.",
   },
   {
     slug: "st-louis-park",
@@ -238,6 +264,8 @@ export const cities: City[] = [
     lat: 44.9485,
     lng: -93.3479,
     serviceTier: "core",
+    landmarks: ["The Shops at West End", "Wolfe Park", "Cedar Lake Trail", "Westwood Hills Nature Center"],
+    localCharacter: "A highly popular inner-ring suburb blending post-war Cape Cods, updated craftsman bungalows, and upscale retail centers.",
   },
   {
     slug: "hopkins",
@@ -255,6 +283,8 @@ export const cities: City[] = [
     lat: 44.9239,
     lng: -93.4133,
     serviceTier: "core",
+    landmarks: ["Mainstreet Hopkins", "Shady Oak Beach", "Depot Coffee House & Trailhead", "Maetzold Field"],
+    localCharacter: "A historic, walkable small town with a vibrant downtown main street and a tight-knit community feel.",
   },
   {
     slug: "roseville",
@@ -272,6 +302,8 @@ export const cities: City[] = [
     lat: 45.0061,
     lng: -93.1567,
     serviceTier: "core",
+    landmarks: ["Rosedale Center", "Central Park & Harriet Alexander Nature Center", "Guidant John Rose MN Oval", "Lake Owasso"],
+    localCharacter: "An established northeast suburb known for its parks, shopping centers, and stable mid-century rambler housing stock.",
   },
   {
     slug: "apple-valley",
@@ -289,6 +321,8 @@ export const cities: City[] = [
     lat: 44.7319,
     lng: -93.2177,
     serviceTier: "core",
+    landmarks: ["Minnesota Zoo", "Cobblestone Lake Park", "Lebanon Hills Regional Park (South Entrance)", "Redwood Park"],
+    localCharacter: "A mature, family-oriented south suburb containing many 1980s-90s split-levels, large townhomes, and the state's largest zoo.",
   },
   {
     slug: "lakeville",
@@ -298,7 +332,7 @@ export const cities: City[] = [
     medianHomeValue: 460000,
     zip: ["55044"],
     neighborhoods: ["Lake Marion", "Avonlea", "Spirit of Brandtjen Farm", "Crystal Lake"],
-    homeStyles: ["1990s–2010s two-stories", "executive homes", "newer ramblers", "lakefront homes on Lake Marion"],
+    homeStyles: ["1990s–2010s two-stories", "newer ramblers", "lakefront homes on Lake Marion"],
     localAngle: "Lakeville is one of the metro's fastest-growing suburbs with mostly 1990s–2010s construction. Builder-grade kitchens with stock cabinetry and laminate counters are now hitting their first remodel cycle.",
     permitNote: "Lakeville Community Development issues permits with online application. Fast turnaround — typically 7–10 business days for kitchen/bath remodels.",
     permitOfficeUrl: "https://www.lakevillemn.gov/202/Community-Development",
@@ -306,6 +340,8 @@ export const cities: City[] = [
     lat: 44.6497,
     lng: -93.2427,
     serviceTier: "core",
+    landmarks: ["Lake Marion", "Avonlea Community Park", "Spirit of Brandtjen Farm", "Crystal Lake"],
+    localCharacter: "A rapidly growing outer suburb featuring high-end executive subdivisions, newer construction, and popular recreational lakes.",
   },
 ];
 

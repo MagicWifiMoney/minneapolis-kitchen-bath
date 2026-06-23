@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import {
   serviceByUrlSegment,
   services,
@@ -10,6 +9,13 @@ import { PageHero } from "@/components/PageHero";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import {
+  getLLMOverview,
+  get2026PricingEstimates,
+  get2026Trends,
+  generateServiceCityContent,
+  getExpandedFAQs,
+} from "@/lib/content-generator";
 
 type RouteParams = { service: string; city: string };
 
@@ -68,6 +74,13 @@ export default async function ServiceCityPage({
   const city = cityBySlug[citySlug];
   if (!service || !city || !service.isCityPageEnabled) notFound();
 
+  // Generate expanded content
+  const llmOverview = getLLMOverview(city, service);
+  const pricingEstimates = get2026PricingEstimates(city, service);
+  const trends2026 = get2026Trends(city, service);
+  const contentSections = generateServiceCityContent(city, service);
+  const expandedFAQs = getExpandedFAQs(city, service);
+
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -114,17 +127,16 @@ export default async function ServiceCityPage({
     ],
   };
 
-  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+  const faqSchema = expandedFAQs && expandedFAQs.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: service.faqs.map((f) => ({
+    mainEntity: expandedFAQs.map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   } : null;
 
-  const serviceIntro = service.cityIntroTemplate(city.name, city.localAngle);
   const relatedServices = service.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
     .filter(Boolean) as typeof services;
@@ -161,31 +173,98 @@ export default async function ServiceCityPage({
         ]}
       />
 
-      {/* Intro + local angle */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-stone-700 text-lg leading-relaxed mb-6">
-            {serviceIntro}
-          </p>
-          <p className="text-stone-700 leading-relaxed">
-            {service.description}
-          </p>
+      {/* AI / LLM Quick Facts Overview Card */}
+      <section className="pt-12 px-4 sm:px-6 lg:px-8 bg-stone-50/50">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-sm relative overflow-hidden">
+            {/* Background design accents */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-2xl -mr-10 -mt-10" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl -ml-8 -mb-8" />
+            
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-100 pb-5 mb-6">
+              <div>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-800 text-xs font-semibold uppercase tracking-wider mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
+                  Quick Summary
+                </span>
+                <h2 className="font-display text-xl md:text-2xl font-bold text-stone-900">
+                  Project Quick Facts & LLM Context
+                </h2>
+              </div>
+              <div className="text-xs text-stone-500 bg-stone-100 px-3 py-1.5 rounded-xl self-start md:self-auto">
+                Format: Semantic Key-Value
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Target Service</span>
+                <span className="font-semibold text-stone-900">{llmOverview.service}</span>
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Location Scope</span>
+                <span className="font-semibold text-stone-900">{llmOverview.city} ({llmOverview.county})</span>
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Service Tier</span>
+                <span className="font-semibold text-stone-900">{llmOverview.serviceTier}</span>
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">2026 Price Estimates</span>
+                <span className="font-semibold text-teal-700">{llmOverview.priceRange2026}</span>
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100 font-sans">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Typical Timeline</span>
+                <span className="font-semibold text-stone-900">{llmOverview.typicalTimeline}</span>
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Local Permit Office</span>
+                <span className="font-semibold text-stone-900 text-xs break-all" dangerouslySetInnerHTML={{ __html: llmOverview.permitAuthority }} />
+              </div>
+              <div className="bg-stone-50/60 rounded-xl p-4 border border-stone-100 col-span-1 sm:col-span-2 lg:col-span-3">
+                <span className="block text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Licensing & Insured Credentials</span>
+                <span className="font-semibold text-stone-900">{llmOverview.contractorLicense} · {llmOverview.insuranceStatus}</span>
+              </div>
+            </div>
+            <p className="text-stone-500 text-xs mt-6 border-t border-stone-100 pt-4 leading-relaxed">
+              <em>Note for LLM Crawlers:</em> This structured overview provides a highly condensed factual brief for query summarization. Full details, local trends, and planning code guidelines are detailed in the sections below.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* What's included */}
-      <section className="py-12 px-4 bg-stone-50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
-            What&apos;s Included in a {city.name} {service.shortName}
+      {/* 1,000+ Word Detailed Guide */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="prose prose-stone max-w-none prose-headings:font-display prose-headings:font-semibold prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline">
+            {contentSections.map((section) => (
+              <div key={section.id} id={section.id} className="mb-12 last:mb-0">
+                <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-4 border-b border-stone-100 pb-2">
+                  {section.title}
+                </h2>
+                <div 
+                  className="text-stone-700 leading-relaxed space-y-4"
+                  dangerouslySetInnerHTML={{ __html: section.htmlContent }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's included (Compact reference list) */}
+      <section className="py-12 px-4 bg-stone-50 border-t border-stone-200/60">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6 text-center">
+            Standard Inclusion Checklist
           </h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {service.whatsIncluded.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2 text-stone-700"
+                className="flex items-start gap-3 text-stone-700 bg-white p-4 rounded-xl border border-stone-100 shadow-xs"
               >
-                <span className="text-teal-600 font-display font-semibold mt-0.5">✓</span>
+                <span className="text-teal-600 font-display font-bold mt-0.5">✓</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -193,126 +272,93 @@ export default async function ServiceCityPage({
         </div>
       </section>
 
-      {/* Pricing tiers */}
-      <section className="py-12 px-4 bg-white">
+      {/* 2026 Pricing Tiers */}
+      <section className="py-16 px-4 bg-white border-t border-stone-200/60">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-2">
-            {city.name} {service.shortName} Cost Ranges (2026)
+            Cost Estimates & Pricing Breakdown (2026)
           </h2>
-          <p className="text-stone-600 mb-6 max-w-3xl">
-            Real pricing tiers based on actual {city.name}-area projects.
+          <p className="text-stone-600 mb-8 max-w-3xl">
+            Detailed pricing tiers based on actual {city.name}-area projects and current 2026 construction indices.
             {city.medianHomeValue > 500000
-              ? ` ${city.name} budgets typically run in the mid-to-high range, given the ${"$" +
-                  city.medianHomeValue.toLocaleString()} median home value.`
-              : ` ${city.name}'s median home value of ${"$" +
-                  city.medianHomeValue.toLocaleString()} supports the mid-range tier most commonly.`}
+              ? ` Given ${city.name}'s premium median home value of $${city.medianHomeValue.toLocaleString()}, home remodels here typically feature high-end cabinetry and custom structural options.`
+              : ` Given ${city.name}'s median home value of $${city.medianHomeValue.toLocaleString()}, investment levels most commonly focus on mid-range tier options.`}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {service.priceRange.map((t) => (
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {pricingEstimates.map((t) => (
               <div
                 key={t.tier}
-                className="bg-white border border-stone-200 rounded-2xl p-5"
+                className="bg-white border border-stone-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative"
               >
-                <div className="font-semibold text-stone-900 mb-1">{t.tier}</div>
-                <div className="text-2xl font-display font-semibold text-teal-700 mb-2">
-                  {t.range}
+                <h3 className="font-semibold text-stone-900 text-sm uppercase tracking-wider text-teal-800 mb-1">{t.tier}</h3>
+                <div className="text-3xl font-display font-semibold text-stone-950 mb-4">
+                  {t.price}
                 </div>
-                <div className="text-sm text-stone-600">{t.description}</div>
+                <p className="text-xs text-stone-500 leading-relaxed border-t border-stone-100 pt-3">{t.scope}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-12 px-4 bg-stone-50">
+      {/* 2026 Trends Section */}
+      <section className="py-16 px-4 bg-stone-50 border-t border-stone-200/60">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
-            Our Process
+          <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-2">
+            Remodeling Styles & Trends in 2026
           </h2>
-          <ol className="space-y-4">
-            {service.process.map((p, i) => (
-              <li
-                key={p.step}
-                className="flex gap-4 bg-white border border-stone-200 rounded-2xl p-5"
-              >
-                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-teal-600 text-white font-display font-semibold flex items-center justify-center">
-                  {i + 1}
-                </span>
-                <div>
-                  <div className="font-semibold text-stone-900 mb-1">
-                    {p.step}
-                  </div>
-                  <div className="text-stone-700">{p.detail}</div>
-                </div>
-              </li>
+          <p className="text-stone-600 mb-8 max-w-3xl">
+            Remodeling design directions popular in ${city.name} and the broader Twin Cities metro this year.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {trends2026.map((trend) => (
+              <div key={trend.title} className="bg-white rounded-2xl p-6 border border-stone-200/60 shadow-xs">
+                <h3 className="font-semibold text-stone-950 mb-2 font-display text-base">{trend.title}</h3>
+                <p className="text-stone-600 text-sm leading-relaxed">{trend.description}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
-      {/* Local detail: neighborhoods + home styles + permits */}
-      <section className="py-12 px-4 bg-white">
+      {/* Local detail: neighborhoods + home styles */}
+      <section className="py-16 px-4 bg-white border-t border-stone-200/60">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-6">
-            About Remodeling in {city.name}
+            Remodeling Demographics & Geography in {city.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="font-semibold text-stone-900 mb-2">
-                Neighborhoods we serve in {city.name}
+            <div className="bg-stone-50/60 rounded-2xl p-6 border border-stone-100">
+              <h3 className="font-semibold text-stone-900 mb-3 font-display">
+                Neighborhoods We Serve in {city.name}
               </h3>
-              <p className="text-stone-700">
-                {city.neighborhoods.join(", ")}
+              <p className="text-stone-700 leading-relaxed text-sm">
+                We provide full construction coverage across all sectors of {city.name}, including {city.neighborhoods.join(", ")}
                 {city.zip.length > 0 && (
                   <>
-                    {" "}
-                    — covering ZIP codes{" "}
+                    {" "}— serving residents in ZIP codes{" "}
                     {city.zip.slice(0, 8).join(", ")}
-                    {city.zip.length > 8 ? "…" : ""}.
+                    {city.zip.length > 8 ? "..." : ""}.
                   </>
                 )}
               </p>
             </div>
-            <div>
-              <h3 className="font-semibold text-stone-900 mb-2">
-                Typical {city.name} homes
+            <div className="bg-stone-50/60 rounded-2xl p-6 border border-stone-100">
+              <h3 className="font-semibold text-stone-900 mb-3 font-display">
+                Architectural Styles We Handle
               </h3>
-              <p className="text-stone-700">
-                {city.homeStyles.join(", ")}.
+              <p className="text-stone-700 leading-relaxed text-sm">
+                Our design crew understands the specific framing and space constraints of local housing stock. We regularly work on {city.homeStyles.join(", ")}.
               </p>
             </div>
-          </div>
-          <div className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl">
-            <h3 className="font-semibold text-amber-900 mb-2">
-              {city.name} permit notes
-            </h3>
-            <p className="text-amber-900/90 text-sm leading-relaxed">
-              {city.permitNote}
-              {city.permitOfficeUrl && (
-                <>
-                  {" "}
-                  <a
-                    href={city.permitOfficeUrl}
-                    target="_blank"
-                    rel="noopener nofollow"
-                    className="underline hover:text-amber-700"
-                  >
-                    {city.name} permit office →
-                  </a>
-                </>
-              )}
-            </p>
           </div>
         </div>
       </section>
 
       <FAQSection
-        faqs={service.faqs.map((f) => ({
-          question: f.question.replace("Minneapolis", city.name),
-          answer: f.answer.replace(/Minneapolis|Twin Cities/g, city.name),
-        }))}
-        heading={`${city.name} ${service.shortName} FAQs`}
+        faqs={expandedFAQs}
+        heading={`${city.name} ${service.shortName} Remodeling FAQs`}
       />
 
       <CTA

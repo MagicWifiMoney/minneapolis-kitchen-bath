@@ -27,7 +27,7 @@ from pathlib import Path
 SITE = "https://minneapoliskitchenandbath.com"
 SITEMAP_URL = f"{SITE}/sitemap.xml"
 
-ROOT = Path("/Users/jacobgiebel/code/active/minneapolis-kitchen-bath")
+ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_DIR = ROOT / "public"
 RESEARCH_DIR = ROOT / "research"
 LOG_PATH = RESEARCH_DIR / "index-submit.log"
