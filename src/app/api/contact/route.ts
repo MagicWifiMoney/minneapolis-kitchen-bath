@@ -24,6 +24,35 @@ async function sendEmail(text: string, subject: string, replyTo: string) {
   return res.ok;
 }
 
+async function saveToNotion(fields: { name: string; projectType: string; email: string; phone?: string; message: string }) {
+  const token = process.env.NOTION_API_TOKEN;
+  const db = process.env.NOTION_LEADS_DB_ID;
+  if (!token || !db) return false;
+  const res = await fetch("https://api.notion.com/v1/pages", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Notion-Version": "2022-06-28",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      parent: { database_id: db },
+      properties: {
+        Name: { title: [{ text: { content: fields.name } }] },
+        Email: { email: fields.email },
+        Phone: fields.phone ? { phone_number: fields.phone } : { phone_number: null },
+        "Project Type": { select: { name: fields.projectType } },
+        Message: { rich_text: [{ text: { content: (fields.message || "").slice(0, 1900) } }] },
+        Status: { select: { name: "New" } },
+        Submitted: {
+          date: { start: new Date().toISOString() },
+        },
+      },
+    }),
+  });
+  return res.ok;
+}
+
 async function pingDiscord(fields: { name: string; projectType: string; email: string; phone?: string; message: string }) {
   const url = process.env.DISCORD_WEBHOOK_URL;
   if (!url) return false;
@@ -71,14 +100,17 @@ export async function POST(req: NextRequest) {
       `Message:\n${message}`,
     ].join("\n");
 
-    // Fire both notifications; don't let one failure block the other.
-    const [emailed, pinged] = await Promise.all([
+    const lead = { name, email, phone, projectType, message };
+
+    // Fire all three sinks; don't let one failure block the others.
+    const [emailed, pinged, saved] = await Promise.all([
       sendEmail(text, `New quote request: ${projectType} — ${name}`, email).catch(() => false),
-      pingDiscord({ name, email, phone, projectType, message }).catch(() => false),
+      pingDiscord(lead).catch(() => false),
+      saveToNotion(lead).catch(() => false),
     ]);
 
-    if (!emailed && !pinged) {
-      console.error("Contact form: both email and Discord delivery failed");
+    if (!emailed && !pinged && !saved) {
+      console.error("Contact form: email, Discord, and Notion delivery all failed");
       return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
     }
 
