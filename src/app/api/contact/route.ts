@@ -1,22 +1,61 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hello@minneapoliskitchenandbath.com";
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
+// Lead notifications go two places: an email to Jake and a Discord ping.
+// Both are best-effort; as long as one lands, the lead is captured.
+const TO_EMAIL = process.env.LEAD_TO_EMAIL || "jake.giebel@gmail.com";
+const FROM_INBOX = process.env.LEAD_FROM_INBOX || "botti@agentmail.to";
 
 export const dynamic = "force-dynamic";
 
+async function sendEmail(text: string, subject: string, replyTo: string) {
+  const apiKey = process.env.AGENTMAIL_API_KEY;
+  if (!apiKey) return false;
+  const res = await fetch(
+    `https://api.agentmail.to/v0/inboxes/${encodeURIComponent(FROM_INBOX)}/messages/send`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ to: TO_EMAIL, subject, text, reply_to: replyTo }),
+    },
+  );
+  return res.ok;
+}
+
+async function pingDiscord(fields: { name: string; projectType: string; email: string; phone?: string; message: string }) {
+  const url = process.env.DISCORD_WEBHOOK_URL;
+  if (!url) return false;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      embeds: [
+        {
+          title: "🏠 New MN Kitchen & Bath Lead",
+          color: 10066329,
+          fields: [
+            { name: "Name", value: fields.name, inline: true },
+            { name: "Project", value: fields.projectType, inline: true },
+            { name: "Email", value: fields.email, inline: false },
+            { name: "Phone", value: fields.phone || "—", inline: true },
+            { name: "Message", value: (fields.message || "").slice(0, 500), inline: false },
+          ],
+          footer: {
+            text:
+              new Date().toLocaleString("en-US", { timeZone: "America/Chicago" }) +
+              " CT",
+          },
+        },
+      ],
+    }),
+  });
+  return res.ok;
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Email service not configured" },
-        { status: 500 },
-      );
-    }
-    const resend = new Resend(apiKey);
-
     const body = await req.json();
     const { name, email, phone, projectType, message } = body;
 
@@ -24,42 +63,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: email,
-      subject: `New quote request: ${projectType} — ${name}`,
-      text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone || "Not provided"}`,
-        `Project Type: ${projectType}`,
-        `Message:\n${message}`,
-      ].join("\n"),
-    });
+    const text = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "Not provided"}`,
+      `Project Type: ${projectType}`,
+      `Message:\n${message}`,
+    ].join("\n");
 
+    // Fire both notifications; don't let one failure block the other.
+    const [emailed, pinged] = await Promise.all([
+      sendEmail(text, `New quote request: ${projectType} — ${name}`, email).catch(() => false),
+      pingDiscord({ name, email, phone, projectType, message }).catch(() => false),
+    ]);
 
-    // Discord notification (fire-and-forget) — lead capture alert
-    const _dw = process.env.DISCORD_WEBHOOK_URL;
-    if (_dw) {
-      fetch(_dw, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          embeds: [{
-            title: '🏠 New MN Kitchen & Bath Lead',
-            color: 10066329,
-            fields: [
-              { name: 'Name', value: name, inline: true },
-              { name: 'Project', value: projectType, inline: true },
-              { name: 'Email', value: email.replace(/(.{2}).*(@.*)/, '***$2'), inline: false },
-              { name: 'Phone', value: phone || '—', inline: true },
-              { name: 'Message', value: (message || '').slice(0, 500), inline: false },
-            ],
-            footer: { text: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }) + ' CT' }
-          }]
-        }),
-      }).catch(() => {});
+    if (!emailed && !pinged) {
+      console.error("Contact form: both email and Discord delivery failed");
+      return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
