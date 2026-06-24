@@ -15,6 +15,7 @@ import {
   get2026Trends,
   generateServiceCityContent,
   getExpandedFAQs,
+  getPAAQuestions,
 } from "@/lib/content-generator";
 
 type RouteParams = { service: string; city: string };
@@ -80,6 +81,7 @@ export default async function ServiceCityPage({
   const trends2026 = get2026Trends(city, service);
   const contentSections = generateServiceCityContent(city, service);
   const expandedFAQs = getExpandedFAQs(city, service);
+  const paaQuestions = getPAAQuestions(city, service);
 
   const localBusiness = {
     "@context": "https://schema.org",
@@ -127,10 +129,15 @@ export default async function ServiceCityPage({
     ],
   };
 
-  const faqSchema = expandedFAQs && expandedFAQs.length > 0 ? {
+  const combinedSchemaQuestions = [
+    ...paaQuestions.map((q) => ({ question: q.question, answer: q.answer })),
+    ...expandedFAQs.map((q) => ({ question: q.question, answer: q.answer }))
+  ];
+
+  const faqSchema = combinedSchemaQuestions.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: expandedFAQs.map((f) => ({
+    mainEntity: combinedSchemaQuestions.map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
@@ -352,6 +359,38 @@ export default async function ServiceCityPage({
                 Our design crew understands the specific framing and space constraints of local housing stock. We regularly work on {city.homeStyles.join(", ")}.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PAA (People Also Ask) Section */}
+      <section className="py-16 px-4 bg-stone-50 border-t border-stone-200/60">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8 text-center">
+            <span className="text-sm font-semibold text-teal-700 uppercase tracking-wider block mb-1">
+              Common Questions
+            </span>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-stone-900 tracking-tight">
+              People Also Ask — {service.shortName} in {city.name}
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {paaQuestions.map((paa) => (
+              <details
+                key={paa.question}
+                className="group rounded-2xl border border-stone-200/80 bg-white open:shadow-sm open:shadow-stone-100 transition-all"
+              >
+                <summary className="font-semibold text-stone-900 cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5">
+                  <span>{paa.question}</span>
+                  <span className="text-teal-600 mt-0.5 group-open:rotate-45 transition-transform text-xl leading-none shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="px-6 pb-5 text-stone-600 leading-relaxed text-sm">
+                  {paa.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
