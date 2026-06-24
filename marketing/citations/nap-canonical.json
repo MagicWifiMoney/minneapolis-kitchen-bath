@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-06-23T16:27:00",
+  "nap": {
+    "name": "Minneapolis Kitchen & Bath",
+    "website": "https://minneapoliskitchenandbath.com",
+    "email": "hello@minneapoliskitchenandbath.com",
+    "phone": "[PHONE]",
+    "street": "[STREET]",
+    "city": "Minneapolis",
+    "state": "MN",
+    "postal_code": "[ZIP]",
+    "country": "US",
+    "categories": [
+      "Kitchen Remodeler",
+      "Bathroom Remodeler",
+      "General Contractor",
+      "Cabinet Maker",
+      "Tile Installer"
+    ],
+    "service_area": "Minneapolis-Saint Paul, MN metro",
+    "year_established": "[YEAR]",
+    "hours": "[HOURS]",
+    "short_description": "Minneapolis Kitchen & Bath designs and builds custom kitchen and bathroom remodels across the Twin Cities metro. Full service from design to cabinetry, tile, and general contracting.",
+    "long_description": "Minneapolis Kitchen & Bath is a Twin Cities remodeling company focused on kitchen and bathroom renovations. Services include design consultation, custom cabinetry, countertop and tile installation, plumbing and electrical coordination, and full general contracting. Serving Minneapolis, Saint Paul, and the surrounding metro communities.",
+    "logo_url": "https://minneapoliskitchenandbath.com/logo.png",
+    "cover_image_url": "https://minneapoliskitchenandbath.com/og.jpg",
+    "social": {
+      "facebook": "[FB_URL]",
+      "instagram": "[IG_URL]"
+    }
+  },
+  "usage_rule": "This is the single source of truth for NAP. Every directory listing must match these values exactly, character for character. Inconsistent NAP across directories suppresses local rankings. Update this file first, then propagate."
+}
