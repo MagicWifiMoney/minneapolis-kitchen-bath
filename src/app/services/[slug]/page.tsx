@@ -40,7 +40,13 @@ export async function generateMetadata({
       service.shortName.toLowerCase() + " contractor MN",
     ],
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: "website" },
+    openGraph: { title, description, url, type: "website", images: ["/og-image.jpg"] },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.jpg"],
+    },
   };
 }
 
