@@ -5,6 +5,7 @@ import {
   services,
 } from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
+import { neighborhoodPages } from "@/data/neighborhoods";
 import { PageHero } from "@/components/PageHero";
 import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
@@ -61,6 +62,13 @@ export async function generateMetadata(
       description,
       url,
       type: "website",
+      images: ["/og-image.jpg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.jpg"],
     },
   };
 }
@@ -147,6 +155,10 @@ export default async function ServiceCityPage({
   const relatedServices = service.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
     .filter(Boolean) as typeof services;
+
+  const cityNeighborhoodGuides = neighborhoodPages.filter(
+    (n) => n.serviceUrlSegment === service.urlSegment && n.citySlug === city.slug,
+  );
 
   return (
     <>
@@ -316,7 +328,7 @@ export default async function ServiceCityPage({
             Remodeling Styles & Trends in 2026
           </h2>
           <p className="text-stone-600 mb-8 max-w-3xl">
-            Remodeling design directions popular in ${city.name} and the broader Twin Cities metro this year.
+            Remodeling design directions popular in {city.name} and the broader Twin Cities metro this year.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trends2026.map((trend) => (
@@ -404,6 +416,17 @@ export default async function ServiceCityPage({
         heading={`Ready to start your ${city.name} ${service.shortName.toLowerCase()}?`}
         subheading={`Free in-home consultation and quote. Most ${city.name} quotes delivered within 48 hours.`}
       />
+
+      {cityNeighborhoodGuides.length > 0 && (
+        <RelatedLinks
+          heading={`${city.name} neighborhood remodeling guides`}
+          links={cityNeighborhoodGuides.map((n) => ({
+            href: `/${n.serviceUrlSegment}/${n.citySlug}/${n.slug}`,
+            title: n.h1,
+            description: `${n.neighborhoodName} · ${n.homeStyle} homes in ${city.name}`,
+          }))}
+        />
+      )}
 
       <RelatedLinks
         heading={`Related services in ${city.name}`}
