@@ -18,7 +18,12 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX";
+const RAW_GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// Only load GTM when a real container ID is configured. Avoids shipping the
+// broken "GTM-XXXXXXX" placeholder container (extra request + console error)
+// on every page when the env var is unset.
+const GTM_ID =
+  RAW_GTM_ID && RAW_GTM_ID !== "GTM-XXXXXXX" ? RAW_GTM_ID : null;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://minneapoliskitchenandbath.com"),
@@ -84,31 +89,35 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <head>
         {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {GTM_ID && (
+          <Script
+            id="gtm-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
+            }}
+          />
+        )}
         <LocalBusinessSchema />
       </head>
       <body
         className={`${dmSans.variable} ${fraunces.variable} font-sans min-h-full flex flex-col`}
       >
         {/* GTM noscript */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
